@@ -23,7 +23,7 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section insights-section">
             <div class="container">
                 <h2 class="section-title">Latest Insights From Niaz Law</h2>
                 <div class="insights-grid">
@@ -54,27 +54,32 @@
         <section class="services-section bg-primary">
             <div class="container services-container">
                 <div class="services-img-col">
-                    <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=800&auto=format&fit=crop" alt="Gavel">
-                    <h2>Professional Services Prepared To Be Your Lawyer Firm</h2>
-                    <a href="#" class="all-practice-areas" style="color: #fff;">All Practice Areas <span class="arrow-icon">↗</span></a>
+                    <img src="{{ asset('images/professsional-services.jpg') }}" alt="Gavel">
+                    <h2 class="services-heading">Professional Services<br>Prepared To Be Your<br>Lawyer Firm</h2>
+                    <a href="#" class="all-practice-areas desktop-only" style="color: #fff; text-decoration: none;">All Practice Areas ↗</a>
                 </div>
-                <div class="services-links">
-                    <a href="#" class="service-link">Commercial Transactions <span>&rarr;</span></a>
-                    <a href="#" class="service-link">Procurement & Contracting <span>&rarr;</span></a>
-                    <a href="#" class="service-link">Infrastructure & Projects <span>&rarr;</span></a>
-                    <a href="#" class="service-link">Operational Risk <span>&rarr;</span></a>
+                <div class="services-list-col">
+                    <div class="services-links">
+                        <a href="#" class="service-link" style="color:#fff; text-decoration:none;">Commercial Transactions <img src="{{ asset('images/errow-side.svg') }}" alt="Arrow Right" style="width: 27px; height: auto;"></a>
+                        <a href="#" class="service-link" style="color:#fff; text-decoration:none;">Procurement & Contracting <img src="{{ asset('images/errow-side.svg') }}" alt="Arrow Right" style="width: 27px; height: auto;"></a>
+                        <a href="#" class="service-link" style="color:#fff; text-decoration:none;">Infrastructure & Projects <img src="{{ asset('images/errow-side.svg') }}" alt="Arrow Right" style="width: 27px; height: auto;"></a>
+                        <a href="#" class="service-link" style="color:#fff; text-decoration:none;">Operational Risk <img src="{{ asset('images/errow-side.svg') }}" alt="Arrow Right" style="width: 27px; height: auto;"></a>
+                    </div>
+                </div>
+                <div class="mobile-only" style="text-align: center; width: 100%;">
+                    <a href="#" class="all-practice-areas" style="color: #fff; text-decoration: none; margin: 0 auto;">All Practice Areas ↗</a>
                 </div>
             </div>
         </section>
 
         <section class="about-section">
             <div class="container about-container">
-                <div>
-                    <h2 class="section-title">Learn About<br>Our Firm</h2>
+                <div class="about-left-col">
+                    <h2 class="section-title about-section-title">Learn About<br class="desktop-only"> <span class="our-firm-text">Our Firm</span></h2>
                     <div class="about-features">
                         <div class="feature">
                             <div class="feature-icon">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"></path></svg>
+                                <img src="{{ asset('images/legacy.png') }}" alt="Legacy">
                             </div>
                             <div>
                                 <h4>LEGACY</h4>
@@ -83,7 +88,7 @@
                         </div>
                         <div class="feature">
                             <div class="feature-icon">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"></path></svg>
+                                <img src="{{ asset('images/integraty.svg') }}" alt="Integrity">
                             </div>
                             <div>
                                 <h4>INTEGRITY</h4>
@@ -92,7 +97,7 @@
                         </div>
                         <div class="feature">
                             <div class="feature-icon">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"></path></svg>
+                                <img src="{{ asset('images/community.svg') }}" alt="Community">
                             </div>
                             <div>
                                 <h4>COMMUNITY</h4>
@@ -102,13 +107,13 @@
                     </div>
                 </div>
                 <div class="about-images">
-                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=600&auto=format&fit=crop" alt="Colleagues" class="about-img-1">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&auto=format&fit=crop" alt="Building" class="about-img-2">
+                    <img src="{{ asset('images/our-firm-below.png') }}" alt="Colleagues" class="about-img-below">
+                    <img src="{{ asset('images/our-firm-up.png') }}" alt="Building" class="about-img-up">
                 </div>
             </div>
         </section>
 
-        <section class="results-section bg-secondary">
+        <section class="results-section">
             <div class="container results-container">
                 <div class="results-img">
                     <h2>WE LEAVE EVERY OUNCE OF EFFORT, SKILL, AND HEART IN THE COURTROOM.</h2>
@@ -131,7 +136,7 @@
             </div>
         </section>
 
-        <section class="section bg-secondary" style="padding-top: 0;">
+        <section class="section news-section">
             <div class="container">
                 <div class="news-header">
                     <h2>The Latest News And Blog From Niaz Law</h2>
@@ -140,38 +145,38 @@
                 <div class="news-grid">
                     <!-- Post 1 -->
                     <div class="news-card">
-                        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=500&auto=format&fit=crop" alt="Statue of justice">
+                        <img src="{{ asset('images/domestic-violance.jpg') }}" alt="Domestic Violence">
                         <div class="news-content">
                             <h3>Domestic Violence in California &ndash; How a Lawyer Can Help</h3>
                             <p>Understand how California domestic violence laws work, what protections may be available, and how an attorney can guide you through the legal process.</p>
-                            <a href="#" class="btn btn-primary">Read now</a>
+                            <a href="#" class="btn-black">Read now</a>
                         </div>
                     </div>
                     <!-- Post 2 -->
                     <div class="news-card">
-                        <img src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?w=500&auto=format&fit=crop" alt="Gavel">
+                        <img src="{{ asset('images/lawywer-helps.jpg') }}" alt="Lawyer Helps">
                         <div class="news-content">
                             <h3>Domestic Violence in California &ndash; How a Lawyer Can Help</h3>
                             <p>Understand how California domestic violence laws work, what protections may be available, and how an attorney can guide you through the legal process.</p>
-                            <a href="#" class="btn btn-primary">Read now</a>
+                            <a href="#" class="btn-black">Read now</a>
                         </div>
                     </div>
                     <!-- Post 3 -->
                     <div class="news-card">
-                        <img src="https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=500&auto=format&fit=crop" alt="Law book">
+                        <img src="{{ asset('images/order.jpg') }}" alt="Order">
                         <div class="news-content">
                             <h3>Domestic Violence in California &ndash; How a Lawyer Can Help</h3>
                             <p>Understand how California domestic violence laws work, what protections may be available, and how an attorney can guide you through the legal process.</p>
-                            <a href="#" class="btn btn-primary">Read now</a>
+                            <a href="#" class="btn-black">Read now</a>
                         </div>
                     </div>
                     <!-- Post 4 -->
                     <div class="news-card">
-                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=500&auto=format&fit=crop" alt="Statue close up">
+                        <img src="{{ asset('images/law.jpg') }}" alt="Law">
                         <div class="news-content">
                             <h3>Domestic Violence in California &ndash; How a Lawyer Can Help</h3>
                             <p>Understand how California domestic violence laws work, what protections may be available, and how an attorney can guide you through the legal process.</p>
-                            <a href="#" class="btn btn-primary">Read now</a>
+                            <a href="#" class="btn-black">Read now</a>
                         </div>
                     </div>
                 </div>
@@ -207,5 +212,16 @@
                 </div>
             </div>
         </section>
+        @include('components.footer')
+        <script>
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        </script>
     </body>
 </html>
