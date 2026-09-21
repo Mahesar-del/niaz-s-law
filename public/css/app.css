@@ -129,16 +129,18 @@ ul {
 
 /* Navbar */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--space-24) var(--space-100);
+    padding: var(--space-24) 0;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     z-index: 10;
     color: #fff;
+}
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .nav-logo h2 {
     margin: 0;
@@ -150,11 +152,15 @@ ul {
     gap: var(--space-32);
 }
 .nav-links a {
-    font-size: var(--label-accent);
-    font-weight: 700;
-    letter-spacing: 0.1em;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 100%;
+    letter-spacing: 0;
     text-transform: uppercase;
     transition: opacity 0.3s;
+    text-decoration: none;
+    color: #FFFFFF;
 }
 .nav-links a:hover {
     opacity: 0.7;
@@ -179,22 +185,51 @@ ul {
 .hero {
     height: 90vh;
     min-height: 600px;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2000&auto=format&fit=crop') center/cover;
-    display: flex;
-    align-items: center;
-    padding: 0 var(--space-100);
+    max-height: 900px;
+    background: linear-gradient(180deg, rgba(102, 102, 102, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%), url('/images/home-hero.png') center/cover;
     color: #fff;
     padding-top: 100px;
+}
+.hero-container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 .hero-content {
     max-width: 800px;
 }
 .hero h1 {
-    font-size: 72px; /* A bit larger than H1 for hero as per design */
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 100%;
+    letter-spacing: 0.01em;
+    color: #ffffff;
     margin-bottom: var(--space-32);
 }
 .hero .btn {
-    padding: 16px 32px;
+    width: 220px;
+    height: 56px;
+    padding: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero-indicators {
+    position: absolute;
+    bottom: var(--space-48);
+    right: var(--space-100);
+    display: flex;
+    gap: var(--space-8);
+}
+.hero-indicators .indicator {
+    width: 74px;
+    height: 5px;
+    border-radius: 10px;
+    border: 1px solid #FFFFFF;
+}
+.hero-indicators .indicator.active {
+    background-color: #FFFFFF;
 }
 @media (max-width: 1024px) {
     .hero {

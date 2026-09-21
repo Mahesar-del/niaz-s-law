@@ -9,35 +9,43 @@
     <body class="antialiased">
         @include('components.header')
         <section class="hero">
-            <div class="hero-content">
-                <h1>We Stand With You.<br>We Fight for Justice.</h1>
-                <a href="#" class="btn btn-secondary">Contact Us <span class="arrow-icon">↗</span></a>
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <h1>We Stand With You.<br>We Fight for Justice.</h1>
+                    <a href="#" class="btn btn-secondary">Contact Us <span class="arrow-icon">↗</span></a>
+                </div>
+                <div class="hero-indicators">
+                    <span class="indicator active"></span>
+                    <span class="indicator"></span>
+                    <span class="indicator"></span>
+                    <span class="indicator"></span>
+                </div>
             </div>
         </section>
 
         <section class="section">
             <div class="container">
                 <h2 class="section-title">Latest Insights From Niaz Law</h2>
-            </div>
-            <div class="insights-grid">
-                <div class="insight-card" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&auto=format&fit=crop');">
-                    <div class="insight-content">
-                        <h3>Insights &ndash; June 2026</h3>
+                <div class="insights-grid">
+                    <div class="insight-card" style="background-image: url('{{ asset('images/insight-june.png') }}');">
+                        <div class="insight-content">
+                            <h3>Insights &ndash; June 2026</h3>
+                        </div>
                     </div>
-                </div>
-                <div class="insight-card" style="background-image: url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=800&auto=format&fit=crop');">
-                    <div class="insight-content">
-                        <h3>Inside the Courts &ndash; Niaz's Securities<br>Litigation Update</h3>
+                    <div class="insight-card" style="background-image: url('{{ asset('images/inside-court.jpg') }}');">
+                        <div class="insight-content">
+                            <h3>Inside the Courts &ndash; Niaz's Securities<br>Litigation Update</h3>
+                        </div>
                     </div>
-                </div>
-                <div class="insight-card" style="background-image: url('https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=800&auto=format&fit=crop');">
-                    <div class="insight-content">
-                        <h3>Niaz's Podcasts</h3>
+                    <div class="insight-card" style="background-image: url('{{ asset('images/niaz-podcast.jpg') }}');">
+                        <div class="insight-content">
+                            <h3>Niaz's Podcasts</h3>
+                        </div>
                     </div>
-                </div>
-                <div class="insight-card" style="background-image: url('https://images.unsplash.com/photo-1555353540-64fd3b71c93c?w=800&auto=format&fit=crop');">
-                    <div class="insight-content">
-                        <h3>The Informed Board &ndash; September 2026</h3>
+                    <div class="insight-card" style="background-image: url('{{ asset('images/informed-board.jpg') }}');">
+                        <div class="insight-content">
+                            <h3>The Informed Board &ndash; September 2026</h3>
+                        </div>
                     </div>
                 </div>
             </div>
