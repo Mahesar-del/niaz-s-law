@@ -190,7 +190,7 @@ ul {
     max-width: 800px;
 }
 .hero h1 {
-    font-size: 72px;
+    font-size: 72px; /* A bit larger than H1 for hero as per design */
     margin-bottom: var(--space-32);
 }
 .hero .btn {
