@@ -163,7 +163,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            margin-bottom: 80px;
+            margin-bottom: 40px;
         }
         .ct-lawyer-card {
             background: #F8F5EF;
@@ -212,7 +212,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 40px;
-            margin-bottom: 80px;
+            margin-bottom: 40px;
         }
         .ct-insight-card {
             display: flex;
@@ -224,7 +224,7 @@
             width: 45%;
             aspect-ratio: 262.5 / 342;
             object-fit: cover;
-            object-position: center;
+            object-position: left;
             display: block;
         }
         .ct-insight-content {
@@ -274,10 +274,11 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
-            margin-bottom: 80px;
+            margin-bottom: 40px;
         }
         .ct-cap-btn {
-            border: 1px solid #999;
+            border: 1px solid #000000;
+            border-radius: 2px;
             padding: 20px;
             text-align: left;
             font-weight: 700;
@@ -298,7 +299,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 40px;
             align-items: center;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
         .ct-contact img {
             width: 100%;
@@ -306,54 +307,179 @@
             object-fit: cover;
         }
         .ct-contact-content h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 32px;
+            letter-spacing: 0.5px;
+            text-align: justify;
+            margin-bottom: 15px;
+            font-family: 'Libre Baskerville', serif;
+            color: #000000;
+        }
+        .ct-contact-content .ct-subtitle {
+            font-family: 'Libre Baskerville', serif;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 32px;
+            letter-spacing: 0.5px;
+            color: #000000;
+            margin-bottom: 15px;
         }
         .ct-contact-content p {
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 29px;
+            letter-spacing: 0.5px;
+            text-align: justify;
+            color: #000000;
+            margin-bottom: 15px;
+        }
+        .ct-contact-content .ct-contact-cta {
+            font-family: 'Libre Baskerville', serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #000000;
             margin-bottom: 20px;
-            color: #333;
         }
         .ct-contact-content .ct-btn-black {
-            padding: 15px 30px;
-            margin-top: 10px;
+            margin-top: 5px;
         }
 
         /* Mobile */
         @media (max-width: 768px) {
+            .ct-container {
+                padding: 40px 15px;
+            }
             .ct-advise-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
             .ct-overview-images {
                 flex-direction: column;
+                gap: 0;
             }
-            .ct-overview-images .img-left img, 
+            .ct-overview-images .img-right {
+                padding-top: 0;
+            }
             .ct-overview-images .img-right img {
-                height: 300px;
+                display: none;
+            }
+            .ct-overview-images .img-left img {
+                height: auto;
+                aspect-ratio: 3 / 2;
+                width: 100%;
             }
             .ct-overview-images .img-right h2 {
-                margin-top: 20px;
+                margin-top: 24px;
+                font-size: 24px;
+                line-height: 1.3;
             }
-            .ct-lawyers, .ct-insights, .ct-capabilities, .ct-contact {
+            .ct-text-content {
+                margin-bottom: 10px;
+            }
+            .ct-text-content p {
+                margin-bottom: 10px;
+            }
+            .ct-advise-grid, .ct-list, .ct-lawyers, .ct-insights, .ct-contact {
+                margin-bottom: 10px;
+            }
+            .container {
+                padding-bottom: 20px !important;
+            }
+            .ct-lawyers, .ct-capabilities, .ct-contact {
                 grid-template-columns: 1fr;
+            }
+            .ct-related-capabilities-section {
+                display: none;
+            }
+            .ct-capabilities {
+                gap: 10px;
+            }
+            .ct-cap-btn {
+                padding: 12px 15px;
+            }
+            .ct-insights {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 20px;
+                scrollbar-width: none; /* Firefox */
+                -ms-overflow-style: none; /* IE/Edge */
+            }
+            .ct-insights::-webkit-scrollbar {
+                display: none; /* Chrome, Safari */
             }
             .ct-insight-card {
                 flex-direction: column;
+                flex: 0 0 100%;
+                scroll-snap-align: center;
+                gap: 0;
+            }
+            .ct-tabs {
+                flex-direction: row;
+                gap: 10px;
+            }
+            .ct-tabs button {
+                flex: 1;
+                font-size: 13px;
+                padding: 10px 5px;
+                height: auto;
+                min-height: 40px;
+            }
+            .ct-advise-item {
+                text-align: justify;
+                font-size: 14px;
             }
             .ct-insight-card img {
                 width: 100%;
-                height: 250px;
+                height: auto;
+                aspect-ratio: 4 / 3;
             }
             .ct-insight-content {
                 width: 100%;
+                padding: 15px;
             }
-            .ct-tabs {
-                flex-direction: column;
+            .ct-insight-content h3 {
+                font-size: 20px;
+            }
+            .ct-insight-content p {
+                text-align: justify;
+            }
+            .ct-insight-content .ct-btn-black {
+                display: none;
             }
             .ct-contact img {
-                height: 300px;
+                height: auto;
+                aspect-ratio: 4 / 3;
+            }
+            .ct-contact-content h2 {
+                text-align: center;
+                font-size: 24px;
+            }
+            .ct-contact-content .ct-subtitle {
+                text-align: center;
+            }
+            .ct-contact-content p {
+                text-align: justify;
+            }
+            .ct-contact-content .ct-contact-cta {
+                text-align: center;
+            }
+            .ct-section-title {
+                font-size: 24px;
+                text-align: left;
+                margin-top: -10px !important;
+                margin-bottom: 15px !important;
+            }
+            .ct-btn-black {
+                width: 100%;
+                justify-content: center;
+            }
+            .ct-contact-content .ct-btn-black {
+                width: max-content;
+                padding: 0 30px;
+                margin: 0 auto;
             }
         }
     </style>
@@ -368,7 +494,7 @@
         'text' => 'We advise businesses on complex commercial, infrastructure, and operational matters with practical legal guidance aligned to their strategic objectives.'
     ])
 
-    <div class="container" style="padding-top: 23px; padding-bottom: 60px;">
+    <div class="container" style="padding-top: 23px;">
         <!-- Overview Images -->
         <div class="ct-overview-images">
             <div class="img-left">
@@ -493,24 +619,26 @@
         </div>
 
         <!-- Related Capabilities -->
-        <h2 class="ct-section-title" style="text-align: left;">Related Capabilities</h2>
-        <div class="ct-capabilities">
-            <a href="#" class="ct-cap-btn">Commercial Transactions</a>
-            <a href="#" class="ct-cap-btn">Infrastructure & Projects</a>
-            <a href="#" class="ct-cap-btn">Procurement & Contracting</a>
-            <a href="#" class="ct-cap-btn">Corporate Law & Finance</a>
-            <a href="#" class="ct-cap-btn">Restructuring & Counseling</a>
-            <a href="#" class="ct-cap-btn">Operational & Commercial Risk</a>
+        <div class="ct-related-capabilities-section">
+            <h2 class="ct-section-title" style="text-align: left;">Related Capabilities</h2>
+            <div class="ct-capabilities">
+                <a href="#" class="ct-cap-btn">Commercial Transactions</a>
+                <a href="#" class="ct-cap-btn">Infrastructure & Projects</a>
+                <a href="#" class="ct-cap-btn">Procurement & Contracting</a>
+                <a href="#" class="ct-cap-btn">Corporate Law & Finance</a>
+                <a href="#" class="ct-cap-btn">Restructuring & Counseling</a>
+                <a href="#" class="ct-cap-btn">Operational & Commercial Risk</a>
+            </div>
         </div>
 
         <!-- Let's Discuss Your Business Needs -->
         <div class="ct-contact">
-            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32d7?auto=format&fit=crop&q=80&w=800" alt="Business Meeting">
+            <img src="{{ asset('images/discus-business-needs.jpg') }}" onerror="this.src='https://images.unsplash.com/photo-1556761175-5973dc0f32d7?auto=format&fit=crop&q=80&w=800'" alt="Business Meeting">
             <div class="ct-contact-content">
                 <h2>Let's Discuss Your Business Needs</h2>
-                <p><strong>Discuss Your Case with NiazLaw</strong></p>
-                <p>Whether you are negotiating a key agreement, structuring a new commercial arrangement, or addressing business risks, we are dedicated to helping you stay aligned with your business objectives.</p>
-                <p>Reach out to discuss your transaction.</p>
+                <p class="ct-subtitle">Discuss Your Case with Confidence</p>
+                <p>Whether you are negotiating a key agreement, structuring a new commercial arrangement, or addressing contractual risk, we provide practical legal guidance aligned with your business objectives.</p>
+                <p class="ct-contact-cta">Contact Us for a Consultation</p>
                 <a href="#" class="ct-btn-black">Talk to Our Team</a>
             </div>
         </div>

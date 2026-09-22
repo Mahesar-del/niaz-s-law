@@ -46,11 +46,16 @@
         .ct-hero-grid {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 10px;
         }
-        .ct-hero-title-left, .ct-hero-title-right {
-            font-size: 36px;
-            display: inline-block;
+        .ct-hero-title-left {
+            font-size: 40px;
+            align-self: flex-start;
+        }
+        .ct-hero-title-right {
+            font-size: 40px;
+            align-self: flex-start;
+            margin-left: 55px;
         }
         .ct-hero-container {
             padding: 0 var(--space-16);
@@ -58,6 +63,9 @@
         .ct-hero-text {
             grid-column: 1;
             max-width: 100%;
+            border-left: none;
+            padding-left: 0;
+            text-align: justify;
         }
     }
 </style>

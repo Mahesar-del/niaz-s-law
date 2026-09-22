@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\ContactSettingController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
 Route::view('/attorneys', 'attorneys');
+Route::view('/capabilities', 'capabilities');
 Route::view('/commercial-transactions', 'commercial-transactions');
 Route::get('/case-study', [CaseStudyController::class, 'index']);
 Route::get('/blog', [BlogController::class, 'index']);
