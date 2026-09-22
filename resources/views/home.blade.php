@@ -60,7 +60,7 @@
                 </div>
                 <div class="services-list-col">
                     <div class="services-links">
-                        <a href="#" class="service-link" style="color:#fff; text-decoration:none;">Commercial Transactions <img src="{{ asset('images/errow-side.svg') }}" alt="Arrow Right" style="width: 27px; height: auto;"></a>
+                        <a href="/commercial-transactions" class="service-link" style="color:#fff; text-decoration:none;">Commercial Transactions <img src="{{ asset('images/errow-side.svg') }}" alt="Arrow Right" style="width: 27px; height: auto;"></a>
                         <a href="#" class="service-link" style="color:#fff; text-decoration:none;">Procurement & Contracting <img src="{{ asset('images/errow-side.svg') }}" alt="Arrow Right" style="width: 27px; height: auto;"></a>
                         <a href="#" class="service-link" style="color:#fff; text-decoration:none;">Infrastructure & Projects <img src="{{ asset('images/errow-side.svg') }}" alt="Arrow Right" style="width: 27px; height: auto;"></a>
                         <a href="#" class="service-link" style="color:#fff; text-decoration:none;">Operational Risk <img src="{{ asset('images/errow-side.svg') }}" alt="Arrow Right" style="width: 27px; height: auto;"></a>

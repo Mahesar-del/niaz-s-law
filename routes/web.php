@@ -18,3 +18,4 @@ use App\Http\Controllers\HomeController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
 Route::view('/attorneys', 'attorneys');
+Route::view('/commercial-transactions', 'commercial-transactions');
