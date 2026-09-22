@@ -8,19 +8,33 @@
     </head>
     <body class="antialiased">
         @include('components.header')
-        <section class="hero">
-            <div class="container hero-container">
-                <div class="hero-content">
-                    <h1>We Stand With You.<br>We Fight for Justice.</h1>
-                    <a href="/contact-us" class="btn btn-secondary">Contact Us <span class="arrow-icon"><img src="{{ asset('images/arrow.svg') }}" alt="Arrow" style="width: 32px; height: 32px; vertical-align: middle;"></span></a>
+        @php
+            $fallbackSlide = (object) [
+                'image' => $homeSettings->hero_image ?? 'home-hero.png',
+                'heading' => $homeSettings->hero_heading ?? "We Stand With You.\nWe Fight for Justice.",
+                'button_text' => $homeSettings->hero_button_text ?? 'Contact Us',
+                'button_link' => $homeSettings->hero_button_link ?? '/contact-us',
+            ];
+            $slides = $heroSlides->isNotEmpty() ? $heroSlides : collect([$fallbackSlide]);
+        @endphp
+        <section class="hero hero-slider" data-hero-slider>
+            @foreach($slides as $index => $slide)
+                <div class="hero-slide {{ $index === 0 ? 'active' : '' }}" style="--hero-image: url('{{ asset('images/' . $slide->image) }}');">
+                    <div class="container hero-container">
+                        <div class="hero-content">
+                            <h1>{!! nl2br(e($slide->heading)) !!}</h1>
+                            <a href="{{ $slide->button_link }}" class="btn btn-secondary">{{ $slide->button_text }} <span class="arrow-icon"><img src="{{ asset('images/arrow.svg') }}" alt="" style="width: 32px; height: 32px; vertical-align: middle;"></span></a>
+                        </div>
+                    </div>
                 </div>
+            @endforeach
+            @if($slides->count() > 1)
                 <div class="hero-indicators">
-                    <span class="indicator active"></span>
-                    <span class="indicator"></span>
-                    <span class="indicator"></span>
-                    <span class="indicator"></span>
+                    @foreach($slides as $index => $slide)
+                        <button type="button" class="indicator {{ $index === 0 ? 'active' : '' }}" aria-label="Show hero slide {{ $index + 1 }}"></button>
+                    @endforeach
                 </div>
-            </div>
+            @endif
         </section>
 
         <section class="section insights-section">
@@ -186,12 +200,7 @@
         <section class="contact-section">
             <div class="contact-bg"></div>
             <div class="container contact-container">
-                <div class="map-placeholder">
-                    <div class="map-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                    </div>
-                    <p>Map location will appear here<br>once firm address is confirmed</p>
-                </div>
+                <iframe class="home-map" title="Niaz Law Franklin Park office location" src="https://www.google.com/maps?q=9933+Franklin+Ave,+Franklin+Park,+IL+60131&amp;z=17&amp;output=embed" loading="lazy"></iframe>
                 <div class="contact-form-card">
                     <h2>Have Questions?<br>Get in Touch!</h2>
                     <form>
@@ -213,5 +222,22 @@
             </div>
         </section>
         @include('components.footer')
+        <script>
+            (() => {
+                const slider = document.querySelector('[data-hero-slider]');
+                if (!slider) return;
+                const slides = [...slider.querySelectorAll('.hero-slide')];
+                const indicators = [...slider.querySelectorAll('.indicator')];
+                if (slides.length < 2) return;
+                let activeIndex = 0;
+                const show = (index) => {
+                    activeIndex = (index + slides.length) % slides.length;
+                    slides.forEach((slide, i) => slide.classList.toggle('active', i === activeIndex));
+                    indicators.forEach((indicator, i) => indicator.classList.toggle('active', i === activeIndex));
+                };
+                indicators.forEach((indicator, index) => indicator.addEventListener('click', () => show(index)));
+                setInterval(() => show(activeIndex + 1), 6500);
+            })();
+        </script>
     </body>
 </html>

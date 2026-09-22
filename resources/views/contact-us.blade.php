@@ -65,10 +65,10 @@
                     <div class="contact-map"><iframe title="Niaz Law Franklin Park office location" src="https://www.google.com/maps?q=9933+Franklin+Ave,+Franklin+Park,+IL+60131&amp;z=17&amp;output=embed" loading="lazy"></iframe></div>
                 </div>
                 <section class="contact-cards" aria-label="Contact details">
-                    <article class="contact-card"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="4"/><path d="m3 8 9 6 9-6"/></svg><h3>Email</h3><p>info@niazlawpc.com</p></article>
-                    <article class="contact-card"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><h3>Phone</h3><p>(630) 201-5927</p></article>
-                    <article class="contact-card contact-card--office"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><h3>Franklin Park Office:</h3><p>9933 Franklin Ave.<br>Franklin Park, IL 60131</p></article>
-                    <article class="contact-card contact-card--office"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><h3>Naperville / Lisle Office:</h3><p>3333 Warrenville Road, Suite 200 Lisle, IL 60532</p></article>
+                    <article class="contact-card"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="4"/><path d="m3 8 9 6 9-6"/></svg><h3>Email</h3><p>{{ $contactSettings->email ?? 'info@niazlawpc.com' }}</p></article>
+                    <article class="contact-card"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><h3>Phone</h3><p>{{ $contactSettings->phone ?? '(630) 201-5927' }}</p></article>
+                    <article class="contact-card contact-card--office"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><h3>Franklin Park Office:</h3><p>{!! nl2br(e($contactSettings->franklin_address ?? "9933 Franklin Ave.\nFranklin Park, IL 60131")) !!}</p></article>
+                    <article class="contact-card contact-card--office"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><h3>Naperville / Lisle Office:</h3><p>{!! nl2br(e($contactSettings->naperville_address ?? "3333 Warrenville Road, Suite 200\nLisle, IL 60532, USA")) !!}</p></article>
                 </section>
             </div>
         </section>

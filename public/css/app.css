@@ -255,9 +255,26 @@ ul {
     height: 750px;
     min-height: 600px;
     max-height: 90vh;
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.16) 45%, rgba(102, 102, 102, 0) 100%), url('/images/home-hero.png') center/cover;
     color: #fff;
     padding-top: 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity .7s ease;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.16) 45%, rgba(102, 102, 102, 0) 100%), var(--hero-image, url('/images/home-hero.png')) center/cover;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+.hero-slide .hero-container {
+    width: 100%;
 }
 
 .hero-container {
@@ -296,6 +313,7 @@ ul {
     right: var(--space-100);
     display: flex;
     gap: var(--space-8);
+    z-index: 2;
 }
 
 .hero-indicators .indicator {
@@ -303,6 +321,9 @@ ul {
     height: 5px;
     border-radius: 10px;
     border: 1px solid #FFFFFF;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
 }
 
 .hero-indicators .indicator.active {
@@ -904,6 +925,15 @@ ul {
     text-align: center;
     color: #445668;
     border-radius: 12px;
+}
+
+.home-map {
+    width: 100%;
+    min-height: 520px;
+    border: 0;
+    border-radius: 12px;
+    display: block;
+    filter: saturate(.78) contrast(.96);
 }
 
 .map-icon {
