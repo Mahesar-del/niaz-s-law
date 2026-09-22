@@ -32,3 +32,4 @@ Route::get('/insights', [InsightsController::class, 'index']);
 Route::get('/detail', [DetailController::class, 'index']);
 Route::get('/contact-us', [ContactController::class, 'index']);
 Route::view('/attorney-detail', 'attorney-detail');
+Route::view('/about-us', 'about');
