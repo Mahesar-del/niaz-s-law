@@ -293,7 +293,7 @@ ul {
     transform: translateY(-50%);
     width: 686px;
     background: transparent;
-    padding: 10px 20px;
+    padding: 10px 0;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -320,7 +320,6 @@ ul {
     align-items: center;
     border-bottom: 2px solid #ffffff;
     padding-bottom: 8px;
-    padding-right: 30px; /* Space for the search icon to overlap nicely */
     width: 100%;
 }
 
@@ -376,7 +375,7 @@ ul {
     .mobile-menu__socials a { display: inline-flex; width: 19px; height: 19px; align-items: center; justify-content: center; border-radius: 50%; background: #111; color: #f8f5ef; font: 700 10px/1 Arial,sans-serif; }
     .mobile-menu-open { overflow: hidden; }
 
-    .header-search-dropdown { width: calc(100vw - 32px); padding: 15px; }
+    .header-search-dropdown { width: calc(100vw - 250px); padding: 10px 0; right: 0; }
 }
 
 /* Hero Section */
