@@ -45,25 +45,58 @@
         <section class="filters-section">
             <div class="container">
                 <div class="filters-row">
-                    <div class="custom-select">
-                        <select class="filter-dropdown">
-                            <option value="">Practice</option>
-                        </select>
+                    <div class="custom-dropdown">
+                        <div class="dropdown-header">
+                            <span>Practice</span>
+                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item">Commercial Transactions</div>
+                            <div class="dropdown-item">Infrastructure & Projects</div>
+                            <div class="dropdown-item">Procurement & Contracting</div>
+                            <div class="dropdown-item">Aviation</div>
+                            <div class="dropdown-item">Commercial Risk</div>
+                            <div class="dropdown-item">International Business</div>
+                        </div>
                     </div>
-                    <div class="custom-select">
-                        <select class="filter-dropdown">
-                            <option value="">Industry</option>
-                        </select>
+                    
+                    <div class="custom-dropdown">
+                        <div class="dropdown-header">
+                            <span>Industry</span>
+                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item">Aviation</div>
+                            <div class="dropdown-item">Energy & Infrastructure</div>
+                            <div class="dropdown-item">Technology</div>
+                            <div class="dropdown-item">Healthcare & Life Sciences</div>
+                            <div class="dropdown-item">Real Estate & Construction</div>
+                        </div>
                     </div>
-                    <div class="custom-select">
-                        <select class="filter-dropdown">
-                            <option value="">Location</option>
-                        </select>
+
+                    <div class="custom-dropdown">
+                        <div class="dropdown-header">
+                            <span>Location</span>
+                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item">Franklin Park</div>
+                            <div class="dropdown-item">Naperville / Lisle</div>
+                        </div>
                     </div>
-                    <div class="custom-select">
-                        <select class="filter-dropdown">
-                            <option value="">Tittle</option>
-                        </select>
+
+                    <div class="custom-dropdown">
+                        <div class="dropdown-header">
+                            <span>Title</span>
+                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item">Partner</div>
+                            <div class="dropdown-item">Senior of Counsel</div>
+                            <div class="dropdown-item">Senior Counsel</div>
+                            <div class="dropdown-item">Counsel</div>
+                            <div class="dropdown-item">Associate Attorney</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -105,6 +138,42 @@
                 } else {
                     navbar.classList.remove('scrolled');
                 }
+            });
+
+            // Custom Dropdown Logic
+            document.querySelectorAll('.dropdown-header').forEach(header => {
+                header.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    let parent = this.parentElement;
+                    
+                    // Close others
+                    document.querySelectorAll('.custom-dropdown').forEach(dropdown => {
+                        if (dropdown !== parent) {
+                            dropdown.classList.remove('open');
+                        }
+                    });
+
+                    // Toggle current
+                    parent.classList.toggle('open');
+                });
+            });
+
+            // Optional: update text on selection
+            document.querySelectorAll('.dropdown-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    let parent = this.closest('.custom-dropdown');
+                    let headerSpan = parent.querySelector('.dropdown-header span');
+                    headerSpan.textContent = this.textContent;
+                    parent.classList.remove('open');
+                });
+            });
+
+            // Close when clicking outside
+            document.addEventListener('click', function() {
+                document.querySelectorAll('.custom-dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('open');
+                });
             });
         </script>
     </body>
