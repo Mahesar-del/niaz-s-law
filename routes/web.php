@@ -31,3 +31,4 @@ Route::get('/blog', [BlogController::class, 'index']);
 Route::get('/insights', [InsightsController::class, 'index']);
 Route::get('/detail', [DetailController::class, 'index']);
 Route::get('/contact-us', [ContactController::class, 'index']);
+Route::view('/about-us', 'about');
