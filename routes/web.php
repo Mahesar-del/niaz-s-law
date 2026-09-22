@@ -30,6 +30,8 @@ Route::get('/capabilities', [CapabilitiesController::class, 'index']);
 Route::view('/attorneys', 'attorneys');
 Route::view('/capabilities', 'capabilities');
 Route::view('/commercial-transactions', 'commercial-transactions');
+Route::view('/about', 'about');
+Route::view('/about-us', 'about');
 Route::get('/case-study', [CaseStudyController::class, 'index']);
 Route::get('/blog', [BlogController::class, 'index']);
 Route::get('/insights', [InsightsController::class, 'index']);

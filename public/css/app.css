@@ -231,13 +231,15 @@ ul {
     top: 100%;
     left: 0;
     width: 100%;
-    height: 25px; /* Bridge gap for hover */
+    height: 25px;
+    /* Bridge gap for hover */
 }
 
 .nav-dropdown {
     position: absolute;
     top: calc(100% + 15px);
-    left: -15px; /* Adjust as needed */
+    left: -15px;
+    /* Adjust as needed */
     width: 210px;
     height: 160px;
     background: #F8F5EF;
@@ -359,23 +361,127 @@ ul {
         display: none;
     }
 
-    .mobile-menu-toggle { display: inline-flex; align-items: center; justify-content: center; padding: 0; border: 0; background: transparent; color: inherit; cursor: pointer; }
-    .hamburger-icon { display: block !important; }
-    .mobile-menu { position: fixed; inset: 0; z-index: 10000; display: block; visibility: hidden; background: rgba(0,0,0,.35); opacity: 0; transition: opacity .2s ease, visibility .2s ease; }
-    .mobile-menu-open .mobile-menu { visibility: visible; opacity: 1; }
-    .mobile-menu__panel { width: min(92vw, 390px); min-height: calc(100% - 30px); margin: 15px; padding: 26px 19px 34px; background: #f8f5ef; color: #111; transform: translateX(-24px); transition: transform .2s ease; }
-    .mobile-menu-open .mobile-menu__panel { transform: translateX(0); }
-    .mobile-menu__top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 27px; }
-    .mobile-menu__top img { width: 115px; height: auto; filter: invert(1); }
-    .mobile-menu__close { padding: 0 5px; border: 0; background: transparent; color: #111; font: 25px/1 Arial,sans-serif; cursor: pointer; }
-    .mobile-menu__links { display: block; }
-    .mobile-menu__links a { display: flex; justify-content: space-between; padding: 13px 0; border-bottom: 1px solid #d9d5cd; color: #111; font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; }
-    .mobile-menu__chevron { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    .mobile-menu__socials { display: flex; justify-content: center; gap: 18px; margin-top: 31px; }
-    .mobile-menu__socials a { display: inline-flex; width: 19px; height: 19px; align-items: center; justify-content: center; border-radius: 50%; background: #111; color: #f8f5ef; font: 700 10px/1 Arial,sans-serif; }
-    .mobile-menu-open { overflow: hidden; }
+    .mobile-menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+    }
 
-    .header-search-dropdown { width: calc(100vw - 250px); padding: 10px 0; right: 0; }
+    .hamburger-icon {
+        display: block !important;
+    }
+
+    .mobile-menu {
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
+        display: block;
+        visibility: hidden;
+        background: rgba(0, 0, 0, .35);
+        opacity: 0;
+        transition: opacity .2s ease, visibility .2s ease;
+    }
+
+    .mobile-menu-open .mobile-menu {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .mobile-menu__panel {
+        width: min(92vw, 390px);
+        min-height: calc(100% - 30px);
+        margin: 15px;
+        padding: 26px 19px 34px;
+        background: #f8f5ef;
+        color: #111;
+        transform: translateX(-24px);
+        transition: transform .2s ease;
+    }
+
+    .mobile-menu-open .mobile-menu__panel {
+        transform: translateX(0);
+    }
+
+    .mobile-menu__top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-bottom: 27px;
+    }
+
+    .mobile-menu__top img {
+        width: 115px;
+        height: auto;
+        filter: invert(1);
+    }
+
+    .mobile-menu__close {
+        padding: 0 5px;
+        border: 0;
+        background: transparent;
+        color: #111;
+        font: 25px/1 Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .mobile-menu__links {
+        display: block;
+    }
+
+    .mobile-menu__links a {
+        display: flex;
+        justify-content: space-between;
+        padding: 13px 0;
+        border-bottom: 1px solid #d9d5cd;
+        color: #111;
+        font-family: var(--font-heading);
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+
+    .mobile-menu__chevron {
+        width: 17px;
+        height: 17px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    .mobile-menu__socials {
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+        margin-top: 31px;
+    }
+
+    .mobile-menu__socials a {
+        display: inline-flex;
+        width: 19px;
+        height: 19px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #111;
+        color: #f8f5ef;
+        font: 700 10px/1 Arial, sans-serif;
+    }
+
+    .mobile-menu-open {
+        overflow: hidden;
+    }
+
+    .header-search-dropdown {
+        width: calc(100vw - 250px);
+        padding: 10px 0;
+        right: 0;
+    }
 }
 
 /* Hero Section */
@@ -676,7 +782,7 @@ ul {
 .about-features {
     display: flex;
     flex-direction: column;
-    gap: var(--space-32);
+    gap: 52px;
 }
 
 .feature {
@@ -740,10 +846,13 @@ ul {
 
 .about-img-below {
     position: relative;
-    width: 75%;
+    width: 516px;
+    height: 465px;
+    object-fit: cover;
     z-index: 1;
     border-radius: 4px;
     margin-top: 15%;
+    right: 143px;
     /* Leave room for the absolute image above */
 }
 
@@ -751,7 +860,9 @@ ul {
     position: absolute;
     top: 0;
     right: 0;
-    width: 55%;
+    width: 389px;
+    height: 358px;
+    object-fit: cover;
     z-index: 2;
     border-radius: 4px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
@@ -1458,12 +1569,14 @@ textarea.form-control {
 
 .dropdown-menu {
     position: absolute;
-    top: calc(100% + 5px); /* Detached from header */
+    top: calc(100% + 5px);
+    /* Detached from header */
     left: 0;
     width: 100%;
     background: #fff;
     border: 1px solid #000000;
-    border-radius: 4px; /* full rounded corners */
+    border-radius: 4px;
+    /* full rounded corners */
     z-index: 10;
     display: none;
     padding: 10px 0;
@@ -1650,6 +1763,7 @@ textarea.form-control {
     .about-img-up {
         position: relative;
         width: 100%;
+        height: auto;
         box-shadow: none;
     }
 
@@ -1952,7 +2066,8 @@ textarea.form-control {
 
     .filters-row {
         flex-direction: column;
-        gap: 15px; /* Added a small gap for vertical spacing */
+        gap: 15px;
+        /* Added a small gap for vertical spacing */
     }
 
     .lawyers-grid {
@@ -1973,17 +2088,19 @@ textarea.form-control {
         height: 220px;
     }
 
-/* Search Highlights */
-.search-highlight {
-    background-color: rgba(255, 255, 0, 0.5); /* Yellow */
-    color: inherit;
-    border-radius: 2px;
-}
+    /* Search Highlights */
+    .search-highlight {
+        background-color: rgba(255, 255, 0, 0.5);
+        /* Yellow */
+        color: inherit;
+        border-radius: 2px;
+    }
 
-.search-highlight-active {
-    background-color: rgba(255, 165, 0, 0.9); /* Orange */
-    color: #000;
-}
+    .search-highlight-active {
+        background-color: rgba(255, 165, 0, 0.9);
+        /* Orange */
+        color: #000;
+    }
 
     .lawyer-img img {
         object-position: top center;
@@ -2023,7 +2140,8 @@ textarea.form-control {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+    background: rgba(0, 0, 0, 0.5);
+    /* Adjust opacity as needed */
 }
 
 .hero-content-container {
@@ -2033,8 +2151,10 @@ textarea.form-control {
     right: 0;
     padding-top: var(--space-64);
     height: 100%;
-    pointer-events: none; /* Let clicks pass through except on specific elements */
-    z-index: 2; /* Ensure it stays above the overview section */
+    pointer-events: none;
+    /* Let clicks pass through except on specific elements */
+    z-index: 2;
+    /* Ensure it stays above the overview section */
 }
 
 .hero-title-row {
@@ -2137,7 +2257,8 @@ textarea.form-control {
     background-color: #F8F5EF;
     padding: var(--space-64) 0;
     position: relative;
-    z-index: 1; /* Below the overlapping image */
+    z-index: 1;
+    /* Below the overlapping image */
 }
 
 .overview-content {
@@ -2146,13 +2267,15 @@ textarea.form-control {
 }
 
 .profile-spacer {
-    width: 220px; /* Same as profile image width */
+    width: 220px;
+    /* Same as profile image width */
     flex-shrink: 0;
 }
 
 .overview-text-container {
     flex-grow: 1;
-    padding-top: var(--space-24); /* Align nicely */
+    padding-top: var(--space-24);
+    /* Align nicely */
 }
 
 .overview-text-container h2 {
@@ -2307,16 +2430,18 @@ textarea.form-control {
         height: auto;
         min-height: 300px;
     }
-    
+
     .hero-content-container {
         position: relative;
         padding-top: var(--space-32);
         padding-bottom: var(--space-32);
-        background: #333; /* Fallback since it's not positioned over image on mobile */
+        background: #333;
+        /* Fallback since it's not positioned over image on mobile */
     }
 
     .hero-bg-container {
-        display: none; /* Hide background image on small screens for simpler layout, or adjust */
+        display: none;
+        /* Hide background image on small screens for simpler layout, or adjust */
     }
 
     .hero-title-row {
@@ -2334,7 +2459,8 @@ textarea.form-control {
         width: 100%;
         max-width: 300px;
         margin: 0 auto;
-        margin-bottom: 0; /* Reset overlap */
+        margin-bottom: 0;
+        /* Reset overlap */
     }
 
     .overview-content {
@@ -2343,7 +2469,8 @@ textarea.form-control {
     }
 
     .profile-spacer {
-        display: none; /* Not needed when stacked */
+        display: none;
+        /* Not needed when stacked */
     }
 
     .credentials-grid,
