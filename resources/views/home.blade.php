@@ -12,7 +12,7 @@
             <div class="container hero-container">
                 <div class="hero-content">
                     <h1>We Stand With You.<br>We Fight for Justice.</h1>
-                    <a href="#" class="btn btn-secondary">Contact Us <span class="arrow-icon">↗</span></a>
+                    <a href="/contact-us" class="btn btn-secondary">Contact Us <span class="arrow-icon"><img src="{{ asset('images/arrow.svg') }}" alt="Arrow" style="width: 32px; height: 32px; vertical-align: middle;"></span></a>
                 </div>
                 <div class="hero-indicators">
                     <span class="indicator active"></span>
@@ -140,7 +140,7 @@
             <div class="container">
                 <div class="news-header">
                     <h2>The Latest News And Blog From Niaz Law</h2>
-                    <a href="#" class="read-recent">Read Recent Posts <span class="arrow-icon">↗</span></a>
+                    <a href="#" class="read-recent">Read Recent Posts <span class="arrow-icon"><img src="{{ asset('images/arrow.svg') }}" alt="Arrow" style="width: 32px; height: 32px; vertical-align: middle;"></span></a>
                 </div>
                 <div class="news-grid">
                     <!-- Post 1 -->

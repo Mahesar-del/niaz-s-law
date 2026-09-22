@@ -165,13 +165,18 @@ ul {
     right: 0;
     z-index: 9999;
     color: #fff;
-    transition: all 0.3s ease;
+    transform: translateY(0);
+    transition: transform 0.3s ease, background-color 0.3s ease, padding 0.3s ease;
 }
 
 .navbar.scrolled {
     background-color: #000000;
     padding: var(--space-16) 0;
     border-bottom: 1px solid #333;
+}
+
+.navbar.navbar-hidden {
+    transform: translateY(-100%);
 }
 
 .navbar-container {
@@ -213,6 +218,11 @@ ul {
     gap: var(--space-16);
 }
 
+.mobile-menu,
+.mobile-menu-toggle {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .navbar {
         height: 80px;
@@ -222,6 +232,22 @@ ul {
     .nav-links {
         display: none;
     }
+
+    .mobile-menu-toggle { display: inline-flex; align-items: center; justify-content: center; padding: 0; border: 0; background: transparent; color: inherit; cursor: pointer; }
+    .hamburger-icon { display: block !important; }
+    .mobile-menu { position: fixed; inset: 0; z-index: 10000; display: block; visibility: hidden; background: rgba(0,0,0,.35); opacity: 0; transition: opacity .2s ease, visibility .2s ease; }
+    .mobile-menu-open .mobile-menu { visibility: visible; opacity: 1; }
+    .mobile-menu__panel { width: min(92vw, 390px); min-height: calc(100% - 30px); margin: 15px; padding: 26px 19px 34px; background: #f8f5ef; color: #111; transform: translateX(-24px); transition: transform .2s ease; }
+    .mobile-menu-open .mobile-menu__panel { transform: translateX(0); }
+    .mobile-menu__top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 27px; }
+    .mobile-menu__top img { width: 115px; height: auto; filter: invert(1); }
+    .mobile-menu__close { padding: 0 5px; border: 0; background: transparent; color: #111; font: 25px/1 Arial,sans-serif; cursor: pointer; }
+    .mobile-menu__links { display: block; }
+    .mobile-menu__links a { display: flex; justify-content: space-between; padding: 13px 0; border-bottom: 1px solid #d9d5cd; color: #111; font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; }
+    .mobile-menu__chevron { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .mobile-menu__socials { display: flex; justify-content: center; gap: 18px; margin-top: 31px; }
+    .mobile-menu__socials a { display: inline-flex; width: 19px; height: 19px; align-items: center; justify-content: center; border-radius: 50%; background: #111; color: #f8f5ef; font: 700 10px/1 Arial,sans-serif; }
+    .mobile-menu-open { overflow: hidden; }
 }
 
 /* Hero Section */
@@ -229,7 +255,7 @@ ul {
     height: 750px;
     min-height: 600px;
     max-height: 90vh;
-    background: linear-gradient(180deg, rgba(102, 102, 102, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%), url('/images/home-hero.png') center/cover;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.16) 45%, rgba(102, 102, 102, 0) 100%), url('/images/home-hero.png') center/cover;
     color: #fff;
     padding-top: 100px;
 }
@@ -261,6 +287,7 @@ ul {
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    border-radius: 5px;
 }
 
 .hero-indicators {
@@ -1105,7 +1132,10 @@ textarea.form-control {
 
 .attorney-hero-bg {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 1;
 }
 
@@ -1119,7 +1149,7 @@ textarea.form-control {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
 }
 
 .attorney-hero-content {
@@ -1166,7 +1196,7 @@ textarea.form-control {
 .search-bar-wrapper {
     background: #fff;
     border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: var(--space-16);
     max-width: 800px;
     margin: 0 auto;
@@ -1691,7 +1721,7 @@ textarea.form-control {
         align-items: flex-start;
         gap: var(--space-16);
     }
-    
+
     .title-divider {
         display: none;
     }
