@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
     --primary: #000000;
@@ -973,6 +973,7 @@ textarea.form-control {
     padding: var(--space-32) 0 var(--space-24) 0;
 }
 
+
 .footer-logo {
     text-align: center;
     margin-bottom: var(--space-32);
@@ -995,29 +996,32 @@ textarea.form-control {
 .site-footer hr.footer-divider:last-of-type {
     border-top: 1px solid rgba(255, 255, 255, 0.4);
     width: 100%;
-    max-width: 1200px;
-    margin: var(--space-32) auto var(--space-24) auto;
+    margin: var(--space-32) 0 var(--space-24) 0;
 }
 
 .footer-grid {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr 1fr 1.5fr;
     gap: var(--space-32);
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .footer-col h4 {
-    font-family: var(--font-heading);
-    font-size: 18px;
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0;
     margin-bottom: 9px;
     color: #ffffff;
 }
 
 .footer-col p {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #cccccc;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: #ffffff;
     margin-bottom: var(--space-24);
 }
 
@@ -1056,9 +1060,13 @@ textarea.form-control {
 }
 
 .footer-links a {
-    color: #cccccc;
+    color: #ffffff;
     text-decoration: none;
-    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0;
     transition: color 0.2s ease;
 }
 
@@ -1077,9 +1085,16 @@ textarea.form-control {
     align-items: flex-start;
     gap: 12px;
     margin-bottom: var(--space-16);
-    color: #cccccc;
-    font-size: 13px;
-    line-height: 1.5;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0;
+}
+
+.contact-info li span {
+    white-space: nowrap;
 }
 
 .contact-info li svg {
@@ -1105,7 +1120,10 @@ textarea.form-control {
 
 .attorney-hero-bg {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 1;
 }
 
@@ -1119,7 +1137,7 @@ textarea.form-control {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
 }
 
 .attorney-hero-content {
@@ -1166,7 +1184,7 @@ textarea.form-control {
 .search-bar-wrapper {
     background: #fff;
     border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: var(--space-16);
     max-width: 800px;
     margin: 0 auto;
@@ -1224,14 +1242,14 @@ textarea.form-control {
     margin: 0 auto;
 }
 
-.custom-select {
+.custom-dropdown {
     flex: 1;
     position: relative;
+    user-select: none;
 }
 
-.filter-dropdown {
+.dropdown-header {
     width: 100%;
-    appearance: none;
     background: #fff;
     border: 1px solid #000000;
     border-radius: 4px;
@@ -1239,11 +1257,45 @@ textarea.form-control {
     font-family: var(--font-body);
     font-size: 14px;
     color: #333;
-    outline: none;
     cursor: pointer;
-    background-image: url('data:image/svg+xml;utf8,<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="%23333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 16px center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% - 1px); /* Overlap border slightly to match design */
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #000000;
+    border-radius: 0 0 4px 4px; /* match design */
+    z-index: 10;
+    display: none;
+    padding: 10px 0;
+}
+
+.custom-dropdown.open .dropdown-menu {
+    display: block;
+}
+
+.custom-dropdown.open .dropdown-header {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.dropdown-item {
+    padding: 10px 16px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    color: #000;
+    cursor: pointer;
+    background: #fff;
+}
+
+.dropdown-item:hover {
+    background: #f8f8f8;
 }
 
 .lawyers-section {
@@ -1691,7 +1743,7 @@ textarea.form-control {
         align-items: flex-start;
         gap: var(--space-16);
     }
-    
+
     .title-divider {
         display: none;
     }
@@ -1705,7 +1757,19 @@ textarea.form-control {
     }
 
     .filters-row {
-        flex-direction: column;
+        flex-direction: row;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        padding-bottom: 5px; /* space for potential scrollbar */
+    }
+    .filters-row::-webkit-scrollbar {
+        display: none;
+    }
+    .custom-dropdown {
+        flex: 0 0 auto;
+        width: 160px;
     }
 
     .lawyers-grid {
