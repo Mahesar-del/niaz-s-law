@@ -2174,9 +2174,11 @@ textarea.form-control {
 }
 
 .lawyer-name {
-    font-family: var(--font-heading);
-    font-size: var(--h1-size);
+    font-family: 'Libre Baskerville', serif;
+    font-size: 56px;
+    line-height: 70px;
     font-weight: 700;
+    color: #FFFFFF;
     margin: 0;
     white-space: nowrap;
 }
@@ -2237,13 +2239,13 @@ textarea.form-control {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: var(--space-12);
+    gap: var(--space-8);
 }
 
 .contact-details li {
     display: flex;
     align-items: center;
-    gap: var(--space-12);
+    gap: var(--space-8);
     font-size: 16px;
 }
 
@@ -2255,7 +2257,7 @@ textarea.form-control {
 /* Overview Section */
 .overview-section {
     background-color: #F8F5EF;
-    padding: var(--space-64) 0;
+    padding: var(--space-32) 0 var(--space-24) 0;
     position: relative;
     z-index: 1;
     /* Below the overlapping image */
@@ -2279,44 +2281,83 @@ textarea.form-control {
 }
 
 .overview-text-container h2 {
-    font-size: 24px;
-    margin-bottom: var(--space-16);
+    font-family: 'Libre Baskerville', serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: 0.5px;
+    color: #000000;
+    margin-bottom: var(--space-24);
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.overview-text-container h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 48px;
+    height: 2px;
+    background-color: #000000;
 }
 
 .overview-text-container p {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #333;
+    font-family: 'Inter', sans-serif;
+    /* or var(--font-body) if it maps to Inter */
+    font-size: 18px;
+    line-height: 32px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    text-align: justify;
+    color: #000000;
+    margin-bottom: 0;
 }
 
 /* Experience Section */
 .experience-section {
-    padding: var(--space-64) 0;
+    padding: 0 0 var(--space-32) 0;
     background: #fff;
 }
 
 .experience-section h2 {
-    font-size: 28px;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 44px;
+    letter-spacing: 0.5px;
+    color: #000000;
     margin-bottom: var(--space-24);
 }
 
 .experience-section p {
-    margin-bottom: var(--space-24);
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
-    line-height: 1.6;
-    max-width: 900px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0.5px;
+    text-align: justify;
+    color: #000000;
+    margin-bottom: var(--space-24);
+    padding-left: var(--space-48);
 }
 
 .experience-list {
     list-style-type: none;
-    padding-left: 0;
+    padding-left: var(--space-48);
+    margin-bottom: 0;
 }
 
 .experience-list li {
     position: relative;
     padding-left: 20px;
-    margin-bottom: var(--space-12);
+    margin-bottom: var(--space-16);
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    color: #000000;
 }
 
 .experience-list li::before {
@@ -2328,62 +2369,112 @@ textarea.form-control {
 
 /* Credentials Section */
 .credentials-section {
-    padding: var(--space-64) 0;
+    padding: var(--space-16) 0 var(--space-32) 0;
     background: #fff;
-    border-top: 1px solid #eee;
 }
 
 .credentials-section h2 {
-    font-size: 28px;
-    margin-bottom: var(--space-32);
+    font-family: 'Libre Baskerville', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: var(--space-24);
+    position: relative;
+    padding-bottom: 12px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.credentials-section h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 48px;
+    height: 2px;
+    background-color: #000000;
+}
+
+.credentials-section h2::after {
+    content: '';
+    flex-grow: 1;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.3);
+    margin-left: var(--space-32);
 }
 
 .credentials-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-48);
+    gap: 0;
+    padding-left: var(--space-48);
+}
+
+.credential-column {
+    padding-right: var(--space-48);
+}
+
+.admissions-col {
+    border-left: 1px solid rgba(0, 0, 0, 0.3);
+    padding-left: var(--space-48);
+    padding-right: 0;
 }
 
 .credential-column h3 {
-    font-size: 20px;
-    margin-bottom: var(--space-16);
+    font-family: 'Libre Baskerville', serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 44px;
+    letter-spacing: 0.5px;
+    color: #000000;
+    margin-bottom: var(--space-24);
 }
 
 .credential-column ul {
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .credential-column ul li {
     position: relative;
-    padding-left: 15px;
-    margin-bottom: var(--space-12);
-    font-size: 15px;
-    color: #444;
+    padding-left: 20px;
+    margin-bottom: var(--space-16);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    color: #000000;
 }
 
 .credential-column ul li::before {
     content: "•";
     position: absolute;
     left: 0;
-    color: #666;
+    color: #000000;
 }
 
 /* Insights And News Section */
 .insights-news-section {
-    padding: var(--space-64) 0;
+    padding: 0;
     background: #fff;
 }
 
 .insights-news-section h2 {
-    font-size: 28px;
-    margin-bottom: var(--space-32);
+    font-family: 'Libre Baskerville', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: var(--space-48);
 }
 
-/* Reuse .insights-grid and .insight-card from home page, if they exist, else define here */
 .insights-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-32);
+    padding-left: var(--space-48);
 }
 
 .insight-card {
@@ -2394,33 +2485,57 @@ textarea.form-control {
 }
 
 .insight-card img {
-    width: 100%;
+    width: 220px;
     height: 250px;
     object-fit: cover;
 }
 
 .insight-content {
-    padding: var(--space-24);
+    padding: 0;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
 }
 
 .insight-content h3 {
+    font-family: 'Libre Baskerville', serif;
     font-size: 20px;
+    font-weight: 400;
+    line-height: 28px;
+    color: #000000;
     margin-bottom: var(--space-16);
-    line-height: 1.4;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.insight-content h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .insight-content p {
-    font-size: 14px;
-    color: #666;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333333;
     margin-bottom: var(--space-24);
-    line-height: 1.6;
+    text-align: justify;
     flex-grow: 1;
 }
 
-.insight-content .btn {
+.insight-content .btn-black {
+    background: #000;
+    color: #fff;
+    padding: 10px 24px;
+    text-decoration: none;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 14px;
+    display: inline-block;
     align-self: flex-start;
 }
 
