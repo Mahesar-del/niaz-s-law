@@ -21,6 +21,7 @@
             grid-template-columns: auto 1fr;
             gap: 72px;
             width: 100%;
+            box-sizing: border-box;
             align-items: center;
             justify-content: start;
         }
@@ -56,11 +57,10 @@
             margin-top: -20px;
             position: relative;
             z-index: 5;
-            padding: 0 var(--space-100);
         }
         .search-card {
-            width: 100%;
-            max-width: 964px;
+            width: 92%;
+            max-width: 900px;
             height: 125px;
             background: #ffffff;
             border-radius: 16px;
@@ -91,6 +91,7 @@
         }
         .search-box input {
             flex-grow: 1;
+            min-width: 0;
             padding: 0 16px;
             border: none;
             outline: none;
@@ -100,12 +101,18 @@
             color: #333;
         }
         .search-box input::placeholder {
-            color: #999;
+            color: #000000;
+            opacity: 0.5;
+            font-family: 'Libre Baskerville', serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 34px;
         }
         .search-box button {
             background: #000;
             color: #fff;
             border: none;
+            flex-shrink: 0;
             padding: 0 40px;
             font-weight: 400;
             font-family: var(--font-heading);
@@ -120,14 +127,12 @@
 
         /* Capabilities Grid */
         .capabilities-grid-container {
-            padding: var(--space-64) 0;
-            padding-bottom: 120px;
+            padding: 30px 0 40px 0;
             background: #fff;
         }
         .capabilities-grid {
             display: grid;
-            grid-template-columns: repeat(4, 292px);
-            justify-content: space-between;
+            grid-template-columns: repeat(4, 1fr);
             gap: 24px;
         }
 
@@ -145,12 +150,13 @@
             height: 388px;
         }
         .capability-card h3 {
-            font-size: var(--body-reg);
-            font-family: var(--font-heading);
+            font-family: 'Libre Baskerville', serif;
+            font-size: 20px;
             font-weight: 700;
+            line-height: 26px;
+            color: #000000;
             margin-bottom: var(--space-16);
-            line-height: 1.3;
-            min-height: 42px;
+            min-height: 52px;
         }
         .capability-img {
             width: 100%;
@@ -160,15 +166,15 @@
             margin-bottom: var(--space-16);
         }
         .capability-desc {
-            font-family: var(--font-body);
-            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
             font-weight: 400;
             line-height: 24px;
-            color: #555;
+            color: #000000;
             margin-bottom: var(--space-16);
             flex-grow: 1;
             margin-left: 4px;
-            padding-right: 40px;
+            padding-right: 42px;
         }
         .capability-link {
             position: absolute;
@@ -192,13 +198,21 @@
             border-color: #000;
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 1400px) {
+            /* Container handles width gracefully */
+        }
+
+        @media (max-width: 1200px) {
+            .capabilities-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
             .capabilities-hero {
                 /* Let .container handle horizontal padding */
             }
-            .search-section {
-                padding: 0 var(--space-32);
-            }
+            /* search-section padding handled by .container */
             .capabilities-grid-container {
                 padding: var(--space-64) 0;
             }
@@ -212,11 +226,27 @@
             .capabilities-hero h1 {
                 font-size: 40px;
             }
+            .hero-desc-wrapper {
+                padding-left: 0;
+            }
+            .hero-desc-wrapper::before {
+                display: none;
+            }
         }
+        
         @media (max-width: 768px) {
+            /* The header has double padding (16px navbar + 16px container) at 768px.
+               We must match this 32px total padding so everything aligns with the logo. */
+            .container.capabilities-hero-content,
+            .container.search-section,
+            .container.capabilities-grid {
+                padding: 0 32px;
+            }
+        }
+
+        @media (max-width: 576px) {
             .capabilities-hero {
                 height: 500px;
-                padding: 0;
                 align-items: flex-end;
                 padding-bottom: 60px;
                 background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ asset("images/capability-mobile-view.png") }}') center/cover;
@@ -246,41 +276,78 @@
                 line-height: 30px;
                 letter-spacing: 0;
                 text-align: justify;
-                width: 324px;
-                height: 150px;
+                color: #FFFFFF;
+                width: 100%;
+                max-width: 324px;
+                height: auto;
+                min-height: 150px;
                 margin: 0;
             }
-            .hero-desc-wrapper {
-                padding-left: 0;
-            }
-            .hero-desc-wrapper::before {
-                display: none;
-            }
+            /* vertical line hidden at 992px */
             .search-section {
-                padding: 0 25px;
                 margin-top: -30px;
             }
             .search-card {
-                height: 80px;
-                padding: 0 20px;
-                border-radius: 12px;
+                height: 90px;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 0 15px;
+                border-radius: 10px;
+                box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+                border: none;
             }
             .search-box {
-                height: 48px;
+                height: 50px;
+                border-radius: 10px;
+            }
+            .search-icon {
+                margin-left: 10px;
+                width: 16px;
+                height: 16px;
+            }
+            .search-box input {
+                font-family: 'Libre Baskerville', serif;
+                font-size: 15px;
+                color: #333;
+                min-width: 0;
+                padding: 0 10px;
+            }
+            .search-box input::placeholder {
+                font-family: 'Libre Baskerville', serif;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 34px;
+                color: #000000;
+                opacity: 0.5;
             }
             .search-box button {
-                padding: 0 20px;
+                padding: 0 14px;
+                font-family: 'Libre Baskerville', serif;
+                font-size: 15px;
+                flex-shrink: 0;
             }
             .capabilities-grid-container {
-                padding: var(--space-64) 0;
+                padding: 40px 0 30px 0;
+                box-sizing: border-box;
+                width: 100%;
+                overflow-x: hidden;
             }
             .capabilities-grid {
                 grid-template-columns: 1fr;
+                box-sizing: border-box;
+                width: 100%;
             }
             .capability-card {
                 height: auto;
-                min-height: 320px;
+                min-height: auto;
                 padding-bottom: 24px;
+                box-sizing: border-box;
+                width: 100%;
+            }
+            .capability-card h3 {
+                min-height: 0;
+                margin-bottom: 16px;
+                word-wrap: break-word;
             }
             br.desktop-br {
                 display: none;
@@ -288,8 +355,13 @@
             .capability-desc {
                 padding-right: 60px;
                 margin-bottom: 0;
+                width: 100%;
+                box-sizing: border-box;
+                text-align: justify;
             }
         }
+
+        /* extraneous block removed */
     </style>
 </head>
 <body class="antialiased" style="background-color: #ffffff;">
@@ -307,14 +379,14 @@
         </div>
     </section>
 
-    <div class="search-section">
+    <div class="container search-section">
         <div class="search-card">
             <div class="search-box">
                 <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                <input type="text" placeholder="Find a Capability">
+                <input type="text" placeholder="Search by name">
                 <button type="button">Search</button>
             </div>
         </div>
@@ -328,22 +400,22 @@
                     [
                         'title' => 'Commercial<br class="desktop-br">Transactions',
                         'img' => asset('images/commercial-imge.png'),
-                        'desc' => 'Contracts, negotiations and<br class="desktop-br">commercial arrangements<br class="desktop-br">structured around business<br class="desktop-br">objectives.'
+                        'desc' => 'Contracts, negotiations and commercial arrangements structured around business objectives.'
                     ],
                     [
                         'title' => 'Procurement<br class="desktop-br">& Contracting',
                         'img' => asset('images/contracting-imge.png'),
-                        'desc' => 'Legal support for<br class="desktop-br">procurement processes,<br class="desktop-br">vendor relationships and<br class="desktop-br">commercial risk.'
+                        'desc' => 'Legal support for procurement processes, vendor relationships and commercial risk.'
                     ],
                     [
                         'title' => 'Infrastructure<br class="desktop-br">& Projects',
                         'img' => asset('images/project-imge.png'),
-                        'desc' => 'Counsel for project<br class="desktop-br">structures, contractual<br class="desktop-br">obligations, and<br class="desktop-br">stakeholder relationships.'
+                        'desc' => 'Counsel for project structures, contractual obligations, and stakeholder relationships.'
                     ],
                     [
                         'title' => 'Operational<br class="desktop-br">Risk',
                         'img' => asset('images/Operational-imge.png'),
-                        'desc' => 'Practical guidance to<br class="desktop-br">identify and manage<br class="desktop-br">operational legal risk.'
+                        'desc' => 'Practical guidance to identify and manage operational legal risk.'
                     ]
                 ];
             @endphp
@@ -367,5 +439,6 @@
         </div>
     </section>
 
+    @include('components.footer')
 </body>
 </html>
