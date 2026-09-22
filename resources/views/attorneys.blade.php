@@ -107,7 +107,7 @@
             <div class="container">
                 <div class="lawyers-grid">
                     @for($i=0; $i<9; $i++)
-                    <div class="lawyer-card">
+                    <div class="lawyer-card" onclick="window.location.href='{{ url('/attorney-detail') }}'">
                         <div class="lawyer-img">
                             <img src="{{ asset('images/lawyer_profile.jpg') }}" alt="Faisal Syed Niaz">
                         </div>
@@ -158,7 +158,7 @@
                 });
             });
 
-            // Optional: update text on selection
+            // Optional: update text on selection and filter
             document.querySelectorAll('.dropdown-item').forEach(item => {
                 item.addEventListener('click', function(e) {
                     e.stopPropagation();
@@ -166,6 +166,25 @@
                     let headerSpan = parent.querySelector('.dropdown-header span');
                     headerSpan.textContent = this.textContent;
                     parent.classList.remove('open');
+                    
+                    // Filter functionality
+                    let selectedValue = this.textContent.toLowerCase();
+                    let visibleCount = 0;
+                    document.querySelectorAll('.lawyer-card').forEach(card => {
+                        let cardText = card.textContent.toLowerCase();
+                        if(cardText.includes(selectedValue)) {
+                            card.style.display = 'flex';
+                            visibleCount++;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+
+                    // Hide load more if we are filtering or no results
+                    const loadMoreBtn = document.querySelector('.load-more-container');
+                    if (loadMoreBtn) {
+                        loadMoreBtn.style.display = 'none';
+                    }
                 });
             });
 
@@ -175,6 +194,37 @@
                     dropdown.classList.remove('open');
                 });
             });
+
+            // Search functionality
+            const searchInput = document.querySelector('.search-input-inner input');
+            const searchBtn = document.querySelector('.btn-search');
+            
+            function performSearch() {
+                let query = searchInput.value.toLowerCase();
+                let visibleCount = 0;
+                document.querySelectorAll('.lawyer-card').forEach(card => {
+                    let name = card.querySelector('h3').textContent.toLowerCase();
+                    if(name.includes(query)) {
+                        card.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Hide load more if we are searching or no results
+                const loadMoreBtn = document.querySelector('.load-more-container');
+                if (loadMoreBtn) {
+                    if (query !== '' || visibleCount === 0) {
+                        loadMoreBtn.style.display = 'none';
+                    } else {
+                        loadMoreBtn.style.display = 'block';
+                    }
+                }
+            }
+
+            searchInput.addEventListener('input', performSearch);
+            searchBtn.addEventListener('click', performSearch);
         </script>
     </body>
 </html>
