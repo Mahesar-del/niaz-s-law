@@ -19,4 +19,8 @@ use App\Http\Controllers\CapabilitiesController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
 Route::view('/attorneys', 'attorneys');
+Route::view('/capabilities', 'capabilities');
 Route::view('/commercial-transactions', 'commercial-transactions');
+Route::view('/about', 'about');
+Route::view('/about-us', 'about');
+
