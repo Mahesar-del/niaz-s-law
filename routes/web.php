@@ -23,6 +23,7 @@ use App\Http\Controllers\ContactController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
+Route::get('/capabilities', [CapabilitiesController::class, 'index']);
 Route::view('/attorneys', 'attorneys');
 Route::view('/commercial-transactions', 'commercial-transactions');
 Route::get('/case-study', [CaseStudyController::class, 'index']);
