@@ -8,16 +8,16 @@
         <div style="display: flex; align-items: center; gap: 32px;">
             <nav class="nav-links">
                 <a href="/attorneys">Attorneys</a>
-                <a href="#">Capabilities</a>
+                <a href="/capabilities">Capabilities</a>
                 <div class="nav-dropdown-wrapper">
-                    <a href="/blog">Insights &amp; Resources</a>
+                    <a href="#">Insights &amp; Resources</a>
                     <div class="nav-dropdown">
                         <a href="/insights">INSIGHTS</a>
                         <a href="/case-study">CASE STUDIES</a>
                         <a href="/blog">BLOGS</a>
                     </div>
                 </div>
-                <a href="#">About</a>
+                <a href="/about">About</a>
                 <a href="/contact-us">Contact</a>
             </nav>
             <div class="nav-actions" style="display: flex; align-items: center; gap: 16px;">
@@ -45,7 +45,7 @@
             <button class="mobile-menu__close" type="button" aria-label="Close menu">×</button>
         </div>
         <nav class="mobile-menu__links" aria-label="Mobile navigation">
-            <a href="/attorneys">Attorneys</a><a href="#">Capabilities</a><a href="/insights">Insights &amp; Resources <svg class="mobile-menu__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a><a href="#">About</a><a href="/contact-us">Contact</a>
+            <a href="/attorneys">Attorneys</a><a href="/capabilities">Capabilities</a><a href="#">Insights &amp; Resources <svg class="mobile-menu__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a><a href="/about">About</a><a href="/contact-us">Contact</a>
         </nav>
         <div class="mobile-menu__socials"><a href="#">f</a><a href="#">in</a><a href="#">♥</a><a href="#">◎</a></div>
     </div>

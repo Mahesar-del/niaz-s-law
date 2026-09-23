@@ -61,7 +61,7 @@
         .search-card {
             width: 92%;
             max-width: 900px;
-            height: 125px;
+            height: 100px;
             background: #ffffff;
             border-radius: 16px;
             border: 1px solid #e0e0e0;
@@ -69,7 +69,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0 60px;
+            padding: 0 40px;
         }
         .search-box {
             display: flex;
@@ -173,19 +173,23 @@
             line-height: 24px;
             color: #000000;
             margin-bottom: var(--space-16);
-            flex-grow: 1;
             margin-left: 4px;
-            padding: 0 54px 60px 0;
+            padding: 0 54px 0 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            max-height: 72px;
         }
         .capability-link {
             position: absolute;
             right: 15px;
-            bottom: 15px;
+            bottom: 60px;
             width: 46.67px;
             height: 46.67px;
             flex-shrink: 0;
             border-radius: 50%;
-            border: 1px solid #000000;
+            border: 1.5px solid #000000;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -236,12 +240,10 @@
         }
         
         @media (max-width: 768px) {
-            /* The header has double padding (16px navbar + 16px container) at 768px.
-               We must match this 32px total padding so everything aligns with the logo. */
             .container.capabilities-hero-content,
             .container.search-section,
             .container.capabilities-grid {
-                padding: 0 32px;
+                padding: 0 16px;
             }
         }
 
@@ -302,29 +304,29 @@
                 border-radius: 10px;
             }
             .search-icon {
-                margin-left: 10px;
+                margin-left: 8px;
                 width: 16px;
                 height: 16px;
             }
             .search-box input {
                 font-family: 'Libre Baskerville', serif;
-                font-size: 15px;
+                font-size: 14px;
                 color: #333;
                 min-width: 0;
-                padding: 0 10px;
+                padding: 0 5px 0 6px;
             }
             .search-box input::placeholder {
                 font-family: 'Libre Baskerville', serif;
                 font-weight: 400;
-                font-size: 14px;
+                font-size: 13px;
                 line-height: 34px;
                 color: #000000;
                 opacity: 0.5;
             }
             .search-box button {
-                padding: 0 14px;
+                padding: 0 12px;
                 font-family: 'Libre Baskerville', serif;
-                font-size: 15px;
+                font-size: 14px;
                 flex-shrink: 0;
             }
             .capabilities-grid-container {
@@ -358,7 +360,11 @@
                 margin-bottom: 0;
                 width: 100%;
                 box-sizing: border-box;
-                text-align: justify;
+                text-align: left;
+            }
+            .capability-link {
+                bottom: 20px;
+                right: 15px;
             }
         }
 
@@ -397,11 +403,16 @@
         <div class="container capabilities-grid">
             
             @foreach($adminCapabilities as $capability)
-                <a href="#" class="capability-card">
+                <a href="{{ $capability->slug ? route('capabilities.show', $capability->slug) : '#' }}" class="capability-card">
                     <h3>{{ $capability->title }}</h3>
                     <img src="{{ $capability->image ? asset(strpos($capability->image, '/') !== false ? $capability->image : 'images/' . $capability->image) : asset('images/commercial-imge.png') }}" alt="{{ $capability->title }}" class="capability-img">
                     <p class="capability-desc">{{ $capability->description }}</p>
-                    <div class="capability-link">↗</div>
+                    <div class="capability-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5.5" y1="18.5" x2="18.5" y2="5.5"></line>
+                            <polyline points="8.5 5.5 18.5 5.5 18.5 15.5"></polyline>
+                        </svg>
+                    </div>
                 </a>
             @endforeach
         </div>

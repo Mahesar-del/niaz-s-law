@@ -488,28 +488,29 @@
     @include('components.header')
 
     @include('components.page-hero', [
-        'bgImage' => asset('images/commercial-transection-hero.png'),
-        'titleLeft' => 'Commercial',
-        'titleRight' => 'Transactions',
-        'text' => 'We advise businesses on complex commercial, infrastructure, and operational matters with practical legal guidance aligned to their strategic objectives.'
+        'bgImage' => asset(isset($capability) && $capability->hero_image ? $capability->hero_image : 'images/commercial-transection-hero.png'),
+        'titleLeft' => isset($capability) ? \Illuminate\Support\Str::before($capability->page_title ?: $capability->title, ' ') : 'Commercial',
+        'titleRight' => isset($capability) ? \Illuminate\Support\Str::after($capability->page_title ?: $capability->title, ' ') : 'Transactions',
+        'text' => isset($capability) ? ($capability->page_description ?: $capability->description) : 'We advise businesses on complex commercial, infrastructure, and operational matters with practical legal guidance aligned to their strategic objectives.'
     ])
 
     <div class="container" style="padding-top: 23px;">
         <!-- Overview Images -->
         <div class="ct-overview-images">
             <div class="img-left">
-                <img src="{{ asset('images/commercial-big.jpg') }}" alt="Statue of Justice">
+                <img src="{{ asset(isset($capability) && $capability->overview_image_left ? $capability->overview_image_left : 'images/commercial-big.jpg') }}" alt="Statue of Justice">
             </div>
             <div class="img-right">
-                <img src="{{ asset('images/commercial-small.jpg') }}" alt="Scales of Justice">
-                <h2>Commercial Transactions<br>Overview</h2>
+                <img src="{{ asset(isset($capability) && $capability->overview_image_right ? $capability->overview_image_right : 'images/commercial-small.jpg') }}" alt="Scales of Justice">
+                <h2>{{ isset($capability) && $capability->overview_heading ? $capability->overview_heading : 'Commercial Transactions Overview' }}</h2>
             </div>
         </div>
 
         <div class="ct-text-content">
+            @if(isset($capability) && $capability->overview_paragraph_one)<p>{{ $capability->overview_paragraph_one }}</p><p>{{ $capability->overview_paragraph_two }}</p>@elseif(isset($capability))<p>{{ $capability->description }}</p>@else
             <p>Our Commercial Transactions practice advises businesses on a wide range of contractual, operational, and strategic matters that support both day-to-day operations and long-term growth. We assist clients with structuring, drafting, reviewing, and negotiating commercial agreements, including vendor contracts, joint ventures, strategic collaborations, and other business-critical partnerships. Our work is focused on helping clients manage legal risk and operate successfully in today's complex business environment.</p>
             <p>We take a practical, industry-focused approach to our practice, offering insight tailored to the unique contexts and distinct dynamics that may affect performance, risk, and strategy. We provide comprehensive guidance spanning business formation, structural considerations, operations, growth, and exit strategies, ensuring our advice remains relevant throughout the lifecycle of your business and through completion of your commercial transactions.</p>
-        </div>
+        @endif</div>
 
         <!-- Experience -->
         <h2 class="ct-section-title">Experience</h2>
@@ -519,6 +520,7 @@
         </div>
 
         <div id="how-we-advise" class="ct-tab-content active">
+            @if(isset($capability) && $capability->experience)<div class="ct-advise-grid">@foreach(preg_split('/\r?\n/', str_replace('\\n', "\n", $capability->experience), -1, PREG_SPLIT_NO_EMPTY) as $point)@php([$pointTitle,$pointDescription]=array_pad(explode(' — ', $point, 2),2,''))<div class="ct-advise-item"><strong>{{ $pointTitle }}</strong>@if($pointDescription) — {{ $pointDescription }}@endif</div>@endforeach</div>@else
             <div class="ct-advise-grid">
                 <div class="ct-advise-item">
                     <strong>Commercial Agreements</strong> — Structuring, drafting, and negotiating agreements that support business operations and commercial objectives.
@@ -542,9 +544,10 @@
                     <strong>Commercial Risk Allocation</strong> — Identifying and addressing contractual and operational risks through carefully structured commercial terms.
                 </div>
             </div>
-        </div>
+        @endif</div>
 
         <div id="rep-matters" class="ct-tab-content" style="display: none;">
+            @if(isset($capability) && $capability->representative_matters)<ul class="ct-list">@foreach(preg_split('/\r?\n/', $capability->representative_matters, -1, PREG_SPLIT_NO_EMPTY) as $point)<li>{{ $point }}</li>@endforeach</ul>@else
             <ul class="ct-list">
                 <li>Advised businesses on the structuring and negotiation of complex commercial agreements involving multiple stakeholders.</li>
                 <li>Counseled clients on vendor, supplier, and procurement arrangements, including contractual obligations and risk allocation.</li>
@@ -552,11 +555,12 @@
                 <li>Advised on commercial matters connected with infrastructure and aviation-related projects and operations.</li>
                 <li>Assisted clients with cross-border transactions involving business activities in the United States and the Middle East.</li>
             </ul>
-        </div>
+        @endif</div>
 
         <!-- Lawyers -->
         <h2 class="ct-section-title" style="margin-top: 20px; margin-bottom: 20px;">Lawyers in Commercial Transactions</h2>
         <div class="ct-lawyers">
+            @if(isset($capability)) @foreach($capability->attorneys as $attorney)<div class="ct-lawyer-card"><img src="{{ asset('images/'.($attorney->photo ?: 'lawyer_profile.jpg')) }}" alt="{{ $attorney->name }}"><div class="ct-lawyer-info"><h3>{{ $attorney->name }}</h3><p>{{ $attorney->location }}</p><div class="ct-lawyer-links"><a href="mailto:{{ $attorney->email }}">{{ $attorney->email }}</a><a href="tel:{{ $attorney->phone }}">{{ $attorney->phone }}</a></div></div></div>@endforeach @else
             <!-- Lawyer 1 -->
             <div class="ct-lawyer-card">
                 <img src="{{ asset('images/lawyer_profile.jpg') }}" onerror="this.src='https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=397&h=230&crop=faces'" alt="Faisal Syed Niaz">
@@ -593,7 +597,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        @endif</div>
 
         <!-- Insights And News -->
         @include('components.insights')

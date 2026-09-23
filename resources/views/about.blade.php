@@ -763,16 +763,20 @@
         <div class="container">
             <h2 class="about-capabilities-heading">Focused Where Business<br>And Law Intersect</h2>
             <div class="about-capabilities-grid">
-                <a href="/commercial-transactions" class="about-cap-card">
+                @foreach($aboutCapabilities as $capability)
+                <a href="{{ route('capabilities.show',$capability) }}" class="about-cap-card">
                     <div>
-                        <h3>Commercial <br class="hide-on-mobile">Transactions</h3>
-                        <img src="{{ asset('images/commercial-imge.png') }}" alt="Commercial Transactions">
+                        <h3>{{ $capability->title }}</h3>
+                        <img src="{{ $capability->image ? asset(strpos($capability->image,'/') !== false ? $capability->image : 'images/'.$capability->image) : asset('images/commercial-imge.png') }}" alt="{{ $capability->title }}">
                     </div>
                     <div class="about-cap-bottom">
-                        <p>Contracts, negotiations and commercial arrangements structured around business objectives.</p>
+                        <p>{{ $capability->description }}</p>
                         <div class="about-cap-arrow">↗</div>
                     </div>
                 </a>
+                @endforeach
+                @if($aboutCapabilities->isEmpty())<p>No capabilities available yet.</p>@endif
+                @if(false)
                 <a href="/capabilities" class="about-cap-card">
                     <div>
                         <h3>Procurement <br class="hide-on-mobile">& Contracting</h3>
@@ -803,6 +807,7 @@
                         <div class="about-cap-arrow">↗</div>
                     </div>
                 </a>
+                @endif
             </div>
         </div>
     </section>

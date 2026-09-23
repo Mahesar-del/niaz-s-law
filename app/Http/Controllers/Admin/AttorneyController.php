@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Attorney;
+use App\Models\Capability;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -12,7 +13,7 @@ class AttorneyController extends Controller
 {
     public function create()
     {
-        return view('admin.attorneys.create', ['attorneys' => Attorney::latest()->get()]);
+        return view('admin.attorneys.create', ['attorneys' => Attorney::latest()->get(), 'capabilities' => Capability::orderBy('title')->get()]);
     }
 
     public function details()
@@ -34,6 +35,8 @@ class AttorneyController extends Controller
             'location' => ['required', 'array', 'min:1'],
             'location.*' => ['string', 'max:120'],
             'title' => ['required', 'string', 'max:120'],
+            'capabilities' => ['nullable', 'array'],
+            'capabilities.*' => ['integer', 'exists:capabilities,id'],
         ]);
 
         if (!empty($data['practice_custom'])) $data['practice'][] = $data['practice_custom'];
@@ -53,14 +56,15 @@ class AttorneyController extends Controller
         }
 
         $data['slug'] = Str::slug($data['name']) . '-' . Str::lower(Str::random(6));
-        Attorney::create($data);
+        $attorney = Attorney::create($data);
+        $attorney->capabilities()->sync($request->input('capabilities', []));
 
         return back()->with('success', 'Attorney added successfully.');
     }
 
     public function edit(Attorney $attorney)
     {
-        return view('admin.attorneys.edit', compact('attorney'));
+        return view('admin.attorneys.edit', ['attorney' => $attorney, 'capabilities' => Capability::orderBy('title')->get()]);
     }
 
     public function update(Request $request, Attorney $attorney)
@@ -78,6 +82,8 @@ class AttorneyController extends Controller
             'location' => ['required', 'array', 'min:1'],
             'location.*' => ['string', 'max:120'],
             'title' => ['required', 'string', 'max:120'],
+            'capabilities' => ['nullable', 'array'],
+            'capabilities.*' => ['integer', 'exists:capabilities,id'],
             'email' => ['required', 'email', 'max:255'],
             'phone' => ['required', 'string', 'max:40'],
             'overview' => ['nullable', 'string', 'max:2000'],
@@ -105,6 +111,7 @@ class AttorneyController extends Controller
         $attorney->fill($data);
         if (isset($file)) $attorney->photo = $file;
         $attorney->save();
+        $attorney->capabilities()->sync($request->input('capabilities', []));
 
         return redirect()->route('admin.attorneys.create')->with('success', 'Attorney updated successfully.');
     }
