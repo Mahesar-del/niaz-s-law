@@ -1,1 +1,48 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{ $attorney->name }} - Niaz Law P.C.</title><link rel="stylesheet" href="{{ asset('css/app.css') }}"><style>.ad-hero{padding:150px 0 54px;background:linear-gradient(rgba(20,25,28,.55),rgba(20,25,28,.55)),url('{{ asset('images/capability-imge.png') }}') center/cover;color:#fff}.ad-hero h1{margin:0 0 25px;font-size:54px}.ad-profile{display:flex;gap:25px;align-items:flex-end}.ad-profile img{width:170px;height:200px;object-fit:cover}.ad-profile p{margin:6px 0}.ad-main{padding:38px 0 70px}.ad-section{max-width:1100px;margin:0 auto 38px}.ad-section h2{font-size:30px;border-bottom:1px solid #bbb;padding-bottom:10px}.ad-section p,.ad-section li{font-size:16px;line-height:1.7}.ad-columns{display:grid;grid-template-columns:1fr 1fr;gap:55px}.ad-columns>div+div{border-left:1px solid #ccc;padding-left:55px}@media(max-width:700px){.ad-profile{align-items:flex-start;flex-direction:column}.ad-hero{padding-top:110px}.ad-hero h1{font-size:38px}.ad-columns{grid-template-columns:1fr}.ad-columns>div+div{border:0;padding:0}}</style></head><body>@include('components.header')<main><section class="ad-hero"><div class="container"><h1>{{ $attorney->name }}</h1><div class="ad-profile"><img src="{{ asset('images/'.($attorney->photo ?: 'lawyer_profile.jpg')) }}" alt="{{ $attorney->name }}"><div><h3>{{ $attorney->title }}</h3><p>{{ $attorney->email }}</p><p>{{ $attorney->phone }}</p><p>{{ $attorney->location }}</p></div></div></div></section><section class="ad-main"><div class="container"><section class="ad-section"><h2>Overview</h2><p>{{ $attorney->overview ?: 'Attorney overview will be available soon.' }}</p></section><section class="ad-section"><h2>Experience</h2><p>{{ $attorney->experience ?: 'Professional experience will be available soon.' }}</p>@if($attorney->experience_points)<ul>@foreach(preg_split('/\r\n|\r|\n/', $attorney->experience_points) as $point)@if(trim($point))<li>{{ $point }}</li>@endif@endforeach</ul>@endif</section><section class="ad-section"><h2>Credentials</h2><div class="ad-columns"><div><h3>Education</h3><ul>@foreach(preg_split('/\r\n|\r|\n/', $attorney->education ?: '') as $item)@if(trim($item))<li>{{ $item }}</li>@endif@endforeach</ul></div><div><h3>Admissions</h3><ul>@foreach(preg_split('/\r\n|\r|\n/', $attorney->admissions ?: '') as $item)@if(trim($item))<li>{{ $item }}</li>@endif@endforeach</ul></div></div></section></div></section></main>@include('components.footer')</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{{ $attorney->name }} - Niaz Law P.C.</title>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <style>
+        .ad-hero{padding:150px 0 54px;background:linear-gradient(rgba(20,25,28,.55),rgba(20,25,28,.55)),url('{{ asset('images/capability-imge.png') }}') center/cover;color:#fff}.ad-hero h1{margin:0 0 25px;font-size:54px}.ad-profile{display:flex;gap:25px;align-items:flex-end}.ad-profile img{width:170px;height:200px;object-fit:cover}.ad-profile p{margin:6px 0}.ad-main{padding:38px 0 70px}.ad-section{max-width:1100px;margin:0 auto 38px}.ad-section h2{font-size:30px;border-bottom:1px solid #bbb;padding-bottom:10px}.ad-section p,.ad-section li{font-size:16px;line-height:1.7}.ad-columns{display:grid;grid-template-columns:1fr 1fr;gap:55px}.ad-columns>div+div{border-left:1px solid #ccc;padding-left:55px}@media(max-width:700px){.ad-profile{align-items:flex-start;flex-direction:column}.ad-hero{padding-top:110px}.ad-hero h1{font-size:38px}.ad-columns{grid-template-columns:1fr}.ad-columns>div+div{border:0;padding:0}}
+    </style>
+</head>
+<body>
+    @include('components.header')
+    @php
+        $experiencePoints = preg_split('/\r\n|\r|\n/', $attorney->experience_points ?: '');
+        $educationItems = preg_split('/\r\n|\r|\n/', $attorney->education ?: '');
+        $admissionItems = preg_split('/\r\n|\r|\n/', $attorney->admissions ?: '');
+    @endphp
+    <main>
+        <section class="ad-hero">
+            <div class="container">
+                <h1>{{ $attorney->name }}</h1>
+                <div class="ad-profile">
+                    <img src="{{ asset('images/' . ($attorney->photo ?: 'lawyer_profile.jpg')) }}" alt="{{ $attorney->name }}">
+                    <div><h3>{{ $attorney->title }}</h3><p>{{ $attorney->email }}</p><p>{{ $attorney->phone }}</p><p>{{ $attorney->location }}</p></div>
+                </div>
+            </div>
+        </section>
+        <section class="ad-main"><div class="container">
+            <section class="ad-section"><h2>Overview</h2><p>{{ $attorney->overview ?: 'Attorney overview will be available soon.' }}</p></section>
+            <section class="ad-section"><h2>Experience</h2><p>{{ $attorney->experience ?: 'Professional experience will be available soon.' }}</p>
+                @if($attorney->experience_points)
+                    <ul>
+                        @foreach($experiencePoints as $point)
+                            @if(trim($point))<li>{{ $point }}</li>@endif
+                        @endforeach
+                    </ul>
+                @endif
+            </section>
+            <section class="ad-section"><h2>Credentials</h2><div class="ad-columns">
+                <div><h3>Education</h3><ul>@foreach($educationItems as $item)@if(trim($item))<li>{{ $item }}</li>@endif @endforeach</ul></div>
+                <div><h3>Admissions</h3><ul>@foreach($admissionItems as $item)@if(trim($item))<li>{{ $item }}</li>@endif @endforeach</ul></div>
+            </div></section>
+        </div></section>
+    </main>
+    @include('components.footer')
+</body>
+</html>

@@ -41,7 +41,7 @@ Route::get('/blog', [BlogController::class, 'index']);
 Route::get('/insights', [InsightsController::class, 'index']);
 Route::get('/detail', [DetailController::class, 'index']);
 Route::get('/contact-us', [ContactController::class, 'index']);
-Route::view('/attorney-detail', 'attorney-detail');
+Route::redirect('/attorney-detail', '/attorneys');
 Route::get('/capabilities', [CapabilitiesController::class, 'index']);
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [AdminAuthController::class, 'showLogin'])->name('login');
@@ -56,6 +56,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/contact-settings', [ContactSettingController::class, 'edit'])->name('contact-settings.edit');
         Route::put('/contact-settings', [ContactSettingController::class, 'update'])->name('contact-settings.update');
         Route::get('/attorneys/create', [AttorneyController::class, 'create'])->name('attorneys.create');
+        Route::get('/attorney-page', [AttorneyController::class, 'details'])->name('attorneys.details');
         Route::post('/attorneys', [AttorneyController::class, 'store'])->name('attorneys.store');
         Route::get('/attorneys/{attorney}/edit', [AttorneyController::class, 'edit'])->name('attorneys.edit');
         Route::put('/attorneys/{attorney}', [AttorneyController::class, 'update'])->name('attorneys.update');

@@ -399,7 +399,7 @@
             @foreach($adminCapabilities as $capability)
                 <a href="#" class="capability-card">
                     <h3>{{ $capability->title }}</h3>
-                    <img src="{{ asset('images/' . ($capability->image ?: 'commercial-imge.png')) }}" alt="{{ $capability->title }}" class="capability-img">
+                    <img src="{{ $capability->image ? asset(strpos($capability->image, '/') !== false ? $capability->image : 'images/' . $capability->image) : asset('images/commercial-imge.png') }}" alt="{{ $capability->title }}" class="capability-img">
                     <p class="capability-desc">{{ $capability->description }}</p>
                     <div class="capability-link">↗</div>
                 </a>

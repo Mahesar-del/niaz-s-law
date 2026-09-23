@@ -16,7 +16,7 @@
     <p class="settings-nav-label">WEBSITE MANAGEMENT</p>
     <nav class="settings-nav">
         <a class="active" href="{{ route('admin.home-settings.edit') }}"><x-admin-icon name="home"/>Home Page Setting</a>
-        <a href="{{ route('admin.attorneys.create') }}"><x-admin-icon name="user"/>Add Attorney</a><a href="#"><x-admin-icon name="users"/>Attorney Page</a>
+        <a href="{{ route('admin.attorneys.create') }}"><x-admin-icon name="user"/>Add Attorney</a><a href="{{ route('admin.attorneys.details') }}"><x-admin-icon name="users"/>Attorney Detail Page</a>
         <a href="{{ route('admin.capabilities.index') }}"><x-admin-icon name="chart"/>Capabilities</a><a href="{{ route('admin.contact-settings.edit') }}"><x-admin-icon name="mail"/>Contact Us</a>
         <a href="#"><x-admin-icon name="file"/>Case Study</a><a href="#"><x-admin-icon name="edit"/>Blog Page</a><a href="#"><x-admin-icon name="bulb"/>Insight Page</a>
     </nav>
