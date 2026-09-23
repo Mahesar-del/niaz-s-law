@@ -7,15 +7,15 @@
 .insights-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    gap: 1px;
 }
 
 .insight-card {
     position: relative;
-    height: 380px;
+    height: 480px;
     background-size: cover;
     background-position: center;
-    border-radius: 4px;
+    border-radius: 0;
     overflow: hidden;
     display: flex;
     align-items: flex-end;
@@ -132,13 +132,18 @@
         margin-bottom: 16px !important;
     }
 
-    .ct-insights, .insights-grid {
+    .ct-insights {
         grid-template-columns: 1fr;
         gap: 16px;
     }
 
+    .insights-grid {
+        grid-template-columns: 1fr;
+        gap: 1px;
+    }
+
     .insight-card {
-        height: 260px;
+        height: 320px;
     }
 
     .ct-insight-card {
