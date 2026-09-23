@@ -43,34 +43,32 @@
         </section>
         <section class="blog-content">
             <div class="container">
+                @if($posts->isNotEmpty())
+                @php($featured = $posts->first())
                 <article class="blog-feature">
-                    <div class="blog-feature__image"><img src="{{ asset('images/attorney-hero.jpg') }}" alt="Legal proceedings"></div>
+                    <div class="blog-feature__image"><img src="{{ $featured->featured_image ? asset('storage/'.$featured->featured_image) : asset('images/attorney-hero.jpg') }}" alt="{{ $featured->title }}"></div>
                     <div class="blog-feature__content">
-                        <h2>Managing Risk in Commercial Agreements</h2>
-                        <p class="blog-category">Commercial Transactions</p>
-                        <p>Commercial agreements shape important business relationships and can create significant operational and financial obligations. Understanding key terms, responsibilities, and risk allocation can help businesses negotiate with greater clarity and confidence.</p>
-                        <a class="article-button" href="/detail">Read Blog</a>
+                        <h2>{{ $featured->title }}</h2>
+                        <p class="blog-category">{{ $featured->category }}</p>
+                        <p>{{ Str::limit(strip_tags($featured->content), 250) }}</p>
+                        <a class="article-button" href="{{ route('blog.show',$featured) }}">Read Blog</a>
                     </div>
                 </article>
-                @php
-                    $articles = [
-                        'domestic-violance.jpg', 'lawywer-helps.jpg', 'order.jpg', 'law.jpg',
-                        'domestic-violance.jpg', 'lawywer-helps.jpg', 'order.jpg', 'law.jpg'
-                    ];
-                @endphp
                 <div class="article-grid">
-                    @foreach ($articles as $image)
+                    @foreach ($posts->skip(1) as $post)
                         <article class="article-card">
-                            <img class="article-card__image" src="{{ asset('images/' . $image) }}" alt="Legal insight">
+                            <img class="article-card__image" src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : asset('images/attorney-hero.jpg') }}" alt="{{ $post->title }}">
                             <div class="article-card__content">
-                                <h3>Domestic Violence in California - How a Lawyer Can Help</h3>
-                                <p>Understand how California domestic violence laws work, what protections may be available, and how an attorney can guide you through the legal process.</p>
-                                <a class="article-button" href="/detail">Read now</a>
+                                <h3>{{ $post->title }}</h3>
+                                <p>{{ Str::limit(strip_tags($post->content), 150) }}</p>
+                                <a class="article-button" href="{{ route('blog.show',$post) }}">Read now</a>
                             </div>
                         </article>
                     @endforeach
                 </div>
-                <div class="blog-load"><a class="article-button" href="#">Load more</a></div>
+                @else
+                    <p>No published blog posts yet.</p>
+                @endif
             </div>
         </section>
     </main>

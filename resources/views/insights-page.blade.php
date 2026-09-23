@@ -45,45 +45,19 @@
         </section>
         <section class="insights-content">
             <div class="container">
-                <article class="insight-feature">
-                    <div class="insight-feature__visual"><img src="{{ asset('images/attorney-hero.jpg') }}" alt="Legal proceedings"></div>
+                @forelse($insights as $index => $insight)
+                <article class="insight-feature {{ $index % 2 ? 'insight-feature--reverse' : '' }}">
+                    <div class="insight-feature__visual"><img src="{{ $insight->featured_image ? asset('storage/'.$insight->featured_image) : asset('images/attorney-hero.jpg') }}" alt="{{ $insight->title }}"></div>
                     <div class="insight-feature__content">
-                        <h2>Managing Risk in Commercial Agreements</h2>
-                        <p class="insight-feature__category">Commercial Transactions</p>
-                        <p class="insight-feature__text">Commercial agreements shape important business relationships and can create significant operational and financial obligations. Understanding key terms, responsibilities, and risk allocation can help businesses negotiate with greater clarity and confidence.</p>
-                        <a href="/detail" class="insight-button">Read Insight</a>
+                        <h2>{{ $insight->title }}</h2>
+                        <p class="insight-feature__category">{{ $insight->category }}</p>
+                        <p class="insight-feature__text">{{ Str::limit(strip_tags($insight->content), 230) }}</p>
+                        <a href="{{ route('blog.show',$insight) }}" class="insight-button">Read Insight</a>
                     </div>
                 </article>
-                <article class="insight-feature insight-feature--reverse">
-                    <div class="insight-feature__visual"><img src="{{ asset('images/attorney-hero.jpg') }}" alt="Legal proceedings"></div>
-                    <div class="insight-feature__content">
-                        <h2>Managing Risk in Commercial Agreements</h2>
-                        <p class="insight-feature__category">Commercial Transactions</p>
-                        <p class="insight-feature__text">Commercial agreements shape important business relationships and can create significant operational and financial obligations. Understanding key terms, responsibilities, and risk allocation can help businesses negotiate with greater clarity and confidence.</p>
-                        <a href="/detail" class="insight-button">Read Insight</a>
-                    </div>
-                </article>
-                @php
-                    $tiles = [
-                        ['image' => 'insight-june.png', 'title' => 'Key Legal Considerations for Infrastructure Projects'],
-                        ['image' => 'informed-board.jpg', 'title' => 'Developments in Commercial Contracting'],
-                        ['image' => 'insight-june.png', 'title' => 'Understanding Procurement Risk'],
-                        ['image' => 'insight-june.png', 'title' => 'Key Legal Considerations for Infrastructure Projects'],
-                        ['image' => 'insight-june.png', 'title' => 'Key Legal Considerations for Infrastructure Projects'],
-                        ['image' => 'insight-june.png', 'title' => 'Key Legal Considerations for Infrastructure Projects'],
-                        ['image' => 'insight-june.png', 'title' => 'Key Legal Considerations for Infrastructure Projects'],
-                        ['image' => 'informed-board.jpg', 'title' => 'The Informed Board - September 2026'],
-                    ];
-                @endphp
-                <div class="insight-tiles">
-                    @foreach ($tiles as $tile)
-                        <a class="insight-tile" href="/detail">
-                            <img src="{{ asset('images/' . $tile['image']) }}" alt="">
-                            <h3>{{ $tile['title'] }}</h3>
-                        </a>
-                    @endforeach
-                </div>
-                <div class="insights-load"><a href="#" class="insight-button">Load more</a></div>
+                @empty
+                    <p>No published insights yet.</p>
+                @endforelse                <div class="insights-load"><a href="#" class="insight-button">Load more</a></div>
             </div>
         </section>
     </main>

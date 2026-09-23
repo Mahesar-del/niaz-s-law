@@ -286,22 +286,14 @@
             <section class="attorney-section attorney-insights">
                 <h2>Insights And News</h2>
                 <div class="attorney-insights__grid">
+                    @forelse($attorneyPosts as $post)
                     <article class="attorney-insight-card">
-                        <img src="{{ asset('images/domestic-violance.jpg') }}" alt="Lady Justice">
-                        <div>
-                            <h3>Domestic Violence in California - How a Lawyer Can Help</h3>
-                            <p>Understand how California domestic violence laws work, what protections may be available, and how an attorney can guide you through the legal process.</p>
-                            <a href="/detail">Read now</a>
-                        </div>
+                        <img src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : asset('images/attorney-hero.jpg') }}" alt="{{ $post->title }}">
+                        <div><h3>{{ $post->title }}</h3><p>{{ Str::limit(strip_tags($post->content), 160) }}</p><a href="{{ route('blog.show',$post) }}">Read now</a></div>
                     </article>
-                    <article class="attorney-insight-card">
-                        <img src="{{ asset('images/order.jpg') }}" alt="Judge's gavel">
-                        <div>
-                            <h3>Domestic Violence in California - How a Lawyer Can Help</h3>
-                            <p>Understand how California domestic violence laws work, what protections may be available, and how an attorney can guide you through the legal process.</p>
-                            <a href="/detail">Read now</a>
-                        </div>
-                    </article>
+                    @empty
+                    <p>No insights have been added for this attorney yet.</p>
+                    @endforelse
                 </div>
             </section>
         </div>

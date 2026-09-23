@@ -1,0 +1,4 @@
+<?php
+namespace App\Models;
+use Illuminate\Database\Eloquent\Model;
+class BlogPost extends Model { protected $fillable=['title','slug','content_type','category','published_at','status','featured_image','content','meta_title','meta_description','meta_keywords','robots','schema_json','show_on_home','feature_on_home','show_on_attorney_detail']; protected $casts=['published_at'=>'date','show_on_home'=>'boolean','feature_on_home'=>'boolean','show_on_attorney_detail'=>'boolean']; public function attorneys(){return $this->belongsToMany(Attorney::class);} public function capabilities(){return $this->belongsToMany(Capability::class);} }
