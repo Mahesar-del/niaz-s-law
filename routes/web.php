@@ -60,6 +60,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::delete('/attorneys/{attorney}', [AttorneyController::class, 'destroy'])->name('attorneys.destroy');
         Route::get('/capabilities', [CapabilityController::class, 'index'])->name('capabilities.index');
         Route::post('/capabilities', [CapabilityController::class, 'store'])->name('capabilities.store');
+        Route::get('/capabilities/{capability}/edit', [CapabilityController::class, 'edit'])->name('capabilities.edit');
+        Route::put('/capabilities/{capability}', [CapabilityController::class, 'update'])->name('capabilities.update');
+        Route::delete('/capabilities/{capability}', [CapabilityController::class, 'destroy'])->name('capabilities.destroy');
         Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
     });
 });

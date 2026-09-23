@@ -147,7 +147,8 @@
             transition: transform 0.3s, box-shadow 0.3s;
             text-decoration: none;
             color: inherit;
-            height: 388px;
+            height: auto;
+            min-height: 430px;
         }
         .capability-card h3 {
             font-family: 'Libre Baskerville', serif;
@@ -156,7 +157,7 @@
             line-height: 26px;
             color: #000000;
             margin-bottom: var(--space-16);
-            min-height: 52px;
+            min-height: 84px;
         }
         .capability-img {
             width: 100%;
@@ -174,7 +175,7 @@
             margin-bottom: var(--space-16);
             flex-grow: 1;
             margin-left: 4px;
-            padding-right: 42px;
+            padding: 0 54px 60px 0;
         }
         .capability-link {
             position: absolute;
@@ -395,31 +396,6 @@
     <section class="capabilities-grid-container">
         <div class="container capabilities-grid">
             
-            @php
-                $capabilities = [
-                    [
-                        'title' => 'Commercial<br class="desktop-br">Transactions',
-                        'img' => asset('images/commercial-imge.png'),
-                        'desc' => 'Contracts, negotiations and commercial arrangements structured around business objectives.'
-                    ],
-                    [
-                        'title' => 'Procurement<br class="desktop-br">& Contracting',
-                        'img' => asset('images/contracting-imge.png'),
-                        'desc' => 'Legal support for procurement processes, vendor relationships and commercial risk.'
-                    ],
-                    [
-                        'title' => 'Infrastructure<br class="desktop-br">& Projects',
-                        'img' => asset('images/project-imge.png'),
-                        'desc' => 'Counsel for project structures, contractual obligations, and stakeholder relationships.'
-                    ],
-                    [
-                        'title' => 'Operational<br class="desktop-br">Risk',
-                        'img' => asset('images/Operational-imge.png'),
-                        'desc' => 'Practical guidance to identify and manage operational legal risk.'
-                    ]
-                ];
-            @endphp
-
             @foreach($adminCapabilities as $capability)
                 <a href="#" class="capability-card">
                     <h3>{{ $capability->title }}</h3>
@@ -428,22 +404,6 @@
                     <div class="capability-link">↗</div>
                 </a>
             @endforeach
-            @for ($i = 0; $i < 4; $i++)
-                @foreach($capabilities as $cap)
-                <a href="#" class="capability-card">
-                    <h3>{!! $cap['title'] !!}</h3>
-                    <img src="{{ $cap['img'] }}" alt="{{ $cap['title'] }}" class="capability-img">
-                    <p class="capability-desc">{!! $cap['desc'] !!}</p>
-                    <div class="capability-link">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(45deg);">
-                            <line x1="12" y1="19" x2="12" y2="5"></line>
-                            <polyline points="5 12 12 5 19 12"></polyline>
-                        </svg>
-                    </div>
-                </a>
-                @endforeach
-            @endfor
-
         </div>
     </section>
 
