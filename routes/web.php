@@ -40,6 +40,7 @@ Route::get('/insights', [InsightsController::class, 'index']);
 Route::get('/detail', [DetailController::class, 'index']);
 Route::get('/contact-us', [ContactController::class, 'index']);
 Route::view('/attorney-detail', 'attorney-detail');
+Route::get('/capabilities', [CapabilitiesController::class, 'index']);
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [AdminAuthController::class, 'showLogin'])->name('login');
     Route::post('/login', [AdminAuthController::class, 'login'])->name('login.attempt');
