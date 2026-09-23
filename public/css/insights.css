@@ -123,8 +123,22 @@
 }
 
 @media (max-width: 768px) {
+    .insights-section {
+        padding: 16px 0;
+    }
+
+    .insights-section .section-title,
+    .section-title {
+        margin-bottom: 16px !important;
+    }
+
     .ct-insights, .insights-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .insight-card {
+        height: 260px;
     }
 
     .ct-insight-card {

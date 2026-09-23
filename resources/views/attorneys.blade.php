@@ -124,9 +124,11 @@
                     @endforelse
                 </div>
                 
+                @if($attorneys->count() > 6)
                 <div class="load-more-container">
                     <button class="btn btn-black btn-load-more">Load More</button>
                 </div>
+                @endif
             </div>
         </section>
 
