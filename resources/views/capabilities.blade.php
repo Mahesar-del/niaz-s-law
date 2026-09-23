@@ -61,7 +61,7 @@
         .search-card {
             width: 92%;
             max-width: 900px;
-            height: 125px;
+            height: 100px;
             background: #ffffff;
             border-radius: 16px;
             border: 1px solid #e0e0e0;
@@ -69,7 +69,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0 60px;
+            padding: 0 40px;
         }
         .search-box {
             display: flex;
@@ -304,29 +304,29 @@
                 border-radius: 10px;
             }
             .search-icon {
-                margin-left: 10px;
+                margin-left: 8px;
                 width: 16px;
                 height: 16px;
             }
             .search-box input {
                 font-family: 'Libre Baskerville', serif;
-                font-size: 15px;
+                font-size: 14px;
                 color: #333;
                 min-width: 0;
-                padding: 0 10px;
+                padding: 0 5px 0 6px;
             }
             .search-box input::placeholder {
                 font-family: 'Libre Baskerville', serif;
                 font-weight: 400;
-                font-size: 14px;
+                font-size: 13px;
                 line-height: 34px;
                 color: #000000;
                 opacity: 0.5;
             }
             .search-box button {
-                padding: 0 14px;
+                padding: 0 12px;
                 font-family: 'Libre Baskerville', serif;
-                font-size: 15px;
+                font-size: 14px;
                 flex-shrink: 0;
             }
             .capabilities-grid-container {
@@ -360,7 +360,11 @@
                 margin-bottom: 0;
                 width: 100%;
                 box-sizing: border-box;
-                text-align: justify;
+                text-align: left;
+            }
+            .capability-link {
+                bottom: 20px;
+                right: 15px;
             }
         }
 
@@ -404,9 +408,9 @@
                     <img src="{{ $capability->image ? asset(strpos($capability->image, '/') !== false ? $capability->image : 'images/' . $capability->image) : asset('images/commercial-imge.png') }}" alt="{{ $capability->title }}" class="capability-img">
                     <p class="capability-desc">{{ $capability->description }}</p>
                     <div class="capability-link">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7 7 17 7 17 17"></polyline>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5.5" y1="18.5" x2="18.5" y2="5.5"></line>
+                            <polyline points="8.5 5.5 18.5 5.5 18.5 15.5"></polyline>
                         </svg>
                     </div>
                 </a>
