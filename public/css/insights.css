@@ -1,0 +1,144 @@
+/* Home Page Insights Section */
+.insights-section {
+    padding: var(--space-64) 0;
+    background-color: #fff;
+}
+
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.insight-card {
+    position: relative;
+    height: 380px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+}
+
+.insight-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
+    z-index: 1;
+}
+
+.insight-content {
+    position: relative;
+    z-index: 2;
+    padding: 30px;
+    width: 100%;
+}
+
+.insight-content h3 {
+    color: #fff;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Insights Component Styles (from commercial-transactions) */
+.ct-section-title {
+    font-size: 34px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 20px;
+    font-family: 'Libre Baskerville', serif;
+}
+
+.ct-insights {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.ct-insight-card {
+    display: flex;
+    gap: 30px;
+    background: #fff;
+    align-items: center;
+}
+
+.ct-insight-card img {
+    width: 45%;
+    aspect-ratio: 262.5 / 342;
+    object-fit: cover;
+    object-position: left;
+    display: block;
+}
+
+.ct-insight-content {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 55%;
+}
+
+.ct-insight-content h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-family: 'Libre Baskerville', serif;
+    line-height: 1;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 15px;
+    color: #3A3A38;
+}
+
+.ct-insight-content p {
+    font-size: 15px;
+    color: #0E0E0E;
+    margin-bottom: 7.5px;
+    line-height: 22px;
+    font-family: 'Inter', sans-serif;
+    text-align: justify;
+}
+
+.ct-btn-black {
+    background: #000;
+    color: #fff;
+    width: 188px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 14px;
+    font-family: 'Libre Baskerville', serif;
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+}
+
+.ct-btn-black:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .ct-insights, .insights-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ct-insight-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .ct-insight-card img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+    }
+
+    .ct-insight-content {
+        width: 100%;
+    }
+}
