@@ -775,8 +775,10 @@ ul {
 
 .about-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-64);
+    grid-template-columns: minmax(320px, 420px) 1fr;
+    gap: var(--space-32);
+    align-items: center;
+    width: 100%;
 }
 
 .about-features {
@@ -792,6 +794,7 @@ ul {
 
 .about-left-col {
     max-width: 420px;
+    width: 100%;
 }
 
 .about-section-title {
@@ -841,26 +844,25 @@ ul {
     position: relative;
     width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-right: 10%;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .about-img-below {
     position: relative;
-    width: 90%;
+    width: 75%;
     aspect-ratio: 516 / 465;
     object-fit: cover;
     z-index: 1;
     border-radius: 4px;
-    margin-top: 10%;
+    margin-top: 14%;
 }
 
 .about-img-up {
     position: absolute;
     top: 0;
     right: 0;
-    width: 55%;
+    width: 50%;
     aspect-ratio: 389 / 358;
     object-fit: cover;
     z-index: 2;
@@ -871,6 +873,16 @@ ul {
 @media (max-width: 1024px) {
     .about-container {
         grid-template-columns: 1fr;
+        gap: var(--space-48);
+    }
+
+    .about-left-col {
+        max-width: 100%;
+    }
+
+    .about-images {
+        max-width: 500px;
+        margin: 0 auto;
     }
 }
 
@@ -1032,16 +1044,15 @@ ul {
 
 .news-card {
     display: grid;
-    grid-template-columns: 1fr 1.3fr;
-    gap: var(--space-32);
+    grid-template-columns: 1.05fr 1fr;
+    gap: var(--space-24);
     background: #fff;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .news-card img {
-    height: 281px;
+    height: 320px;
     width: 100%;
-    aspect-ratio: 1 / 1;
     object-fit: cover;
     display: block;
 }
@@ -1065,14 +1076,14 @@ ul {
 .news-content {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     padding: 0;
 }
 
 .news-content h3 {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 600;
-    line-height: 1;
+    line-height: 1.25;
     color: #3A3A38;
     font-family: var(--font-heading);
     margin-top: 0;
@@ -1084,18 +1095,18 @@ ul {
 .news-content p {
     font-family: var(--font-body);
     font-weight: 400;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 22px;
-    text-align: justify;
+    text-align: left;
     color: #0E0E0E;
-    margin-bottom: var(--space-24);
+    margin-bottom: var(--space-32);
 }
 
 .btn-black {
     background-color: #000000;
     color: #FFFFFF;
-    width: 188px;
-    height: 42px;
+    width: 150px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1107,6 +1118,7 @@ ul {
     border: none;
     cursor: pointer;
     padding: 0;
+    margin-top: 4px;
 }
 
 @media (max-width: 1024px) {
@@ -1245,9 +1257,10 @@ ul {
     border-color: #000;
 }
 
-textarea.form-control {
+textarea.form-control,
+textarea {
     min-height: 140px;
-    resize: vertical;
+    resize: none;
 }
 
 .contact-form-card .btn {
@@ -2702,8 +2715,46 @@ textarea.form-control {
 }
 
 @media (max-width: 768px) {
+    .insights-section {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .services-section {
+        padding: 20px 0;
+    }
+
+    .about-section {
+        padding: 20px 0;
+    }
+
+    .results-section {
+        padding: 20px 0;
+    }
+
+    .news-section {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .contact-section {
+        padding: 20px 0;
+    }
+
+    .insights-section .section-title,
+    .section-title {
+        margin-bottom: 16px !important;
+        font-size: 26px;
+        line-height: 1.25;
+    }
+
     .ct-insights, .insights-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .insight-card {
+        height: 260px;
     }
 
     .ct-insight-card {
@@ -2719,6 +2770,15 @@ textarea.form-control {
 
     .ct-insight-content {
         width: 100%;
+    }
+
+    .home-map,
+    .map-placeholder {
+        display: none !important;
+    }
+
+    .contact-form-card {
+        display: block !important;
     }
 }
 

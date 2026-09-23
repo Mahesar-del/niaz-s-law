@@ -31,11 +31,11 @@
             <div class="footer-col">
                 <h4>Page</h4>
                 <ul class="footer-links">
-                    <li><a href="#">Lawyer</a></li>
-                    <li><a href="#">Appointment</a></li>
+                    <li><a href="/attorneys">Lawyer</a></li>
+                    <li><a href="/contact-us">Appointment</a></li>
                     <li><a href="#">Documentation</a></li>
-                    <li><a href="#">Cases</a></li>
-                    <li><a href="#">News</a></li>
+                    <li><a href="/case-study">Cases</a></li>
+                    <li><a href="/blog">News</a></li>
                 </ul>
             </div>
             <!-- Links -->
