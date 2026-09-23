@@ -70,7 +70,7 @@
                 <div class="services-img-col">
                     <img src="{{ asset('images/professsional-services.jpg') }}" alt="Gavel">
                     <h2 class="services-heading">Professional Services<br>Prepared To Be Your<br>Lawyer Firm</h2>
-                    <a href="#" class="all-practice-areas desktop-only" style="color: #fff; text-decoration: none;">All Practice Areas ↗</a>
+                    <a href="/capabilities" class="all-practice-areas desktop-only" style="color: #fff; text-decoration: none;">All Practice Areas ↗</a>
                 </div>
                 <div class="services-list-col">
                     <div class="services-links">
@@ -81,7 +81,7 @@
                     </div>
                 </div>
                 <div class="mobile-only" style="text-align: center; width: 100%;">
-                    <a href="#" class="all-practice-areas" style="color: #fff; text-decoration: none; margin: 0 auto;">All Practice Areas ↗</a>
+                    <a href="/capabilities" class="all-practice-areas" style="color: #fff; text-decoration: none; margin: 0 auto;">All Practice Areas ↗</a>
                 </div>
             </div>
         </section>
@@ -154,7 +154,7 @@
             <div class="container">
                 <div class="news-header">
                     <h2>The Latest News And Blog From Niaz Law</h2>
-                    <a href="#" class="read-recent desktop-only">Read Recent Posts <span class="arrow-icon"><img src="{{ asset('images/arrow.svg') }}" alt="Arrow" style="width: 32px; height: 32px; vertical-align: middle;"></span></a>
+                    <a href="/blog" class="read-recent desktop-only">Read Recent Posts <span class="arrow-icon"><img src="{{ asset('images/arrow.svg') }}" alt="Arrow" style="width: 32px; height: 32px; vertical-align: middle;"></span></a>
                 </div>
                 <div class="news-grid">
                     <!-- Post 1 -->
