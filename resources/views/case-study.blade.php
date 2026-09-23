@@ -39,7 +39,7 @@
                 <div class="case-studies-grid">
                     @forelse ($caseStudies as $caseStudy)
                         <article class="case-study-card">
-                            <img class="case-study-card__image" src="{{ $caseStudy->featured_image ? asset('storage/'.$caseStudy->featured_image) : asset('images/case-study-gavel.png') }}" alt="{{ $caseStudy->title }}">
+                            <img class="case-study-card__image" src="{{ $caseStudy->featured_image_url }}" alt="{{ $caseStudy->title }}">
                             <h2>{{ $caseStudy->title }}</h2>
                             <p>{{ Str::limit(strip_tags($caseStudy->content), 180) }}</p>
                             <a class="case-study-card__button" href="{{ route('blog.show',$caseStudy) }}">View Matter</a>

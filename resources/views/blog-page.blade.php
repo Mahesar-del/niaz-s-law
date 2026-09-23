@@ -46,7 +46,7 @@
                 @if($posts->isNotEmpty())
                 @php($featured = $posts->first())
                 <article class="blog-feature">
-                    <div class="blog-feature__image"><img src="{{ $featured->featured_image ? asset('storage/'.$featured->featured_image) : asset('images/attorney-hero.jpg') }}" alt="{{ $featured->title }}"></div>
+                    <div class="blog-feature__image"><img src="{{ $featured->featured_image_url }}" alt="{{ $featured->title }}"></div>
                     <div class="blog-feature__content">
                         <h2>{{ $featured->title }}</h2>
                         <p class="blog-category">{{ $featured->category }}</p>
@@ -57,7 +57,7 @@
                 <div class="article-grid">
                     @foreach ($posts->skip(1) as $post)
                         <article class="article-card">
-                            <img class="article-card__image" src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : asset('images/attorney-hero.jpg') }}" alt="{{ $post->title }}">
+                            <img class="article-card__image" src="{{ $post->featured_image_url }}" alt="{{ $post->title }}">
                             <div class="article-card__content">
                                 <h3>{{ $post->title }}</h3>
                                 <p>{{ Str::limit(strip_tags($post->content), 150) }}</p>

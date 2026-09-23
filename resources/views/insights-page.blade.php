@@ -47,7 +47,7 @@
             <div class="container">
                 @forelse($insights as $index => $insight)
                 <article class="insight-feature {{ $index % 2 ? 'insight-feature--reverse' : '' }}">
-                    <div class="insight-feature__visual"><img src="{{ $insight->featured_image ? asset('storage/'.$insight->featured_image) : asset('images/attorney-hero.jpg') }}" alt="{{ $insight->title }}"></div>
+                    <div class="insight-feature__visual"><img src="{{ $insight->featured_image_url }}" alt="{{ $insight->title }}"></div>
                     <div class="insight-feature__content">
                         <h2>{{ $insight->title }}</h2>
                         <p class="insight-feature__category">{{ $insight->category }}</p>
