@@ -288,7 +288,7 @@
                 <div class="attorney-insights__grid">
                     @forelse($attorneyPosts as $post)
                     <article class="attorney-insight-card">
-                        <img src="{{ $post->featured_image_url }}" alt="{{ $post->title }}">
+                        @if($post->featured_image_url)<img src="{{ $post->featured_image_url }}" alt="{{ $post->title }}">@endif
                         <div><h3>{{ $post->title }}</h3><p>{{ Str::limit(strip_tags($post->content), 160) }}</p><a href="{{ route('blog.show',$post) }}">Read now</a></div>
                     </article>
                     @empty
