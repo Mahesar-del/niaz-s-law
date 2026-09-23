@@ -240,12 +240,10 @@
         }
         
         @media (max-width: 768px) {
-            /* The header has double padding (16px navbar + 16px container) at 768px.
-               We must match this 32px total padding so everything aligns with the logo. */
             .container.capabilities-hero-content,
             .container.search-section,
             .container.capabilities-grid {
-                padding: 0 32px;
+                padding: 0 16px;
             }
         }
 
