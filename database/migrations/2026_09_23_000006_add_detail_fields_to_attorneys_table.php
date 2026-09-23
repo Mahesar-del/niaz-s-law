@@ -1,0 +1,3 @@
+<?php
+use Illuminate\Database\Migrations\Migration; use Illuminate\Database\Schema\Blueprint; use Illuminate\Support\Facades\Schema;
+return new class extends Migration { public function up(){Schema::table('attorneys',function(Blueprint $table){$table->string('slug')->nullable()->unique()->after('name');$table->text('overview')->nullable();$table->text('experience')->nullable();$table->text('experience_points')->nullable();$table->text('education')->nullable();$table->text('admissions')->nullable();});} public function down(){Schema::table('attorneys',function(Blueprint $table){$table->dropColumn(['slug','overview','experience','experience_points','education','admissions']);});} };

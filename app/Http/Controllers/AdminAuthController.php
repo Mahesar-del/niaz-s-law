@@ -24,7 +24,7 @@ class AdminAuthController extends Controller
             'password' => ['required', 'string'],
         ]);
 
-        $admin = Admin::where('email', $credentials['email'])->first();
+        $admin = Admin::where('email', strtolower(trim($credentials['email'])))->first();
 
         if (! $admin || ! Hash::check($credentials['password'], $admin->password)) {
             return back()->withErrors(['email' => 'The email or password is incorrect.'])->onlyInput('email');

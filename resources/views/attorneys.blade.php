@@ -107,7 +107,7 @@
             <div class="container">
                 <div class="lawyers-grid">
                     @forelse($attorneys as $attorney)
-                    <div class="lawyer-card" data-name="{{ strtolower($attorney->name) }}" data-practice="{{ strtolower($attorney->practice) }}" data-industry="{{ strtolower($attorney->industry) }}" data-location="{{ strtolower($attorney->location) }}" data-title="{{ strtolower($attorney->title) }}">
+                    <a href="{{ $attorney->slug ? route('attorneys.detail', $attorney->slug) : '#' }}" class="lawyer-card" data-name="{{ strtolower($attorney->name) }}" data-practice="{{ strtolower($attorney->practice) }}" data-industry="{{ strtolower($attorney->industry) }}" data-location="{{ strtolower($attorney->location) }}" data-title="{{ strtolower($attorney->title) }}">
                         <div class="lawyer-img">
                             <img src="{{ asset('images/' . ($attorney->photo ?: 'lawyer_profile.jpg')) }}" alt="{{ $attorney->name }}">
                         </div>
@@ -118,7 +118,7 @@
                             <p class="email">{{ $attorney->email }}</p>
                             <p class="phone">{{ $attorney->phone }}</p>
                         </div>
-                    </div>
+                    </a>
                     @empty
                     <p class="lawyers-empty">No attorneys added yet. New attorneys added from the admin panel will appear here.</p>
                     @endforelse
