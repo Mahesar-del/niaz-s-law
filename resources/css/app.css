@@ -223,10 +223,12 @@ ul {
 
 .hero-content {
     max-width: 800px;
+    margin-top: 20vh;
 }
 
 .hero h1 {
     font-size: 72px;
+    line-height: 1.4;
     margin-bottom: var(--space-32);
 }
 
