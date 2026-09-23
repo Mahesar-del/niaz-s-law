@@ -12,12 +12,12 @@
 <body>
 <div class="settings-shell">
 <aside class="settings-sidebar">
-    <a class="settings-brand" href="{{ route('admin.dashboard') }}"><img src="{{ asset('images/logo.png') }}" alt="Niaz Law P.C."></a>
+    <a class="settings-brand" href="{{ route('admin.dashboard') }}"><img src="{{ asset('images/header-logo.png') }}" alt="Niaz Law P.C."></a>
     <p class="settings-nav-label">WEBSITE MANAGEMENT</p>
     <nav class="settings-nav">
         <a class="active" href="{{ route('admin.home-settings.edit') }}"><x-admin-icon name="home"/>Home Page Setting</a>
-        <a href="#"><x-admin-icon name="user"/>Add Attorney</a><a href="#"><x-admin-icon name="users"/>Attorney Page</a>
-        <a href="#"><x-admin-icon name="chart"/>Capabilities</a><a href="{{ route('admin.contact-settings.edit') }}"><x-admin-icon name="mail"/>Contact Us</a>
+        <a href="{{ route('admin.attorneys.create') }}"><x-admin-icon name="user"/>Add Attorney</a><a href="#"><x-admin-icon name="users"/>Attorney Page</a>
+        <a href="{{ route('admin.capabilities.index') }}"><x-admin-icon name="chart"/>Capabilities</a><a href="{{ route('admin.contact-settings.edit') }}"><x-admin-icon name="mail"/>Contact Us</a>
         <a href="#"><x-admin-icon name="file"/>Case Study</a><a href="#"><x-admin-icon name="edit"/>Blog Page</a><a href="#"><x-admin-icon name="bulb"/>Insight Page</a>
     </nav>
     <div class="settings-sidebar-bottom"><a href="{{ url('/') }}" target="_blank"><x-admin-icon name="external"/>View website</a><form method="post" action="{{ route('admin.logout') }}">@csrf<button type="submit"><x-admin-icon name="logout"/>Sign out</button></form></div>

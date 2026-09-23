@@ -420,6 +420,14 @@
                 ];
             @endphp
 
+            @foreach($adminCapabilities as $capability)
+                <a href="#" class="capability-card">
+                    <h3>{{ $capability->title }}</h3>
+                    <img src="{{ asset('images/' . ($capability->image ?: 'commercial-imge.png')) }}" alt="{{ $capability->title }}" class="capability-img">
+                    <p class="capability-desc">{{ $capability->description }}</p>
+                    <div class="capability-link">↗</div>
+                </a>
+            @endforeach
             @for ($i = 0; $i < 4; $i++)
                 @foreach($capabilities as $cap)
                 <a href="#" class="capability-card">

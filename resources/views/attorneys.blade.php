@@ -45,7 +45,7 @@
         <section class="filters-section">
             <div class="container">
                 <div class="filters-row">
-                    <div class="custom-dropdown">
+                    <div class="custom-dropdown" data-filter="practice">
                         <div class="dropdown-header">
                             <span>Practice</span>
                             <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     
-                    <div class="custom-dropdown">
+                    <div class="custom-dropdown" data-filter="industry">
                         <div class="dropdown-header">
                             <span>Industry</span>
                             <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -74,7 +74,7 @@
                         </div>
                     </div>
 
-                    <div class="custom-dropdown">
+                    <div class="custom-dropdown" data-filter="location">
                         <div class="dropdown-header">
                             <span>Location</span>
                             <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -85,7 +85,7 @@
                         </div>
                     </div>
 
-                    <div class="custom-dropdown">
+                    <div class="custom-dropdown" data-filter="title">
                         <div class="dropdown-header">
                             <span>Title</span>
                             <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -106,20 +106,22 @@
         <section class="lawyers-section">
             <div class="container">
                 <div class="lawyers-grid">
-                    @for($i=0; $i<9; $i++)
-                    <div class="lawyer-card" onclick="window.location.href='{{ url('/attorney-detail') }}'">
+                    @forelse($attorneys as $attorney)
+                    <div class="lawyer-card" data-name="{{ strtolower($attorney->name) }}" data-practice="{{ strtolower($attorney->practice) }}" data-industry="{{ strtolower($attorney->industry) }}" data-location="{{ strtolower($attorney->location) }}" data-title="{{ strtolower($attorney->title) }}">
                         <div class="lawyer-img">
-                            <img src="{{ asset('images/lawyer_profile.jpg') }}" alt="Faisal Syed Niaz">
+                            <img src="{{ asset('images/' . ($attorney->photo ?: 'lawyer_profile.jpg')) }}" alt="{{ $attorney->name }}">
                         </div>
                         <div class="lawyer-info">
-                            <h3>Faisal Syed Niaz</h3>
-                            <p class="title">Partner</p>
-                            <p class="location">Illinois</p>
-                            <p class="email">example.niaz@lw.com</p>
-                            <p class="phone">+1.000.000.000</p>
+                            <h3>{{ $attorney->name }}</h3>
+                            <p class="title">{{ $attorney->title }}</p>
+                            <p class="location">{{ $attorney->location }}</p>
+                            <p class="email">{{ $attorney->email }}</p>
+                            <p class="phone">{{ $attorney->phone }}</p>
                         </div>
                     </div>
-                    @endfor
+                    @empty
+                    <p class="lawyers-empty">No attorneys added yet. New attorneys added from the admin panel will appear here.</p>
+                    @endforelse
                 </div>
                 
                 <div class="load-more-container">
@@ -158,33 +160,31 @@
                 });
             });
 
-            // Optional: update text on selection and filter
+            const selectedFilters = { practice: '', industry: '', location: '', title: '' };
+            const searchInput = document.querySelector('.search-input-inner input');
+            const searchBtn = document.querySelector('.btn-search');
+            const cards = [...document.querySelectorAll('.lawyer-card')];
+
+            function applyFilters() {
+                const query = searchInput.value.trim().toLowerCase();
+                cards.forEach(card => {
+                    const nameMatches = !query || card.dataset.name.includes(query);
+                    const filtersMatch = Object.entries(selectedFilters).every(([key, value]) => !value || card.dataset[key].includes(value));
+                    card.style.display = nameMatches && filtersMatch ? 'flex' : 'none';
+                });
+                const loadMore = document.querySelector('.load-more-container');
+                if (loadMore) loadMore.style.display = 'none';
+            }
+
             document.querySelectorAll('.dropdown-item').forEach(item => {
                 item.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    let parent = this.closest('.custom-dropdown');
-                    let headerSpan = parent.querySelector('.dropdown-header span');
-                    headerSpan.textContent = this.textContent;
+                    const parent = this.closest('.custom-dropdown');
+                    const filter = parent.dataset.filter;
+                    selectedFilters[filter] = this.textContent.trim().toLowerCase();
+                    parent.querySelector('.dropdown-header span').textContent = this.textContent;
                     parent.classList.remove('open');
-                    
-                    // Filter functionality
-                    let selectedValue = this.textContent.toLowerCase();
-                    let visibleCount = 0;
-                    document.querySelectorAll('.lawyer-card').forEach(card => {
-                        let cardText = card.textContent.toLowerCase();
-                        if(cardText.includes(selectedValue)) {
-                            card.style.display = 'flex';
-                            visibleCount++;
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-
-                    // Hide load more if we are filtering or no results
-                    const loadMoreBtn = document.querySelector('.load-more-container');
-                    if (loadMoreBtn) {
-                        loadMoreBtn.style.display = 'none';
-                    }
+                    applyFilters();
                 });
             });
 
@@ -195,36 +195,8 @@
                 });
             });
 
-            // Search functionality
-            const searchInput = document.querySelector('.search-input-inner input');
-            const searchBtn = document.querySelector('.btn-search');
-            
-            function performSearch() {
-                let query = searchInput.value.toLowerCase();
-                let visibleCount = 0;
-                document.querySelectorAll('.lawyer-card').forEach(card => {
-                    let name = card.querySelector('h3').textContent.toLowerCase();
-                    if(name.includes(query)) {
-                        card.style.display = 'flex';
-                        visibleCount++;
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-                
-                // Hide load more if we are searching or no results
-                const loadMoreBtn = document.querySelector('.load-more-container');
-                if (loadMoreBtn) {
-                    if (query !== '' || visibleCount === 0) {
-                        loadMoreBtn.style.display = 'none';
-                    } else {
-                        loadMoreBtn.style.display = 'block';
-                    }
-                }
-            }
-
-            searchInput.addEventListener('input', performSearch);
-            searchBtn.addEventListener('click', performSearch);
+            searchInput.addEventListener('input', applyFilters);
+            searchBtn.addEventListener('click', applyFilters);
         </script>
     </body>
 </html>
