@@ -20,6 +20,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\InsightsController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AttorneysController;
 use App\Http\Controllers\AttorneyDetailController;
 use App\Http\Controllers\AdminAuthController;
@@ -36,8 +37,8 @@ Route::get('/attorneys/{attorney:slug}', [AttorneyDetailController::class, 'show
 Route::get('/capabilities', [CapabilitiesController::class, 'index'])->name('capabilities');
 Route::get('/capabilities/{capability:slug}', [CapabilitiesController::class, 'show'])->name('capabilities.show');
 Route::view('/commercial-transactions', 'commercial-transactions');
-Route::view('/about', 'about');
-Route::view('/about-us', 'about');
+Route::get('/about', [AboutController::class, 'index']);
+Route::get('/about-us', [AboutController::class, 'index']);
 Route::get('/case-study', [CaseStudyController::class, 'index']);
 Route::get('/blog', [BlogController::class, 'index']);
 Route::get('/blog/{blog:slug}', [BlogController::class, 'show'])->name('blog.show');
