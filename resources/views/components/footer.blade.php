@@ -9,7 +9,7 @@
             <!-- About Us -->
             <div class="footer-col">
                 <h4>About Us</h4>
-                <p>Lorem ipsum dolor sit amet consectetur. Commodo pulvinar molesti.</p>
+                <p>Expert legal counsel and dedicated representation for your business and personal legal matters.</p>
                 <div class="footer-socials">
                     <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12c0-5.523-4.477-10-10-10z"/></svg></a>
                     <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-1.47 0-2.12.8-2.49 1.37v-1.17h-2.76v8.36h2.76v-4.64c0-1.24.23-2.44 1.77-2.44 1.52 0 1.54 1.41 1.54 2.52v4.56h2.44M7.83 18.5v-8.36H5.06v8.36h2.77M6.45 6.09c-.9 0-1.62.72-1.62 1.62s.72 1.63 1.62 1.63 1.62-.73 1.62-1.63-.72-1.62-1.62-1.62z"/></svg></a>

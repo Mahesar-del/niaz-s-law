@@ -101,6 +101,11 @@
     line-height: 22px;
     font-family: 'Inter', sans-serif;
     text-align: justify;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-height: 66px;
 }
 
 .ct-btn-black {
