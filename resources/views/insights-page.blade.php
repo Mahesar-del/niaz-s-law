@@ -57,7 +57,10 @@
                 </article>
                 @empty
                     <p>No published insights yet.</p>
-                @endforelse                <div class="insights-load"><a href="#" class="insight-button">Load more</a></div>
+                @endforelse
+                @if($insights->count() > 6)
+                <div class="insights-load"><a href="#" class="insight-button">Load more</a></div>
+                @endif
             </div>
         </section>
     </main>
