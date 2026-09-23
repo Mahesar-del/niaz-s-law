@@ -26,17 +26,132 @@
             </div>
         </section>
 
+        <style>
+            .search-section {
+                display: flex;
+                justify-content: center;
+                margin-top: -20px;
+                position: relative;
+                z-index: 5;
+                padding: 0;
+            }
+            .search-card {
+                width: 92%;
+                max-width: 900px;
+                height: 100px;
+                background: #ffffff;
+                border-radius: 16px;
+                border: 1px solid #e0e0e0;
+                box-shadow: 0px 4px 24px rgba(0,0,0,0.06);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0 40px;
+            }
+            .search-box {
+                display: flex;
+                width: 100%;
+                max-width: 844px;
+                height: 60px;
+                border: 1px solid #000000;
+                border-radius: 6px;
+                overflow: hidden;
+                background: #ffffff;
+                align-items: center;
+            }
+            .search-icon {
+                width: 18px;
+                height: 18px;
+                color: #888;
+                margin-left: 20px;
+                flex-shrink: 0;
+            }
+            .search-box input {
+                flex-grow: 1;
+                min-width: 0;
+                padding: 0 16px;
+                border: none;
+                outline: none;
+                font-size: var(--body-reg);
+                font-family: var(--font-heading);
+                height: 100%;
+                color: #333;
+                background: transparent;
+            }
+            .search-box input::placeholder {
+                color: #000000;
+                opacity: 0.5;
+                font-family: 'Libre Baskerville', serif;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 34px;
+            }
+            .search-box button {
+                background: #000;
+                color: #fff;
+                border: none;
+                flex-shrink: 0;
+                padding: 0 40px;
+                font-weight: 400;
+                font-family: var(--font-heading);
+                font-size: var(--body-reg);
+                cursor: pointer;
+                height: 100%;
+                transition: background 0.3s;
+            }
+            .search-box button:hover {
+                background: #333;
+            }
+            
+            @media (max-width: 768px) {
+                .container.search-section {
+                    padding: 0 16px;
+                }
+            }
+
+            @media (max-width: 576px) {
+                .search-section {
+                    margin-top: -30px;
+                }
+                .search-card {
+                    height: 90px;
+                    width: 100%;
+                    box-sizing: border-box;
+                    padding: 0 15px;
+                    border-radius: 10px;
+                }
+                .search-box {
+                    height: 50px;
+                    border-radius: 10px;
+                }
+                .search-icon {
+                    margin-left: 8px;
+                    width: 16px;
+                    height: 16px;
+                }
+                .search-box input {
+                    font-size: 14px;
+                    padding: 0 5px 0 6px;
+                }
+                .search-box input::placeholder {
+                    font-size: 13px;
+                }
+                .search-box button {
+                    padding: 0 12px;
+                    font-size: 14px;
+                }
+            }
+        </style>
         <!-- Search Bar Section -->
-        <section class="search-section">
-            <div class="container">
-                <div class="search-bar-wrapper">
-                    <div class="search-input-group">
-                        <div class="search-input-inner">
-                            <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                            <input type="text" placeholder="Search by name">
-                        </div>
-                        <button type="button" class="btn btn-search">Search</button>
-                    </div>
+        <section class="container search-section">
+            <div class="search-card">
+                <div class="search-box">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" placeholder="Search by name">
+                    <button type="button">Search</button>
                 </div>
             </div>
         </section>
@@ -163,8 +278,8 @@
             });
 
             const selectedFilters = { practice: '', industry: '', location: '', title: '' };
-            const searchInput = document.querySelector('.search-input-inner input');
-            const searchBtn = document.querySelector('.btn-search');
+            const searchInput = document.querySelector('.search-box input');
+            const searchBtn = document.querySelector('.search-box button');
             const cards = [...document.querySelectorAll('.lawyer-card')];
 
             function applyFilters() {

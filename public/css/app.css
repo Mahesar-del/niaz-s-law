@@ -1482,9 +1482,9 @@ textarea {
 }
 
 .title-divider {
-    width: 2px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.4);
+    width: 1.5px;
+    height: 135px;
+    background: #FFFFFF;
 }
 
 .page-description {
@@ -1557,7 +1557,7 @@ textarea {
 
 .filters-row {
     display: flex;
-    gap: var(--space-32);
+    gap: 10px;
     width: 100%;
 }
 
