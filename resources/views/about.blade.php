@@ -642,11 +642,10 @@
     <section class="about-hero about-hero-bg">
         <div class="container about-hero-container">
             <div class="about-hero-grid">
-                <h1 class="about-hero-title">About Us</h1>
+                <h1 class="about-hero-title">Lawyer</h1>
                 <div class="about-hero-divider"></div>
                 <p class="about-hero-desc">
-                    We provide practical, business-focused legal counsel on commercial transactions, infrastructure, aviation, and strategic matters across domestic and international markets.
-                </p>
+                   Experienced legal counsel focused on complex business matters, strategic transactions, and practical solutions tailored to each client’s needs.                </p>
             </div>
         </div>
     </section>

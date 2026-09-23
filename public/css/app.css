@@ -2577,7 +2577,9 @@ textarea.form-control {
     .insights-grid {
         grid-template-columns: 1fr;
     }
-}/* Home Page Insights Section */
+}
+
+/* Home Page Insights Section */
 .insights-section {
     padding: var(--space-64) 0;
     background-color: #fff;
@@ -2604,7 +2606,7 @@ textarea.form-control {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 100%);
     z-index: 1;
 }
 
@@ -2702,7 +2704,9 @@ textarea.form-control {
 }
 
 @media (max-width: 768px) {
-    .ct-insights, .insights-grid {
+
+    .ct-insights,
+    .insights-grid {
         grid-template-columns: 1fr;
     }
 
@@ -2721,4 +2725,3 @@ textarea.form-control {
         width: 100%;
     }
 }
-
