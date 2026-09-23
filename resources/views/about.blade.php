@@ -179,7 +179,7 @@
 
         .pillar-item p {
             font-family: var(--font-body);
-            font-size: 17px;
+            font-size: 18px;
             line-height: 1.6;
             color: rgba(255, 255, 255, 0.85);
             margin: 0;

@@ -12,7 +12,7 @@
         <!-- Attorney Detail Hero Section -->
         <section class="attorney-detail-hero">
             <div class="hero-bg-container">
-                <img src="{{ asset('images/attorney-hero.jpg') }}" alt="Cityscape background" class="hero-bg-img">
+                <img src="{{ asset('images/commercial-transection-hero.png') }}" alt="Background Image" class="hero-bg-img">
                 <div class="hero-overlay-dark"></div>
             </div>
             <div class="container hero-content-container">
@@ -111,27 +111,11 @@
         <!-- Insights And News Section -->
         <section class="insights-news-section">
             <div class="container">
-                <h2>Insights And News</h2>
-                <div class="insights-grid">
-                    <div class="insight-card">
-                        <img src="{{ asset('images/insight_1.jpg') }}" alt="Justice Statue">
-                        <div class="insight-content">
-                            <h3>Domestic Violence in California - How a Lawyer Can Help</h3>
-                            <p>Understand how California domestic violence laws work, what protections may be available, and how an attorney can guide you through the legal process.</p>
-                            <a href="#" class="btn btn-black">Read more</a>
-                        </div>
-                    </div>
-                    <div class="insight-card">
-                        <img src="{{ asset('images/insight_2.jpg') }}" alt="Gavel">
-                        <div class="insight-content">
-                            <h3>Domestic Violence in California - How a Lawyer Can Help</h3>
-                            <p>Understand how California domestic violence laws work, what protections may be available, and how an attorney can guide you through the legal process.</p>
-                            <a href="#" class="btn btn-black">Read more</a>
-                        </div>
-                    </div>
-                </div>
+                @include('components.insights')
             </div>
         </section>
+
+
 
         @include('components.footer')
         
