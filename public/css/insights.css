@@ -7,15 +7,15 @@
 .insights-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    gap: 1px;
 }
 
 .insight-card {
     position: relative;
-    height: 380px;
+    height: 480px;
     background-size: cover;
     background-position: center;
-    border-radius: 4px;
+    border-radius: 0;
     overflow: hidden;
     display: flex;
     align-items: flex-end;
@@ -101,6 +101,11 @@
     line-height: 22px;
     font-family: 'Inter', sans-serif;
     text-align: justify;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-height: 66px;
 }
 
 .ct-btn-black {
@@ -123,8 +128,27 @@
 }
 
 @media (max-width: 768px) {
-    .ct-insights, .insights-grid {
+    .insights-section {
+        padding: 16px 0;
+    }
+
+    .insights-section .section-title,
+    .section-title {
+        margin-bottom: 16px !important;
+    }
+
+    .ct-insights {
         grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .insights-grid {
+        grid-template-columns: 1fr;
+        gap: 1px;
+    }
+
+    .insight-card {
+        height: 320px;
     }
 
     .ct-insight-card {
