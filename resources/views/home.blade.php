@@ -157,46 +157,21 @@
                     <a href="/blog" class="read-recent desktop-only">Read Recent Posts <span class="arrow-icon"><img src="{{ asset('images/arrow.svg') }}" alt="Arrow" style="width: 32px; height: 32px; vertical-align: middle;"></span></a>
                 </div>
                 <div class="news-grid">
-                    <!-- Post 1 -->
+                    @forelse($homePosts as $post)
                     <div class="news-card">
-                        <img src="{{ asset('images/domestic-violance.jpg') }}" alt="Domestic Violence">
+                        <img src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : asset('images/attorney-hero.jpg') }}" alt="{{ $post->title }}">
                         <div class="news-content">
-                            <h3>Domestic Violence in California &ndash; How a Lawyer Can Help</h3>
-                            <p>Understand how California domestic violence laws work, what protections may be available, and how an attorney can guide you through the legal process.</p>
-                            <a href="#" class="btn-black">Read now</a>
+                            <h3>{{ $post->title }}</h3>
+                            <p>{{ Str::limit(strip_tags($post->content), 130) }}</p>
+                            <a href="{{ route('blog.show',$post) }}" class="btn-black">Read now</a>
                         </div>
                     </div>
-                    <!-- Post 2 -->
-                    <div class="news-card">
-                        <img src="{{ asset('images/lawywer-helps.jpg') }}" alt="Lawyer Helps">
-                        <div class="news-content">
-                            <h3>Domestic Violence in California &ndash; How a Lawyer Can Help</h3>
-                            <p>Understand how California domestic violence laws work, what protections may be available, and how an attorney can guide you through the legal process.</p>
-                            <a href="#" class="btn-black">Read now</a>
-                        </div>
-                    </div>
-                    <!-- Post 3 -->
-                    <div class="news-card">
-                        <img src="{{ asset('images/order.jpg') }}" alt="Order">
-                        <div class="news-content">
-                            <h3>Domestic Violence in California &ndash; How a Lawyer Can Help</h3>
-                            <p>Understand how California domestic violence laws work, what protections may be available, and how an attorney can guide you through the legal process.</p>
-                            <a href="#" class="btn-black">Read now</a>
-                        </div>
-                    </div>
-                    <!-- Post 4 -->
-                    <div class="news-card">
-                        <img src="{{ asset('images/law.jpg') }}" alt="Law">
-                        <div class="news-content">
-                            <h3>Domestic Violence in California &ndash; How a Lawyer Can Help</h3>
-                            <p>Understand how California domestic violence laws work, what protections may be available, and how an attorney can guide you through the legal process.</p>
-                            <a href="#" class="btn-black">Read now</a>
-                        </div>
-                    </div>
+                    @empty
+                    <p>No featured posts yet.</p>
+                    @endforelse
                 </div>
             </div>
         </section>
-
         <section class="contact-section">
             <div class="contact-bg"></div>
             <div class="container contact-container">

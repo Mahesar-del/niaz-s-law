@@ -37,14 +37,16 @@
         <section class="case-studies-list" aria-label="Case studies">
             <div class="container">
                 <div class="case-studies-grid">
-                    @for ($i = 0; $i < 7; $i++)
+                    @forelse ($caseStudies as $caseStudy)
                         <article class="case-study-card">
-                            <img class="case-study-card__image" src="{{ asset('images/case-study-gavel.png') }}" alt="Judge's gavel and scales of justice">
-                            <h2>Strategic Commercial Arrangement Across Multiple Markets</h2>
-                            <p>Advised on structuring and negotiating a cross-border commercial arrangement involving multiple stakeholders and contractual considerations.</p>
-                            <a class="case-study-card__button" href="/detail">View Matter</a>
+                            <img class="case-study-card__image" src="{{ $caseStudy->featured_image ? asset('storage/'.$caseStudy->featured_image) : asset('images/case-study-gavel.png') }}" alt="{{ $caseStudy->title }}">
+                            <h2>{{ $caseStudy->title }}</h2>
+                            <p>{{ Str::limit(strip_tags($caseStudy->content), 180) }}</p>
+                            <a class="case-study-card__button" href="{{ route('blog.show',$caseStudy) }}">View Matter</a>
                         </article>
-                    @endfor
+                    @empty
+                        <p>No published case studies yet.</p>
+                    @endforelse
                 </div>
                 <div class="case-studies-load-wrap"><a class="case-studies-load-more" href="#">Load more</a></div>
             </div>

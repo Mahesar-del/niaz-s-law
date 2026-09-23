@@ -403,7 +403,7 @@
         <div class="container capabilities-grid">
             
             @foreach($adminCapabilities as $capability)
-                <a href="#" class="capability-card">
+                <a href="{{ $capability->slug ? route('capabilities.show', $capability->slug) : '#' }}" class="capability-card">
                     <h3>{{ $capability->title }}</h3>
                     <img src="{{ $capability->image ? asset(strpos($capability->image, '/') !== false ? $capability->image : 'images/' . $capability->image) : asset('images/commercial-imge.png') }}" alt="{{ $capability->title }}" class="capability-img">
                     <p class="capability-desc">{{ $capability->description }}</p>
