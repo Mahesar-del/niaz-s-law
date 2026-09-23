@@ -41,22 +41,22 @@
             <div class="container">
                 <h2 class="section-title">Latest Insights From Niaz Law</h2>
                 <div class="insights-grid">
-                    <div class="insight-card" style="background-image: url('{{ asset('images/insight-june.png') }}');">
+                    <div class="insight-card" style="background-image: url('{{ asset('images/Insights-new.webp') }}');">
                         <div class="insight-content">
                             <h3>Insights &ndash; June 2026</h3>
                         </div>
                     </div>
-                    <div class="insight-card" style="background-image: url('{{ asset('images/inside-court.jpg') }}');">
+                    <div class="insight-card" style="background-image: url('{{ asset('images/Inside-the-Court-new.webp') }}');">
                         <div class="insight-content">
                             <h3>Inside the Courts &ndash; Niaz's Securities<br>Litigation Update</h3>
                         </div>
                     </div>
-                    <div class="insight-card" style="background-image: url('{{ asset('images/niaz-podcast.jpg') }}');">
+                    <div class="insight-card" style="background-image: url('{{ asset('images/Podcasts-new.webp') }}');">
                         <div class="insight-content">
                             <h3>Niaz's Podcasts</h3>
                         </div>
                     </div>
-                    <div class="insight-card" style="background-image: url('{{ asset('images/informed-board.jpg') }}');">
+                    <div class="insight-card" style="background-image: url('{{ asset('images/Inform-Board-new.webp') }}');">
                         <div class="insight-content">
                             <h3>The Informed Board &ndash; September 2026</h3>
                         </div>
@@ -121,8 +121,8 @@
                     </div>
                 </div>
                 <div class="about-images">
-                    <img src="{{ asset('images/our-firm-below.png') }}" alt="Colleagues" class="about-img-below">
-                    <img src="{{ asset('images/our-firm-up.png') }}" alt="Building" class="about-img-up">
+                    <img src="{{ asset('images/Community-new.webp') }}" alt="Community" class="about-img-below">
+                    <img src="{{ asset('images/Legacy-new.webp') }}" alt="Legacy" class="about-img-up">
                 </div>
             </div>
         </section>

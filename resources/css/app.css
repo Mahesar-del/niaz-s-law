@@ -461,9 +461,10 @@ ul {
     width: 516px;
     height: 465px;
     object-fit: cover;
-    z-index: 1;
+    z-index: 2;
     border-radius: 4px;
     margin-top: 15%;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 .about-img-up {
@@ -473,9 +474,8 @@ ul {
     width: 389px;
     height: 358px;
     object-fit: cover;
-    z-index: 2;
+    z-index: 1;
     border-radius: 4px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 @media (max-width: 1024px) {

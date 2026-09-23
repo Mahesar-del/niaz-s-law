@@ -752,8 +752,8 @@
                 </div>
             </div>
             <div class="about-images">
-                <img src="{{ asset('images/our-firm-below.png') }}" alt="Colleagues" class="about-img-below">
-                <img src="{{ asset('images/our-firm-up.png') }}" alt="Building" class="about-img-up">
+                <img src="{{ asset('images/Community-new.webp') }}" alt="Community" class="about-img-below">
+                <img src="{{ asset('images/Legacy-new.webp') }}" alt="Legacy" class="about-img-up">
             </div>
         </div>
     </section>
