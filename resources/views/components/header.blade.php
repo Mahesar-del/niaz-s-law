@@ -45,7 +45,18 @@
             <button class="mobile-menu__close" type="button" aria-label="Close menu">×</button>
         </div>
         <nav class="mobile-menu__links" aria-label="Mobile navigation">
-            <a href="/attorneys">Attorneys</a><a href="/capabilities">Capabilities</a><a href="#">Insights &amp; Resources <svg class="mobile-menu__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a><a href="/about">About</a><a href="/contact-us">Contact</a>
+            <a href="/attorneys">Attorneys</a>
+            <a href="/capabilities">Capabilities</a>
+            <div class="mobile-dropdown-container">
+                <a href="#" class="mobile-dropdown-toggle">Insights &amp; Resources <svg class="mobile-menu__chevron" viewBox="0 0 24 24" aria-hidden="true" style="transition: transform 0.3s;"><path d="m6 9 6 6 6-6"/></svg></a>
+                <div class="mobile-dropdown-menu" style="display: none; flex-direction: column;">
+                    <a href="/insights" style="border-bottom: none; padding-left: 15px; padding-top: 10px; padding-bottom: 5px;">INSIGHTS</a>
+                    <a href="/case-study" style="border-bottom: none; padding-left: 15px; padding-top: 5px; padding-bottom: 5px;">CASE STUDIES</a>
+                    <a href="/blog" style="padding-left: 15px; padding-top: 5px; padding-bottom: 13px;">BLOGS</a>
+                </div>
+            </div>
+            <a href="/about">About</a>
+            <a href="/contact-us">Contact</a>
         </nav>
         <div class="mobile-menu__socials"><a href="#">f</a><a href="#">in</a><a href="#">♥</a><a href="#">◎</a></div>
     </div>
@@ -72,8 +83,28 @@
         });
         menuClose.addEventListener('click', closeMenu);
         menu.addEventListener('click', (event) => {
-            if (event.target === menu || event.target.closest('.mobile-menu__links a')) closeMenu();
+            if (event.target === menu || (event.target.closest('.mobile-menu__links a') && !event.target.closest('.mobile-dropdown-toggle'))) {
+                closeMenu();
+            }
         });
+
+        const mobileDropdownToggle = document.querySelector('.mobile-dropdown-toggle');
+        const mobileDropdownMenu = document.querySelector('.mobile-dropdown-menu');
+        const mobileDropdownChevron = document.querySelector('.mobile-dropdown-toggle .mobile-menu__chevron');
+        
+        if (mobileDropdownToggle && mobileDropdownMenu) {
+            mobileDropdownToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const isExpanded = mobileDropdownMenu.style.display === 'flex' || mobileDropdownMenu.style.display === 'block';
+                if (isExpanded) {
+                    mobileDropdownMenu.style.display = 'none';
+                    if (mobileDropdownChevron) mobileDropdownChevron.style.transform = 'rotate(0deg)';
+                } else {
+                    mobileDropdownMenu.style.display = 'flex';
+                    if (mobileDropdownChevron) mobileDropdownChevron.style.transform = 'rotate(180deg)';
+                }
+            });
+        }
 
         const searchTrigger = document.getElementById('search-trigger');
         const searchWrapper = document.getElementById('header-search-wrapper');
