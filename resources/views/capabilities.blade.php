@@ -10,7 +10,7 @@
         .capabilities-hero {
             position: relative;
             height: 490px;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ asset("images/capability-imge.png") }}') center/cover;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ asset("images/Capabilities-banner-new.webp") }}') center/cover;
             display: flex;
             align-items: center;
             color: #fff;

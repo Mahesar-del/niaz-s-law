@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
         .insights-page { background: #fff; }
-        .insights-hero { min-height: 500px; padding: 76px 0; display: flex; align-items: center; color: #fff; background: linear-gradient(90deg, rgba(0,0,0,.65), rgba(0,0,0,.32)), url('{{ asset('images/commercial-transection-hero.png') }}') center / cover; }
+        .insights-hero { min-height: 490px; padding: 76px 0; display: flex; align-items: center; color: #fff; background: linear-gradient(90deg, rgba(0,0,0,.65), rgba(0,0,0,.32)), url('{{ asset('images/Insights-Page-new.webp') }}') center / cover; }
         .insights-hero__content { display: grid; grid-template-columns: auto 1fr; gap: 70px; align-items: center; width: 100%; }
         .insights-hero h1 { margin: 0; color: #fff; font-size: clamp(42px, 4.45vw, 66px); line-height: 1.1; font-family: var(--font-heading); font-weight: 700; }
         .insights-hero p { max-width: 550px; margin: 0; padding: 20px 0 20px 40px; border-left: 2px solid #fff; color: #f8f8f8; font-size: 17px; line-height: 1.7; }

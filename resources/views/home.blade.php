@@ -41,15 +41,26 @@
             <div class="container">
                 <h2 class="section-title">Latest Insights From Niaz Law</h2>
                 <div class="insights-grid">
-                    @forelse($homeInsights as $insight)
-                    <a class="insight-card" href="{{ route('blog.show', $insight) }}" style="background-image: linear-gradient(0deg, rgba(0,0,0,.78), rgba(0,0,0,.08)), url('{{ $insight->home_image_url ?: asset('images/insight-june.png') }}');" aria-label="Read {{ $insight->title }}">
+                    <div class="insight-card" style="background-image: url('{{ asset('images/insight-june.png') }}');">
                         <div class="insight-content">
                             <h3>{{ $insight->title }}</h3>
                         </div>
-                    </a>
-                    @empty
-                    <p class="insights-empty">No insights have been selected for the home page yet.</p>
-                    @endforelse
+                    </div>
+                    <div class="insight-card" style="background-image: url('{{ asset('images/inside-court.jpg') }}');">
+                        <div class="insight-content">
+                            <h3>Inside the Courts &ndash; Niaz's Securities<br>Litigation Update</h3>
+                        </div>
+                    </div>
+                    <div class="insight-card" style="background-image: url('{{ asset('images/niaz-podcast.jpg') }}');">
+                        <div class="insight-content">
+                            <h3>Niaz's Podcasts</h3>
+                        </div>
+                    </div>
+                    <div class="insight-card" style="background-image: url('{{ asset('images/informed-board.jpg') }}');">
+                        <div class="insight-content">
+                            <h3>The Informed Board &ndash; September 2026</h3>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
