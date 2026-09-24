@@ -4,7 +4,7 @@
     @if(isset($capabilityPosts))
         @forelse($capabilityPosts as $post)
         <div class="ct-insight-card">
-            <img src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : asset('images/domestic-violance.jpg') }}" alt="{{ $post->title }}">
+            @if($post->featured_image_url)<img src="{{ $post->featured_image_url }}" alt="{{ $post->title }}">@endif
             <div class="ct-insight-content">
                 <h3>{{ $post->title }}</h3>
                 <p>{{ Str::limit(strip_tags($post->content), 160) }}</p>

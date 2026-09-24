@@ -159,7 +159,7 @@
                 <div class="news-grid">
                     @forelse($homePosts as $post)
                     <div class="news-card">
-                        <img src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : asset('images/attorney-hero.jpg') }}" alt="{{ $post->title }}">
+                        <img src="{{ $post->featured_image_url }}" alt="{{ $post->title }}">
                         <div class="news-content">
                             <h3>{{ $post->title }}</h3>
                             <p>{{ Str::limit(strip_tags($post->content), 130) }}</p>
