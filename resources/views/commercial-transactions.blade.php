@@ -13,9 +13,19 @@
         }
 
         .ct-container {
-            max-width: 1200px;
+            max-width: var(--container-max, 1440px);
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 60px var(--space-100, 100px);
+        }
+        @media (max-width: 1024px) {
+            .ct-container {
+                padding: 40px var(--space-32, 32px);
+            }
+        }
+        @media (max-width: 768px) {
+            .ct-container {
+                padding: 30px var(--space-16, 16px);
+            }
         }
         /* Overview Images */
         .ct-overview-images {
