@@ -42,7 +42,7 @@
                 <h2 class="section-title">Latest Insights From Niaz Law</h2>
                 <div class="insights-grid">
                     @forelse($homeInsights as $insight)
-                    <a class="insight-card" href="{{ route('blog.show', $insight) }}" style="background-image: linear-gradient(0deg, rgba(0,0,0,.78), rgba(0,0,0,.08)), url('{{ $insight->featured_image_url ?: asset('images/insight-june.png') }}');" aria-label="Read {{ $insight->title }}">
+                    <a class="insight-card" href="{{ route('blog.show', $insight) }}" style="background-image: url('{{ $insight->home_image_url ?: $insight->featured_image_url ?: asset('images/insight-june.png') }}');" aria-label="Read {{ $insight->title }}">
                         <div class="insight-content">
                             <h3>{{ $insight->title }}</h3>
                         </div>

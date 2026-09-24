@@ -37,6 +37,12 @@ class BlogContentSeeder extends Seeder
                 'Real Estate Transactions' => 'commercial-imge.png',
             ],
         ];
+        $homeImages = [
+            'Commercial Operations & Strategic Sourcing' => 'uploads/comerical.png',
+            'Infrastructure & Construction' => 'uploads/infrastructure.png',
+            'Aviation & Transportation' => 'uploads/aviation.png',
+            'Real Estate Transactions' => 'uploads/real-estate.png',
+        ];
 
         foreach ($types as $typeIndex => $type) {
             $typeTopics = $type === 'insight' ? array_slice($topics, 1, 4) : array_slice($topics, $typeIndex, 3);
@@ -53,7 +59,8 @@ class BlogContentSeeder extends Seeder
                     'published_at' => now()->toDateString(),
                     'status' => 'published',
                     'featured_image' => 'images/' . $images[$type][$topic],
-                    'show_on_home' => $type === 'blog' && $topicIndex === 0,
+                    'home_image' => $type === 'insight' ? $homeImages[$topic] : null,
+                    'show_on_home' => $type === 'insight' || ($type === 'blog' && $topicIndex === 0),
                     'content' => $this->content($topic, $typeLabels[$type]),
                     'meta_title' => $title,
                     'meta_description' => 'A detailed legal perspective on ' . strtolower($topic) . ', risk allocation, planning and practical execution.',

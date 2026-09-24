@@ -653,13 +653,17 @@ ul {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
+    background: transparent;
 }
 
 .insight-content {
     position: relative;
     z-index: 2;
     width: 100%;
+    margin: -20px;
+    padding: 42px 20px 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0));
+    box-sizing: border-box;
 }
 
 .insight-content h3 {
@@ -668,6 +672,7 @@ ul {
     font-size: var(--h4-size);
     font-family: var(--font-body);
     font-weight: 400;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.85);
 }
 
 .insight-content::after {

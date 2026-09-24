@@ -25,8 +25,8 @@
                     <svg id="search-trigger" class="search-trigger" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="cursor: pointer;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                     <div class="header-search-dropdown">
                         <div class="search-input-container">
-                            <form onsubmit="event.preventDefault(); return false;" style="display: flex; width: 100%; align-items: center; margin: 0; padding: 0;">
-                                <input type="text" id="header-search-input" placeholder="Search" style="flex-grow: 1;">
+                            <form action="{{ route('search') }}" method="get" style="display: flex; width: 100%; align-items: center; margin: 0; padding: 0;">
+                                <input type="text" id="header-search-input" name="q" placeholder="Search" style="flex-grow: 1;">
                                 <span class="search-counter" id="search-counter" style="display: none; color: #ffffff; font-family: 'Inter', sans-serif; font-size: 14px; margin-right: 10px;">0/0</span>
                             </form>
                         </div>
@@ -162,44 +162,20 @@
             scrollToMatch(currentMatchIndex);
         }
 
-        let searchTimeout;
-        searchInput.addEventListener('input', (e) => {
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(() => {
-                clearHighlights();
-                const query = e.target.value;
-                if (!query.trim()) return;
-
-                const regex = new RegExp(query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
-                highlightText(document.body, regex);
-
-                if (matchElements.length > 0) {
-                    searchCounter.style.display = 'inline-block';
-                    currentMatchIndex = 0;
-                    updateCounterUI();
-                    scrollToMatch(0);
-                } else {
-                    searchCounter.style.display = 'inline-block';
-                    searchCounter.textContent = '0/0';
-                }
-            }, 300);
-        });
-
         searchInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
                 e.preventDefault();
-                nextMatch();
+                searchInput.form.submit();
             }
         });
 
         searchTrigger.addEventListener('click', (e) => {
             if (searchWrapper.classList.contains('is-active')) {
                 if (searchInput.value.trim() !== '') {
-                    nextMatch();
+                    searchInput.form.submit();
                 } else {
                     searchWrapper.classList.remove('is-active');
                     navbarContainer.classList.remove('search-is-active');
-                    clearHighlights();
                     searchInput.value = '';
                 }
             } else {
@@ -214,7 +190,6 @@
             if (!searchWrapper.contains(e.target)) {
                 searchWrapper.classList.remove('is-active');
                 navbarContainer.classList.remove('search-is-active');
-                clearHighlights();
                 searchInput.value = '';
             }
         });
