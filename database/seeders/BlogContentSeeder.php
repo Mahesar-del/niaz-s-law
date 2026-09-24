@@ -19,11 +19,28 @@ class BlogContentSeeder extends Seeder
 
         $types = ['blog', 'case_study', 'insight'];
         $typeLabels = ['blog' => 'Blog', 'case_study' => 'Case Study', 'insight' => 'Insight'];
-        $images = ['commercial-big.jpg', 'contracting-imge.png', 'project-imge.png', 'commercial-small.jpg', 'case-study-gavel.png', 'discus-business-needs.jpg', 'Operational-imge.png', 'inside-court.jpg', 'aboutus-4th-sec-img.png'];
-        $imageIndex = 0;
+        $images = [
+            'blog' => [
+                'Corporate Transactions & Governance' => 'commercial-big.jpg',
+                'Commercial Operations & Strategic Sourcing' => 'contracting-imge.png',
+                'Infrastructure & Construction' => 'project-imge.png',
+            ],
+            'case_study' => [
+                'Commercial Operations & Strategic Sourcing' => 'commercial-small.jpg',
+                'Infrastructure & Construction' => 'case-study-gavel.png',
+                'Aviation & Transportation' => 'discus-business-needs.jpg',
+            ],
+            'insight' => [
+                'Commercial Operations & Strategic Sourcing' => 'commercial-big.jpg',
+                'Infrastructure & Construction' => 'project-imge.png',
+                'Aviation & Transportation' => 'commercial-small.jpg',
+                'Real Estate Transactions' => 'commercial-imge.png',
+            ],
+        ];
 
         foreach ($types as $typeIndex => $type) {
-            foreach (array_slice($topics, $typeIndex, 3) as $topicIndex => $topic) {
+            $typeTopics = $type === 'insight' ? array_slice($topics, 1, 4) : array_slice($topics, $typeIndex, 3);
+            foreach ($typeTopics as $topicIndex => $topic) {
                 $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9]+/', '-', $topic), '-')) . '-' . $type;
                 $title = $topic . ': ' . ($type === 'case_study'
                     ? 'A Practical Matter Study'
@@ -35,7 +52,7 @@ class BlogContentSeeder extends Seeder
                     'category' => $topic,
                     'published_at' => now()->toDateString(),
                     'status' => 'published',
-                    'featured_image' => 'images/' . $images[$imageIndex++ % count($images)],
+                    'featured_image' => 'images/' . $images[$type][$topic],
                     'show_on_home' => $type === 'blog' && $topicIndex === 0,
                     'content' => $this->content($topic, $typeLabels[$type]),
                     'meta_title' => $title,
