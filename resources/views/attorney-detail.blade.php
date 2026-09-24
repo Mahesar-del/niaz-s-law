@@ -119,7 +119,7 @@
         }
         .attorney-content {
             padding-top: 50px;
-            padding-bottom: 76px;
+            padding-bottom: 0;
         }
         .attorney-section { margin: 0 0 30px; }
         .attorney-section h2 { margin-bottom: 21px; }
@@ -154,7 +154,7 @@
             margin: 0;
             font: 700 25px / 1.15 Georgia, serif;
         }
-        .attorney-insights { margin-top: 6px; }
+        .attorney-insights { margin-top: 6px; margin-bottom: 0; }
         .attorney-insights > h2 { margin-bottom: 27px; }
         .attorney-insights__grid {
             display: grid;

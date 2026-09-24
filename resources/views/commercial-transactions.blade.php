@@ -236,6 +236,7 @@
             object-fit: cover;
             object-position: left;
             display: block;
+            border-radius: 0 !important;
         }
         .ct-insight-content {
             padding: 0;

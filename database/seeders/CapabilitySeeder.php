@@ -32,7 +32,7 @@ class CapabilitySeeder extends Seeder
                 'rep' => "Drafted and negotiated master service agreements for a leading global logistics provider.\nAssisted a manufacturing firm in overhauling its strategic sourcing protocols to ensure regulatory compliance.\nAdvised on the implementation of a new enterprise-wide vendor management system.\nNegotiated a multi-year software-as-a-service (SaaS) platform agreement for a Fortune 500 company.\nStructured cross-border distribution agreements for a consumer goods company entering new markets.\nRepresented a healthcare network in outsourcing its IT infrastructure and support services.\nConducted a comprehensive review of commercial contracts for a retail chain to ensure data privacy compliance.\nAdvised a technology hardware company on a strategic contract manufacturing partnership in Asia."
             ],
             [ 
-                'title' => 'Infrastructure & Construction',
+                'title' => 'Infrastructure & Construction Projects',
                 'description' => "Advising businesses on infrastructure and construction matters involving project development, contract strategy, operational coordination, execution risk management, and stakeholder alignment across complex commercial environments.",
                 'image' => 'images/cap_infrastructure.jpg', 
                 'hero' => 'images/about-hero-bg.jpg',
@@ -42,7 +42,7 @@ class CapabilitySeeder extends Seeder
                 'rep' => "Served as lead counsel for a $500M public-private partnership (P3) transportation project.\nRepresented a major developer in negotiating contracts for a mixed-use urban development.\nSuccessfully resolved a multi-party dispute regarding construction delays and cost overruns.\nAdvised a renewable energy company on the financing and development of a new solar power facility.\nGuided a municipality through the regulatory approvals process for a major water treatment plant upgrade.\nNegotiated EPC (Engineering, Procurement, and Construction) contracts for a large industrial facility.\nRepresented a consortium of investors in the acquisition and redevelopment of a toll road project.\nSuccessfully defended a construction firm against environmental compliance claims during site development."
             ],
             [ 
-                'title' => 'Aviation & Transportation',
+                'title' => 'Aviation, Logistics & Transportation',
                 'description' => "Experience advising within international aviation operational environments involving commercial agreements, regulatory considerations, vendor management, and operational coordination.",
                 'image' => 'images/cap_commercial.jpg', 
                 'hero' => 'images/commercial-transection-hero.png',
@@ -52,7 +52,7 @@ class CapabilitySeeder extends Seeder
                 'rep' => "Advised a regional airline on the lease financing of 20 new commercial aircraft.\nRepresented a logistics company in negotiating long-term freight agreements with major retailers.\nAssisted a transportation firm in navigating regulatory hurdles for international expansion.\nRepresented a corporate client in the acquisition and financing of a private business jet.\nDefended a shipping company in a complex maritime cargo loss dispute.\nNegotiated complex rail transportation agreements for a major industrial manufacturer.\nAdvised an aviation maintenance facility on regulatory compliance and certification processes.\nAssisted a freight forwarding company in implementing a new global logistics technology platform."
             ],
             [ 
-                'title' => 'Real Estate Transactions',
+                'title' => 'Real Estate & Property Transactions',
                 'description' => "Providing counsel on residential and commercial real estate matters, including acquisitions, dispositions, leasing, development transactions, contract structuring, and transactional risk management.",
                 'image' => 'images/cap_infrastructure.jpg', 
                 'hero' => 'images/attorney-hero.jpg',

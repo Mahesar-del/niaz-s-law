@@ -11,8 +11,9 @@
         .insights-hero__content { display: grid; grid-template-columns: auto 1fr; gap: 70px; align-items: center; width: 100%; }
         .insights-hero h1 { margin: 0; color: #fff; font-size: clamp(42px, 4.45vw, 66px); line-height: 1.1; font-family: var(--font-heading); font-weight: 700; }
         .insights-hero p { max-width: 550px; margin: 0; padding: 20px 0 20px 40px; border-left: 2px solid #fff; color: #f8f8f8; font-size: 17px; line-height: 1.7; }
-        .insights-content { padding: 32px 0 50px; }
+        .insights-content { padding: 32px 0 0; }
         .insight-feature { display: grid; grid-template-columns: 1.16fr 1fr; align-items: center; max-width: 1250px; margin: 0 auto 32px; }
+        .insight-feature:last-of-type { margin-bottom: 0; }
         .insight-feature--reverse { grid-template-columns: 1fr 1.16fr; }
         .insight-feature__visual { height: 465px; overflow: hidden; clip-path: polygon(0 0, 100% 0, 73% 100%, 0 100%); }
         .insight-feature--reverse .insight-feature__visual { grid-column: 2; clip-path: polygon(27% 0, 100% 0, 100% 100%, 0 100%); }

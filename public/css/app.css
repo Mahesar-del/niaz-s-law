@@ -521,6 +521,7 @@ ul {
 .hero-content {
     max-width: 800px;
     margin-top: 20vh;
+    margin-left: 3px;
 }
 
 .hero h1 {
@@ -662,7 +663,6 @@ ul {
     width: 100%;
     margin: -20px;
     padding: 42px 20px 20px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0));
     box-sizing: border-box;
 }
 
@@ -675,14 +675,7 @@ ul {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.85);
 }
 
-.insight-content::after {
-    content: '';
-    display: block;
-    width: 40px;
-    height: 2px;
-    background-color: #fff;
-    margin-top: var(--space-16);
-}
+
 
 @media (max-width: 768px) {
     .insights-grid {
@@ -692,7 +685,7 @@ ul {
 
 /* Practice Areas / Services */
 .services-section {
-    padding: 64px 0 48px;
+    padding: 64px 0 10px;
 }
 
 .services-container {

@@ -12,9 +12,9 @@ class BlogContentSeeder extends Seeder
         $topics = [
             'Corporate Transactions & Governance',
             'Commercial Operations & Strategic Sourcing',
-            'Infrastructure & Construction',
-            'Aviation & Transportation',
-            'Real Estate Transactions',
+            'Infrastructure & Construction Projects',
+            'Aviation, Logistics & Transportation',
+            'Real Estate & Property Transactions',
         ];
 
         $types = ['blog', 'case_study', 'insight'];
@@ -23,25 +23,25 @@ class BlogContentSeeder extends Seeder
             'blog' => [
                 'Corporate Transactions & Governance' => 'commercial-big.jpg',
                 'Commercial Operations & Strategic Sourcing' => 'contracting-imge.png',
-                'Infrastructure & Construction' => 'project-imge.png',
+                'Infrastructure & Construction Projects' => 'project-imge.png',
             ],
             'case_study' => [
                 'Commercial Operations & Strategic Sourcing' => 'commercial-small.jpg',
-                'Infrastructure & Construction' => 'case-study-gavel.png',
-                'Aviation & Transportation' => 'discus-business-needs.jpg',
+                'Infrastructure & Construction Projects' => 'case-study-gavel.png',
+                'Aviation, Logistics & Transportation' => 'discus-business-needs.jpg',
             ],
             'insight' => [
                 'Commercial Operations & Strategic Sourcing' => 'commercial-big.jpg',
-                'Infrastructure & Construction' => 'project-imge.png',
-                'Aviation & Transportation' => 'commercial-small.jpg',
-                'Real Estate Transactions' => 'commercial-imge.png',
+                'Infrastructure & Construction Projects' => 'project-imge.png',
+                'Aviation, Logistics & Transportation' => 'commercial-small.jpg',
+                'Real Estate & Property Transactions' => 'commercial-imge.png',
             ],
         ];
         $homeImages = [
             'Commercial Operations & Strategic Sourcing' => 'uploads/comerical.png',
-            'Infrastructure & Construction' => 'uploads/infrastructure.png',
-            'Aviation & Transportation' => 'uploads/aviation.png',
-            'Real Estate Transactions' => 'uploads/real-estate.png',
+            'Infrastructure & Construction Projects' => 'uploads/infrastructure.png',
+            'Aviation, Logistics & Transportation' => 'uploads/aviation.png',
+            'Real Estate & Property Transactions' => 'uploads/real-estate.png',
         ];
 
         foreach ($types as $typeIndex => $type) {
@@ -58,8 +58,8 @@ class BlogContentSeeder extends Seeder
                     'category' => $topic,
                     'published_at' => now()->toDateString(),
                     'status' => 'published',
-                    'featured_image' => 'images/' . $images[$type][$topic],
-                    'home_image' => $type === 'insight' ? $homeImages[$topic] : null,
+                    'featured_image' => 'images/' . ($images[$type][$topic] ?? 'commercial-big.jpg'),
+                    'home_image' => $type === 'insight' ? ($homeImages[$topic] ?? null) : null,
                     'show_on_home' => $type === 'insight' || ($type === 'blog' && $topicIndex === 0),
                     'content' => $this->content($topic, $typeLabels[$type]),
                     'meta_title' => $title,
