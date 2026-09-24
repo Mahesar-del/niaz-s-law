@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
         .blog-page { background: #fff; }
-        .blog-hero { min-height: 490px; padding: 142px 0 70px; display: flex; align-items: center; color: #fff; background: linear-gradient(90deg, rgba(0,0,0,.63), rgba(0,0,0,.34)), url('{{ asset('images/commercial-transection-hero.png') }}') center / cover; }
+        .blog-hero { min-height: 490px; padding: 142px 0 70px; display: flex; align-items: center; color: #fff; background: linear-gradient(90deg, rgba(0,0,0,.63), rgba(0,0,0,.34)), url('{{ asset('images/Blog-Page-new.webp') }}') center / cover; }
         .blog-hero__content { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 72px; width: 100%; }
         .blog-hero h1 { margin: 0; color: #fff; font-size: clamp(42px, 4.5vw, 67px); line-height: 1.12; font-family: var(--font-heading); font-weight: 700; }
         .blog-hero p { max-width: 550px; margin: 0; padding: 20px 0 20px 40px; border-left: 2px solid #fff; color: #f7f7f7; font-size: 17px; line-height: 1.7; }

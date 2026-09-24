@@ -18,7 +18,7 @@
         }
 
         .about-hero-bg {
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%), url('{{ asset("images/aboutus-hero-section-img.png") }}') center/cover no-repeat;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%), url('{{ asset("images/About-Us-new.webp") }}') center/cover no-repeat;
         }
 
         .about-hero-container {
@@ -457,7 +457,7 @@
                 align-items: flex-end;
             }
             .about-hero-bg {
-                background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('{{ asset("images/aboutus-hero-section-img.png") }}');
+                background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('{{ asset("images/About-Us-new.webp") }}');
                 background-position: center, 63% center;
                 background-size: auto, cover;
                 background-repeat: no-repeat, no-repeat;

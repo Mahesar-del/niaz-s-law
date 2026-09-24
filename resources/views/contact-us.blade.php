@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
         .contact-page { background: #fff; }
-        .contact-hero { min-height: 490px; padding: 142px 0 70px; display: flex; align-items: center; color: #fff; background: linear-gradient(90deg, rgba(0,0,0,.64), rgba(0,0,0,.34)), url('{{ asset('images/commercial-transection-hero.png') }}') center / cover; }
+        .contact-hero { min-height: 490px; padding: 142px 0 70px; display: flex; align-items: center; color: #fff; background: linear-gradient(90deg, rgba(0,0,0,.64), rgba(0,0,0,.34)), url('{{ asset('images/Contact-Us-new.webp') }}') center / cover; }
         .contact-hero__content { display: grid; grid-template-columns: auto auto 1fr; gap: 48px; align-items: center; width: 100%; }
         .contact-hero h1 { margin: 0; color: #fff; font-size: 56px; font-family: var(--font-heading); font-weight: 700; white-space: nowrap; line-height: 1.1; }
         .contact-hero-divider { width: 1px; height: 120px; background-color: rgba(255, 255, 255, 0.6); align-self: center; }

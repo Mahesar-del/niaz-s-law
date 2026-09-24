@@ -14,7 +14,7 @@
             padding: 126px 0 0;
             box-sizing: border-box;
             color: #fff;
-            background: linear-gradient(rgba(23, 29, 32, .52), rgba(23, 29, 32, .52)), url('{{ asset('images/capability-imge.png') }}') center / cover;
+            background: linear-gradient(rgba(23, 29, 32, .52), rgba(23, 29, 32, .52)), url('{{ asset('images/Attorney-Page-new.webp') }}') center / cover;
         }
         .attorney-hero__container {
             position: relative;

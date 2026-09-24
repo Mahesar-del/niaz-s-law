@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
         .case-studies-page { background: #fff; }
-        .case-studies-hero { min-height: 460px; padding: 130px 0 66px; color: #fff; background: linear-gradient(90deg, rgba(0, 0, 0, .62), rgba(0, 0, 0, .38)), url('{{ asset('images/commercial-transection-hero.png') }}') center / cover; display: flex; align-items: flex-end; }
+        .case-studies-hero { min-height: 490px; padding: 130px 0 66px; color: #fff; background: linear-gradient(90deg, rgba(0, 0, 0, .62), rgba(0, 0, 0, .38)), url('{{ asset('images/Case-Study-new.webp') }}') center / cover; display: flex; align-items: flex-end; }
         .case-studies-hero__content { display: grid; grid-template-columns: minmax(300px, .85fr) 1.15fr; gap: 78px; align-items: center; }
         .case-studies-hero h1 { margin: 0; color: #fff; font-size: clamp(40px, 4.6vw, 68px); }
         .case-studies-hero p { max-width: 510px; margin: 0; padding-left: 40px; border-left: 1px solid rgba(255,255,255,.9); color: #f7f7f7; font-size: 17px; line-height: 1.7; }
