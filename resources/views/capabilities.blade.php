@@ -127,13 +127,14 @@
 
         /* Capabilities Grid */
         .capabilities-grid-container {
-            padding: 30px 0 40px 0;
+            padding: 30px 0 10px 0;
             background: #fff;
         }
         .capabilities-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
+            column-gap: 32px;
+            row-gap: 16px;
         }
 
         /* Capability Card */

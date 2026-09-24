@@ -6,25 +6,9 @@
         <title>Niaz Law P.C.</title>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <style>
-            /* Insights Section Animations */
-            .insights-section .section-title {
-                opacity: 0;
-                transform: translateX(-40px);
-                transition: opacity 0.7s ease, transform 0.7s ease;
-            }
-            .insights-section .section-title.anim-in {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            /* Insights Section Styles */
             .insight-card {
-                opacity: 0;
-                transform: translateY(40px);
-                transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
                 overflow: hidden;
-            }
-            .insight-card.anim-in {
-                opacity: 1;
-                transform: translateY(0);
             }
             /* Ken-burns zoom on background */
             .insight-card::before {
@@ -41,28 +25,54 @@
             .insight-card:hover::before {
                 transform: scale(1.07);
             }
+            /* Gradient overlay */
+            .insight-card::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.10) 100%);
+                z-index: 1;
+                transition: background 0.7s ease;
+            }
+            .insight-card:hover::after {
+                background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.60) 60%, rgba(0,0,0,0.20) 100%);
+            }
             /* Slide-up text on hover */
             .insight-card .insight-content {
-                transition: transform 0.4s ease;
-                transform: translateY(8px);
+                transition: transform 0.7s ease;
+                transform: translateY(0px);
                 position: relative;
-                z-index: 1;
+                z-index: 2;
             }
             .insight-card:hover .insight-content {
-                transform: translateY(0);
+                transform: translateY(-6px);
             }
-            /* Underline accent on hover */
+            /* Description - hidden by default, show on hover */
+            .insight-card .insight-desc {
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+                font-size: 13.5px;
+                color: rgba(255,255,255,0.85);
+                line-height: 1.55;
+                margin-top: 0;
+                transition: max-height 0.7s ease, opacity 0.7s ease, margin-top 0.7s ease;
+                font-family: var(--font-body);
+            }
+            .insight-card:hover .insight-desc {
+                max-height: 150px;
+                opacity: 1;
+                margin-top: 10px;
+            }
+            /* Static underline accent */
             .insight-card .insight-content h3::after {
                 content: '';
                 display: block;
-                width: 0;
+                position: static;
+                width: 48px;
                 height: 2px;
                 background: #fff;
-                margin-top: 8px;
-                transition: width 0.4s ease;
-            }
-            .insight-card:hover .insight-content h3::after {
-                width: 48px;
+                margin-top: 12px;
             }
         </style>
     </head>
@@ -105,27 +115,32 @@
                     <a class="insight-card" href="{{ route('blog.show', $insight) }}" style="background-image: url('{{ $insight->home_image_url ?: $insight->featured_image_url ?: asset('images/insight-june.png') }}');" aria-label="Read {{ $insight->title }}">
                         <div class="insight-content">
                             <h3>{{ $insight->title }}</h3>
+                            <p class="insight-desc">{{ Str::limit(strip_tags($insight->content), 200) }}</p>
                         </div>
                     </a>
                     @empty
                     <a class="insight-card" href="{{ url('/blog') }}" style="background-image: url('{{ asset('images/insight-june.png') }}');">
                         <div class="insight-content">
                             <h3>Niaz's Insights &ndash; June 2026</h3>
+                            <p class="insight-desc">A roundup of legal developments, firm updates, and key insights from our attorneys across practice areas.</p>
                         </div>
                     </a>
                     <a class="insight-card" href="{{ url('/blog') }}" style="background-image: url('{{ asset('images/inside-court.jpg') }}');">
                         <div class="insight-content">
                             <h3>Inside the Courts &ndash; Niaz's Securities<br>Litigation Update</h3>
+                            <p class="insight-desc">Our latest analysis of securities litigation trends, enforcement actions, and court decisions affecting capital markets.</p>
                         </div>
                     </a>
                     <a class="insight-card" href="{{ url('/blog') }}" style="background-image: url('{{ asset('images/niaz-podcast.jpg') }}');">
                         <div class="insight-content">
                             <h3>Niaz's Podcasts</h3>
+                            <p class="insight-desc">Listen to our attorneys discuss pressing legal issues, industry trends, and practical guidance for business leaders.</p>
                         </div>
                     </a>
                     <a class="insight-card" href="{{ url('/blog') }}" style="background-image: url('{{ asset('images/informed-board.jpg') }}');">
                         <div class="insight-content">
                             <h3>The Informed Board &ndash; September 2026</h3>
+                            <p class="insight-desc">Essential governance insights for board members navigating regulatory changes, fiduciary duties, and strategic decisions.</p>
                         </div>
                     </a>
                     @endforelse
@@ -281,27 +296,7 @@
                 setInterval(() => show(activeIndex + 1), 6500);
             })();
 
-            // Insights Section Scroll Animation
-            (() => {
-                const title = document.querySelector('.insights-title');
-                const cards = document.querySelectorAll('.insights-grid .insight-card');
 
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('anim-in');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.15 });
-
-                if (title) observer.observe(title);
-
-                cards.forEach((card, i) => {
-                    card.style.transitionDelay = (i * 0.12) + 's';
-                    observer.observe(card);
-                });
-            })();
         </script>
     </body>
 </html>
