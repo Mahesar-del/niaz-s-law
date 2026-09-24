@@ -8,9 +8,15 @@ use Illuminate\Support\Carbon;
 
 class CapabilitiesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('capabilities', ['adminCapabilities' => Capability::latest()->get()]);
+        $query = Capability::query();
+        if ($request->filled('search')) {
+            $searchTerm = $request->input('search');
+            $query->where('title', 'like', "%{$searchTerm}%")
+                  ->orWhere('description', 'like', "%{$searchTerm}%");
+        }
+        return view('capabilities', ['adminCapabilities' => $query->latest()->get()]);
     }
 
     public function show(Capability $capability)
