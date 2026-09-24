@@ -64,7 +64,7 @@
 
         /* Overview Section */
         .about-overview-section {
-            padding: var(--space-64) 0;
+            padding: 24px 0;
             background-color: #ffffff;
         }
 
@@ -247,7 +247,7 @@
 
         /* Practice Areas / Capabilities Grid Section */
         .about-capabilities-section {
-            padding: 80px 0;
+            padding: 30px 0;
             background-color: #F8F5EF;
         }
 
@@ -264,77 +264,83 @@
         .about-capabilities-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 28px;
-            align-items: stretch;
+            gap: 24px;
         }
 
         .about-cap-card {
+            padding: 15px;
+            border-radius: 10px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            position: relative;
+            /* transition: transform 0.3s, box-shadow 0.3s; */
             text-decoration: none;
             color: inherit;
-            height: 100%;
+            height: auto;
+            min-height: 364px;
             width: 100%;
-            max-width: 292px;
-            margin: 0 auto;
         }
+/* 
+        .about-cap-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        } */
 
         .about-cap-card h3 {
-            font-family: var(--font-heading);
+            font-family: 'Libre Baskerville', serif;
             font-size: 20px;
             font-weight: 700;
+            line-height: 26px;
             color: #000000;
-            line-height: 1.25;
-            margin: 0 0 0px 0;
-            min-height: 50px;
+            margin-bottom: var(--space-16);
+            min-height: 55px;
         }
 
-        .about-cap-card img {
+        .about-cap-img {
             width: 100%;
-            height: 175px;
+            height: 163px;
             object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 16px;
+            border-radius: 10px;
+            margin-bottom: var(--space-16);
         }
 
-        .about-cap-bottom {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 12px;
-            flex-grow: 1;
-        }
-
-        .about-cap-bottom p {
-            font-family: var(--font-body);
-            font-size: 14px;
-            line-height: 1.5;
-            color: #000;
-            margin: 0;
-            flex: 1;
+        .about-cap-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            color: #000000;
+            margin-bottom: var(--space-16);
+            margin-left: 4px;
+            padding: 0 54px 0 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            max-height: 72px;
         }
 
         .about-cap-arrow {
-            width: 38px;
-            height: 38px;
-            border: 1.5px solid #111111;
+            position: absolute;
+            right: 15px;
+            bottom: 39px;
+            width: 46.67px;
+            height: 46.67px;
+            flex-shrink: 0;
             border-radius: 50%;
+            border: 1.5px solid #000000;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
-            font-weight: 700;
-            -webkit-text-stroke: 0.5px #111111;
-            color: #111111;
-            flex-shrink: 0;
-            align-self: flex-end;
-            transition: background-color 0.3s, color 0.3s;
+            color: #000;
+            text-decoration: none;
+            transition: all 0.3s;
         }
 
         .about-cap-arrow:hover {
-            background-color: #111111;
-            color: #ffffff;
+            background: #000;
+            color: #fff;
+            border-color: #000;
         }
 
         /* Results Highlight Section */
@@ -467,6 +473,9 @@
             }
             .show-on-mobile-inline {
                 display: inline;
+            }
+            .about-overview-section {
+                padding: 20px 0;
             }
             .about-capabilities-section {
                 padding: 40px 0;
@@ -764,14 +773,15 @@
             <h2 class="about-capabilities-heading">Focused Where Business<br>And Law Intersect</h2>
             <div class="about-capabilities-grid">
                 @foreach($aboutCapabilities as $capability)
-                <a href="{{ route('capabilities.show',$capability) }}" class="about-cap-card">
-                    <div>
-                        <h3>{{ $capability->title }}</h3>
-                        <img src="{{ $capability->image ? asset(strpos($capability->image,'/') !== false ? $capability->image : 'images/'.$capability->image) : asset('images/commercial-imge.png') }}" alt="{{ $capability->title }}">
-                    </div>
-                    <div class="about-cap-bottom">
-                        <p>{{ $capability->description }}</p>
-                        <div class="about-cap-arrow">↗</div>
+                <a href="{{ $capability->slug ? route('capabilities.show', $capability->slug) : '#' }}" class="about-cap-card">
+                    <h3>{{ $capability->title }}</h3>
+                    <img src="{{ $capability->image ? asset(strpos($capability->image,'/') !== false ? $capability->image : 'images/'.$capability->image) : asset('images/commercial-imge.png') }}" alt="{{ $capability->title }}" class="about-cap-img">
+                    <p class="about-cap-desc">{{ $capability->description }}</p>
+                    <div class="about-cap-arrow">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5.5" y1="18.5" x2="18.5" y2="5.5"></line>
+                            <polyline points="8.5 5.5 18.5 5.5 18.5 15.5"></polyline>
+                        </svg>
                     </div>
                 </a>
                 @endforeach
