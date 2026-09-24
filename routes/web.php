@@ -29,13 +29,14 @@ use App\Http\Controllers\Admin\ContactSettingController;
 use App\Http\Controllers\Admin\AttorneyController;
 use App\Http\Controllers\Admin\CapabilityController;
 use App\Http\Controllers\Admin\BlogController as AdminBlogController;
+use App\Http\Controllers\Admin\FooterSettingController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/attorneys', [AttorneysController::class, 'index']);
 Route::get('/attorneys/{attorney:slug}', [AttorneyDetailController::class, 'show'])->name('attorneys.detail');
 Route::get('/capabilities', [CapabilitiesController::class, 'index'])->name('capabilities');
-Route::get('/capabilities/{capability:slug}', [CapabilitiesController::class, 'show'])->name('capabilities.show');
+Route::get('/capabilities/{capability}', [CapabilitiesController::class, 'show'])->name('capabilities.show');
 Route::view('/commercial-transactions', 'commercial-transactions');
 Route::get('/about', [AboutController::class, 'index']);
 Route::get('/about-us', [AboutController::class, 'index']);
@@ -59,6 +60,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::delete('/home-page-settings/hero-slides/{heroSlide}', [HomePageSettingController::class, 'destroySlide'])->name('home-settings.slides.destroy');
         Route::get('/contact-settings', [ContactSettingController::class, 'edit'])->name('contact-settings.edit');
         Route::put('/contact-settings', [ContactSettingController::class, 'update'])->name('contact-settings.update');
+        Route::get('/footer-settings', [FooterSettingController::class, 'edit'])->name('footer-settings.edit');
+        Route::put('/footer-settings', [FooterSettingController::class, 'update'])->name('footer-settings.update');
         Route::get('/attorneys/create', [AttorneyController::class, 'create'])->name('attorneys.create');
         Route::get('/attorney-page', [AttorneyController::class, 'details'])->name('attorneys.details');
         Route::post('/attorneys', [AttorneyController::class, 'store'])->name('attorneys.store');

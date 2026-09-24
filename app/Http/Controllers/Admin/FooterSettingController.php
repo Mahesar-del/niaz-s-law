@@ -1,0 +1,4 @@
+<?php
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller; use App\Models\FooterSetting; use App\Models\Capability; use Illuminate\Http\Request;
+class FooterSettingController extends Controller { public function edit(){return view('admin.footer-settings',['settings'=>FooterSetting::firstOrCreate(['id'=>1]),'capabilities'=>Capability::orderBy('title')->get()]);} public function update(Request $r){$pages=['attorneys','about','contact-us'];$links=['blog','case-study','insights'];FooterSetting::updateOrCreate(['id'=>1],['capability_ids'=>$r->input('capability_ids',[]),'page_links'=>array_values(array_intersect($pages,$r->input('page_links',[]))),'footer_links'=>array_values(array_intersect($links,$r->input('footer_links',[])))]);return back()->with('success','Footer settings updated.');} }

@@ -765,7 +765,7 @@
             <h2 class="about-capabilities-heading">Focused Where Business<br>And Law Intersect</h2>
             <div class="about-capabilities-grid">
                 @foreach($aboutCapabilities as $capability)
-                <a href="{{ route('capabilities.show',$capability) }}" class="about-cap-card">
+                <a href="{{ route('capabilities.show', ['capability' => $capability->slug ?: $capability->id]) }}" class="about-cap-card">
                     <div>
                         <h3>{{ $capability->title }}</h3>
                         <img src="{{ $capability->image ? asset(strpos($capability->image,'/') !== false ? $capability->image : 'images/'.$capability->image) : asset('images/commercial-imge.png') }}" alt="{{ $capability->title }}">
@@ -818,45 +818,20 @@
         <div class="container">
             <h2>The People Behind the Practice</h2>
             <div class="about-people-grid">
-                <!-- Card 1 -->
-                <div class="about-people-card">
-                    <img src="{{ asset('images/aboutus-last-img.jpg') }}" alt="Faisal Syed Niaz">
+                @foreach($aboutAttorneys as $attorney)
+                <a class="about-people-card" href="{{ route('attorneys.detail', $attorney) }}">
+                    <img src="{{ $attorney->photo ? asset(strpos($attorney->photo, '/') !== false ? $attorney->photo : 'images/'.$attorney->photo) : asset('images/aboutus-last-img.jpg') }}" alt="{{ $attorney->name }}">
                     <div class="about-people-info">
-                        <h3>Faisal Syed Niaz</h3>
-                        <p class="role">Partner</p>
+                        <h3>{{ $attorney->name }}</h3>
+                        <p class="role">{{ $attorney->title ?: ($attorney->practice ?: 'Attorney') }}</p>
                         <div class="about-people-details">
-                            <p class="location">Illinois</p>
-                            <p class="email">example.niaz@lw.com</p>
-                            <p class="phone">+1.000.000.000</p>
+                            <p class="location">{{ $attorney->location ?: 'Illinois' }}</p>
+                            @if($attorney->email)<p class="email">{{ $attorney->email }}</p>@endif
+                            @if($attorney->phone)<p class="phone">{{ $attorney->phone }}</p>@endif
                         </div>
                     </div>
-                </div>
-                <!-- Card 2 -->
-                <div class="about-people-card">
-                    <img src="{{ asset('images/aboutus-last-img.jpg') }}" alt="Faisal Syed Niaz">
-                    <div class="about-people-info">
-                        <h3>Faisal Syed Niaz</h3>
-                        <p class="role">Partner</p>
-                        <div class="about-people-details">
-                            <p class="location">Illinois</p>
-                            <p class="email">example.niaz@lw.com</p>
-                            <p class="phone">+1.000.000.000</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 3 -->
-                <div class="about-people-card">
-                    <img src="{{ asset('images/aboutus-last-img.jpg') }}" alt="Faisal Syed Niaz">
-                    <div class="about-people-info">
-                        <h3>Faisal Syed Niaz</h3>
-                        <p class="role">Partner</p>
-                        <div class="about-people-details">
-                            <p class="location">Illinois</p>
-                            <p class="email">example.niaz@lw.com</p>
-                            <p class="phone">+1.000.000.000</p>
-                        </div>
-                    </div>
-                </div>
+                </a>
+                @endforeach
             </div>
         </div>
     </section>

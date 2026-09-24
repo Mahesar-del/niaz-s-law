@@ -1,4 +1,4 @@
-@php($footerContact = \App\Models\ContactSetting::first())
+@php($footerContact = \App\Models\ContactSetting::first()) @php($footerSettings = \App\Models\FooterSetting::first()) @php($footerCapabilities = \App\Models\Capability::whereIn('id', $footerSettings->capability_ids ?? [])->get())
 <footer class="site-footer">
     <div class="container">
         <div class="footer-logo">
@@ -17,25 +17,15 @@
                     <a href="#"><svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M12 0C8.74 0 8.33.01 7.05.07c-1.27.06-2.14.26-2.9.56a5.88 5.88 0 0 0-2.12 1.38 5.88 5.88 0 0 0-1.38 2.12c-.3.76-.5 1.63-.56 2.9C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.14.56 2.9a5.88 5.88 0 0 0 1.38 2.12 5.88 5.88 0 0 0 2.12 1.38c.76.3 1.63.5 2.9.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.14-.26 2.9-.56a5.88 5.88 0 0 0 2.12-1.38 5.88 5.88 0 0 0 1.38-2.12c.3-.76.5-1.63.56-2.9.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.14-.56-2.9a5.88 5.88 0 0 0-1.38-2.12 5.88 5.88 0 0 0-2.12-1.38c-.76-.3-1.63-.5-2.9-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 1 0 12.32 6.16 6.16 0 0 1 0-12.32zm6.4 2.88a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg></a>
                 </div>
             </div>
-            <!-- Services -->
-            <div class="footer-col">
-                <h4>Services</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Business Law</a></li>
-                    <li><a href="#">Education Law</a></li>
-                    <li><a href="#">Legal Consultan</a></li>
-                    <li><a href="#">General Lawyer</a></li>
-                </ul>
-            </div>
-            <!-- Page -->
+            <!-- Services --><div class="footer-col"><h4>Services</h4><ul class="footer-links">@foreach($footerCapabilities as $capability)<li><a href="{{ route('capabilities.show', ['capability' => $capability->slug ?: $capability->id]) }}">{{ $capability->title }}</a></li>@endforeach</ul></div><!-- Page -->
             <div class="footer-col">
                 <h4>Page</h4>
                 <ul class="footer-links">
                     <li><a href="/attorneys">Lawyer</a></li>
                     <li><a href="/contact-us">Appointment</a></li>
-                    <li><a href="#">Documentation</a></li>
+                    <li><a href="/about">About Us</a></li>
                     <li><a href="/case-study">Cases</a></li>
-                    <li><a href="/blog">News</a></li>
+                    <li><a href="/blog">Blog</a></li>
                 </ul>
             </div>
             <!-- Links -->
