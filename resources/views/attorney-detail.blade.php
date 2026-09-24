@@ -11,10 +11,14 @@
             position: relative;
             display: block;
             height: 395px;
-            padding: 126px 5.55vw 0;
+            padding: 126px 0 0;
             box-sizing: border-box;
             color: #fff;
-            background: linear-gradient(rgba(23, 29, 32, .52), rgba(23, 29, 32, .52)), url('{{ asset('images/capability-imge.png') }}') center / cover;
+            background: linear-gradient(rgba(23, 29, 32, .52), rgba(23, 29, 32, .52)), url('{{ asset('images/Attorney-Page-new.webp') }}') center / cover;
+        }
+        .attorney-hero__container {
+            position: relative;
+            height: 100%;
         }
         .attorney-title {
             display: flex;
@@ -27,17 +31,23 @@
             color: #fff;
             font: 700 clamp(42px, 4vw, 58px) / 1.1 Georgia, serif;
         }
-        .attorney-title::after {
-            content: '';
+        .attorney-title .attorney-title-line {
             flex: 1;
             height: 1px;
             background: rgba(255, 255, 255, .66);
         }
+        .attorney-title .share-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+        }
         .attorney-profile {
             position: absolute;
             z-index: 2;
-            top: 230px;
-            left: 5.55vw;
+            top: 104px;
+            left: var(--space-100, 100px);
             display: flex;
             align-items: flex-start;
             gap: 25px;
@@ -79,12 +89,11 @@
         .attorney-overview {
             min-height: 201px;
             box-sizing: border-box;
-            padding: 38px 9% 28px calc(5.55vw + 286px);
+            padding: 38px 0 28px;
             background: #f8f5ef;
         }
-        .attorney-overview__inner,
-        .attorney-content {
-            max-width: 1160px;
+        .attorney-overview__inner {
+            padding-left: 267px;
         }
         .attorney-overview h2,
         .attorney-section h2 {
@@ -99,7 +108,7 @@
             width: 41px;
             height: 2px;
             margin-top: 11px;
-            background: #111;
+            background: #000;
         }
         .attorney-overview p {
             max-width: 1060px;
@@ -109,10 +118,10 @@
             letter-spacing: .01em;
         }
         .attorney-content {
-            margin: 0 auto;
-            padding: 50px 5.55vw 76px;
+            padding-top: 50px;
+            padding-bottom: 76px;
         }
-        .attorney-section { margin: 0 0 57px; }
+        .attorney-section { margin: 0 0 30px; }
         .attorney-section h2 { margin-bottom: 21px; }
         .attorney-section p,
         .attorney-section li {
@@ -123,7 +132,7 @@
         .attorney-section p { margin: 0; }
         .attorney-section ul {
             margin: 18px 0 0 17px;
-            padding-left: 17px;
+            padding-left: 0px;
             list-style: disc;
         }
         .attorney-section li {
@@ -131,21 +140,7 @@
             margin: 11px 0;
             padding-left: 2px;
         }
-        .attorney-credentials > h2 {
-            display: flex;
-            align-items: center;
-            gap: 26px;
-            margin-bottom: 30px;
-        }
-        .attorney-credentials > h2::before { display: none; }
-        .attorney-credentials > h2::after {
-            flex: 1;
-            width: auto;
-            height: 1px;
-            margin: 0;
-            background: #c8c8c8;
-            order: 2;
-        }
+
         .attorney-columns {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -180,7 +175,7 @@
             margin: 10px 0 14px;
             padding-bottom: 13px;
             border-bottom: 1px solid #aaa;
-            font: 700 22px / 1.06 Georgia, serif;
+            font: 700 20px / 1.06 Georgia, serif;
         }
         .attorney-insight-card p { font-size: 13px; line-height: 1.5; }
         .attorney-insight-card a {
@@ -195,26 +190,37 @@
             color: #fff;
             font-size: 13px;
         }
-        @media (max-width: 900px) {
+        @media (max-width: 1024px) {
             .attorney-hero { height: 365px; padding-top: 120px; }
-            .attorney-profile { top: 215px; }
+            .attorney-profile { top: 95px; left: var(--space-32, 32px); }
             .attorney-profile img { width: 190px; height: 205px; }
-            .attorney-overview { padding-left: calc(5.55vw + 230px); }
+            .attorney-overview__inner { padding-left: 215px; }
             .attorney-insights__grid { grid-template-columns: 1fr; }
         }
+        @media (max-width: 768px) {
+            .attorney-profile { left: 25px; }
+        }
         @media (max-width: 650px) {
-            .attorney-hero { height: 300px; padding: 112px 24px 0; }
-            .attorney-title::after { display: none; }
-            .attorney-profile { position: relative; top: auto; left: auto; margin: 36px 24px -100px; gap: 18px; }
-            .attorney-profile img { width: 130px; height: 160px; }
-            .attorney-profile__meta { padding-top: 4px; min-width: 0; color: #111; }
-            .attorney-profile__meta h3, .attorney-profile__meta p { color: #111; }
-            .attorney-profile__meta p::before { color: #111; }
-            .attorney-overview { min-height: auto; padding: 130px 24px 32px; }
-            .attorney-content { padding: 44px 24px 60px; }
+            .attorney-hero { height: 500px; padding: 169px 24px 0; display: flex; flex-direction: column; align-items: center; }
+            .attorney-title { width: 100%; justify-content: center; }
+            .attorney-title h1 { font-size: 28px; line-height: 33px; text-align: center; }
+            .attorney-title .attorney-title-line, .attorney-title .share-icon { display: none; }
+            .attorney-profile { position: relative; top: auto; left: auto; margin: 20px 0 -100px; gap: 24px; flex-direction: column-reverse; align-items: center; }
+            .attorney-profile img { width: 240px; height: 200px; }
+            .attorney-profile__meta { padding-top: 0; min-width: 0; color: #fff; text-align: center; width: 100%; }
+            .attorney-profile__meta h3 { color: #fff; font-size: 19px; line-height: 21px; margin-bottom: 8px; font-weight:500; }
+            .attorney-profile__meta p { color: #fff; font-size: 14px; line-height: 22px; margin-bottom: 8px; }
+            .attorney-profile__meta p::before { color: #fff; }
+            .attorney-profile__meta .phone, .attorney-profile__meta .location { display: inline-block; margin: 0 8px; }
+            .attorney-overview { min-height: auto; padding: 62px 24px 32px; text-align: justify; }
+            .attorney-overview__inner { padding-left: 0; }
+            .attorney-content { padding: 27px 24px 0px; text-align: justify;}
+            .attorney-credentials > h2 { display: block; }
+            .attorney-credentials > h2::after { display: block; width: 65px; margin-top: 12px; margin-left: 0; }
             .attorney-columns { grid-template-columns: 1fr; gap: 36px; }
             .attorney-columns > div + div { border: 0; padding: 0; }
             .attorney-insight-card { grid-template-columns: 1fr; gap: 0; }
+            .attorney-insight-card:nth-child(n+2) { display: none; }
         }
     </style>
 </head>
@@ -229,7 +235,16 @@
 
     <main>
         <section class="attorney-hero">
-            <div class="attorney-title"><h1>{{ $attorney->name }}</h1></div>
+            <div class="container attorney-hero__container">
+                <div class="attorney-title">
+                <h1>{{ $attorney->name }}</h1>
+                <div class="attorney-title-line"></div>
+                <a href="#" class="share-icon" title="Share">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                        <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/>
+                    </svg>
+                </a>
+            </div>
             <div class="attorney-profile">
                 <img src="{{ asset('images/' . ($attorney->photo ?: 'lawyer_profile.jpg')) }}" alt="{{ $attorney->name }}">
                 <div class="attorney-profile__meta">
@@ -239,16 +254,19 @@
                     @if($attorney->location)<p class="location">{{ $attorney->location }}</p>@endif
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
         <section class="attorney-overview">
-            <div class="attorney-overview__inner">
-                <h2>Overview</h2>
-                <p>{{ $attorney->overview ?: 'Attorney overview will be available soon.' }}</p>
+            <div class="container">
+                <div class="attorney-overview__inner">
+                    <h2>Overview</h2>
+                    <p>{{ $attorney->overview ?: 'Attorney overview will be available soon.' }}</p>
+                </div>
             </div>
         </section>
 
-        <div class="attorney-content">
+        <div class="container attorney-content">
             <section class="attorney-section">
                 <h2>Experience</h2>
                 <p>{{ $attorney->experience ?: 'Professional experience will be available soon.' }}</p>

@@ -12,7 +12,7 @@
         <!-- Attorney Hero Section -->
         <section class="attorney-hero">
             <div class="attorney-hero-bg">
-                <img src="{{ asset('images/attorney-hero.jpg') }}" alt="Justice Scales">
+                <img src="{{ asset('images/Attorney-Page-new.webp') }}" alt="Attorneys">
                 <div class="hero-overlay"></div>
             </div>
             <div class="container attorney-hero-content">

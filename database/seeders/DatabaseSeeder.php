@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(HomePageSettingSeeder::class);
         $this->call(HeroSlideSeeder::class);
         $this->call(BlogContentSeeder::class);
-        $this->call(StaticPageSeeder::class);
+        $this->call(CapabilitySeeder::class);
+         $this->call(BlogPostSeeder::class);
     }
 }

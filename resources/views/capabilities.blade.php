@@ -10,7 +10,7 @@
         .capabilities-hero {
             position: relative;
             height: 490px;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ asset("images/capability-imge.png") }}') center/cover;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ asset("images/Capabilities-banner-new.webp") }}') center/cover;
             display: flex;
             align-items: center;
             color: #fff;
@@ -52,9 +52,8 @@
 
         /* Search Section */
         .search-section {
-            display: flex;
-            justify-content: center;
-            margin-top: -20px;
+            width: 100%;
+            margin-top: -50px;
             position: relative;
             z-index: 5;
         }
@@ -70,6 +69,7 @@
             align-items: center;
             justify-content: center;
             padding: 0 40px;
+            margin: 0 auto;
         }
         .search-box {
             display: flex;
@@ -147,8 +147,9 @@
             transition: transform 0.3s, box-shadow 0.3s;
             text-decoration: none;
             color: inherit;
-            height: auto;
+            height: 100%;
             min-height: 360px;
+            box-sizing: border-box;
         }
         .capability-card h3 {
             font-family: 'Libre Baskerville', serif;
@@ -157,6 +158,7 @@
             line-height: 26px;
             color: #000000;
             margin-bottom: 12px;
+            min-height: 52px;
         }
         .capability-img {
             width: 100%;
@@ -178,7 +180,7 @@
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            max-height: 72px;
+            height: 72px;
         }
         .capability-link {
             position: absolute;
@@ -374,7 +376,7 @@
 
     @include('components.header')
 
-    <main style="flex-grow: 1; display: flex; flex-direction: column;">
+    <main style="flex-grow: 1; width: 100%;">
     <section class="capabilities-hero">
         <div class="container capabilities-hero-content">
             <div>
@@ -388,33 +390,41 @@
 
     <div class="container search-section">
         <div class="search-card">
-            <div class="search-box">
+            <form class="search-box" action="{{ route('capabilities') }}" method="GET">
                 <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                <input type="text" placeholder="Search by name">
-                <button type="button">Search</button>
-            </div>
+                <input type="text" name="search" value="{{ request('search') }}" placeholder="Search by name">
+                <button type="submit">Search</button>
+            </form>
         </div>
     </div>
 
     <section class="capabilities-grid-container">
-        <div class="container capabilities-grid">
-            
-            @foreach($adminCapabilities as $capability)
-                <a href="{{ $capability->slug ? route('capabilities.show', $capability->slug) : '#' }}" class="capability-card">
-                    <h3>{{ $capability->title }}</h3>
-                    <img src="{{ $capability->image ? asset(strpos($capability->image, '/') !== false ? $capability->image : 'images/' . $capability->image) : asset('images/commercial-imge.png') }}" alt="{{ $capability->title }}" class="capability-img">
-                    <p class="capability-desc">{{ $capability->description }}</p>
-                    <div class="capability-link">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="5.5" y1="18.5" x2="18.5" y2="5.5"></line>
-                            <polyline points="8.5 5.5 18.5 5.5 18.5 15.5"></polyline>
-                        </svg>
-                    </div>
-                </a>
-            @endforeach
+        <div class="container">
+            @if($adminCapabilities->isEmpty())
+                <div style="text-align: center; padding: 60px 0; font-family: var(--font-body); font-size: 18px; color: #555;">
+                    <p>No capabilities found matching "{{ request('search') }}".</p>
+                    <a href="{{ route('capabilities') }}" style="display: inline-block; margin-top: 20px; color: #000; text-decoration: underline; font-weight: 600;">Clear Search</a>
+                </div>
+            @else
+                <div class="capabilities-grid">
+                    @foreach($adminCapabilities as $capability)
+                        <a href="{{ $capability->slug ? route('capabilities.show', $capability->slug) : '#' }}" class="capability-card">
+                            <h3>{{ $capability->title }}</h3>
+                            <img src="{{ $capability->image ? asset(strpos($capability->image, '/') !== false ? $capability->image : 'images/' . $capability->image) : asset('images/commercial-imge.png') }}" alt="{{ $capability->title }}" class="capability-img">
+                            <p class="capability-desc">{{ $capability->description }}</p>
+                            <div class="capability-link">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5.5" y1="18.5" x2="18.5" y2="5.5"></line>
+                                    <polyline points="8.5 5.5 18.5 5.5 18.5 15.5"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </section>
     </main>
