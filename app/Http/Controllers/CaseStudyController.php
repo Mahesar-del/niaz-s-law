@@ -7,6 +7,7 @@ class CaseStudyController extends Controller
 {
     public function index()
     {
-        return view('case-study',['caseStudies'=>BlogPost::where('content_type','case_study')->where('status','published')->where(function($q){$q->whereNull('published_at')->orWhereDate('published_at','<=',Carbon::today());})->latest()->get()]);
+        $caseStudies = BlogPost::where('content_type','case_study')->where('status','published')->where(function($q){$q->whereNull('published_at')->orWhereDate('published_at','<=',Carbon::today());})->latest()->paginate(6);
+        return view('case-study', compact('caseStudies'));
     }
 }

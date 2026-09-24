@@ -53,7 +53,7 @@
         /* Search Section */
         .search-section {
             width: 100%;
-            margin-top: -50px;
+            margin-top: -20px;
             position: relative;
             z-index: 5;
         }
@@ -132,8 +132,8 @@
         }
         .capabilities-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
         }
 
         /* Capability Card */
@@ -148,21 +148,25 @@
             text-decoration: none;
             color: inherit;
             height: 100%;
-            min-height: 360px;
+            min-height: 420px;
             box-sizing: border-box;
         }
         .capability-card h3 {
             font-family: 'Libre Baskerville', serif;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 700;
-            line-height: 26px;
+            line-height: 30px;
             color: #000000;
             margin-bottom: 12px;
-            min-height: 52px;
+            height: 60px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
         }
         .capability-img {
             width: 100%;
-            height: 163px;
+            height: 240px;
             object-fit: cover;
             border-radius: 10px;
             margin-bottom: var(--space-16);
@@ -185,7 +189,7 @@
         .capability-link {
             position: absolute;
             right: 15px;
-            bottom: 40px;
+            bottom: 28px;
             width: 46.67px;
             height: 46.67px;
             flex-shrink: 0;
@@ -210,7 +214,7 @@
 
         @media (max-width: 1200px) {
             .capabilities-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 

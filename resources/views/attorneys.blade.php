@@ -6,10 +6,11 @@
         <title>Attorneys - Niaz Law P.C.</title>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
-    <body class="antialiased">
+    <body class="antialiased" style="display: flex; flex-direction: column; min-height: 100vh;">
         @include('components.header')
 
         <!-- Attorney Hero Section -->
+        <main style="flex-grow: 1; width: 100%;">
         <section class="attorney-hero">
             <div class="attorney-hero-bg">
                 <img src="{{ asset('images/Attorney-Page-new.webp') }}" alt="Attorneys">
@@ -28,8 +29,7 @@
 
         <style>
             .search-section {
-                display: flex;
-                justify-content: center;
+                width: 100%;
                 margin-top: -20px;
                 position: relative;
                 z-index: 5;
@@ -47,6 +47,7 @@
                 align-items: center;
                 justify-content: center;
                 padding: 0 40px;
+                margin: 0 auto;
             }
             .search-box {
                 display: flex;
@@ -239,6 +240,11 @@
                     @endforelse
                 </div>
                 
+                <div class="no-results-msg" style="display: none; text-align: center; padding: 60px 0; font-family: var(--font-body); font-size: 18px; color: #555;">
+                    <p>No attorneys found matching your search criteria.</p>
+                    <a href="javascript:void(0)" onclick="clearFilters()" style="display: inline-block; margin-top: 20px; color: #000; text-decoration: underline; font-weight: 600;">Clear Search</a>
+                </div>
+                
                 @if($attorneys->count() > 6)
                 <div class="load-more-container">
                     <button class="btn btn-black btn-load-more">Load More</button>
@@ -246,6 +252,8 @@
                 @endif
             </div>
         </section>
+
+        </main>
 
         @include('components.footer')
         
@@ -284,13 +292,38 @@
 
             function applyFilters() {
                 const query = searchInput.value.trim().toLowerCase();
+                let visibleCount = 0;
                 cards.forEach(card => {
                     const nameMatches = !query || card.dataset.name.includes(query);
                     const filtersMatch = Object.entries(selectedFilters).every(([key, value]) => !value || card.dataset[key].includes(value));
-                    card.style.display = nameMatches && filtersMatch ? 'flex' : 'none';
+                    if (nameMatches && filtersMatch) {
+                        card.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
                 });
+                
+                const noResultsMsg = document.querySelector('.no-results-msg');
+                if (noResultsMsg) {
+                    noResultsMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+                }
+
                 const loadMore = document.querySelector('.load-more-container');
                 if (loadMore) loadMore.style.display = 'none';
+            }
+
+            function clearFilters() {
+                searchInput.value = '';
+                Object.keys(selectedFilters).forEach(key => {
+                    selectedFilters[key] = '';
+                });
+                document.querySelectorAll('.dropdown-header span').forEach(span => {
+                    // reset labels based on filter type
+                    const filter = span.closest('.custom-dropdown').dataset.filter;
+                    span.textContent = filter.charAt(0).toUpperCase() + filter.slice(1);
+                });
+                applyFilters();
             }
 
             document.querySelectorAll('.dropdown-item').forEach(item => {
