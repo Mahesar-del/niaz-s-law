@@ -84,3 +84,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const footerHeaders = document.querySelectorAll('.footer-col h4');
+        footerHeaders.forEach(header => {
+            header.addEventListener('click', function() {
+                if (window.innerWidth <= 1024) {
+                    const col = this.parentElement;
+                    // Only apply if there's a list to show (prevents logo/contact cols from toggling strangely)
+                    if (col.querySelector('.footer-links')) {
+                        col.classList.toggle('open');
+                    }
+                }
+            });
+        });
+    });
+</script>
