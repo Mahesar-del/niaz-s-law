@@ -1,4 +1,6 @@
 <?php
+
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Model;
 class BlogPost extends Model { protected $fillable=['title','slug','content_type','category','published_at','status','featured_image','home_image','content','meta_title','meta_description','meta_keywords','robots','schema_json','show_on_home','feature_on_home','show_on_attorney_detail']; protected $casts=['published_at'=>'date','show_on_home'=>'boolean','feature_on_home'=>'boolean','show_on_attorney_detail'=>'boolean']; public function getFeaturedImageUrlAttribute(){return $this->imageUrl($this->featured_image);} public function getHomeImageUrlAttribute(){return $this->imageUrl($this->home_image);} private function imageUrl($image){if(!$image){return null;} $path=ltrim($image,'/'); if(strpos($path,'storage/')===0 || strpos($path,'images/')===0 || strpos($path,'uploads/')===0){return asset($path);} return asset('storage/'.$path);} public function attorneys(){return $this->belongsToMany(Attorney::class);} public function capabilities(){return $this->belongsToMany(Capability::class);} }
