@@ -1,4 +1,4 @@
-@php($footerContact = \App\Models\ContactSetting::first()) @php($footerSettings = \App\Models\FooterSetting::first()) @php($footerCapabilities = \App\Models\Capability::whereIn('id', $footerSettings->capability_ids ?? [])->get())
+@php($footerContact = \App\Models\ContactSetting::first()) @php($footerSettings = \App\Models\FooterSetting::first()) @php($footerCapabilities = \App\Models\Capability::whereIn('id', $footerSettings->capability_ids ?? [])->get()) @php($footerStaticPages = \App\Models\StaticPage::where('status', 'published')->orderBy('title')->get())
 <footer class="site-footer">
     <div class="container">
         <div class="footer-logo">
@@ -32,8 +32,11 @@
             <div class="footer-col">
                 <h4>Links</h4>
                 <ul class="footer-links">
-                    <li><a href="#">Term of use</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    @forelse($footerStaticPages as $staticPage)
+                    <li><a href="{{ route('static-pages.show', $staticPage) }}">{{ $staticPage->title }}</a></li>
+                    @empty
+                    <li><span>No pages available</span></li>
+                    @endforelse
                 </ul>
             </div>
             <!-- Contact Us -->

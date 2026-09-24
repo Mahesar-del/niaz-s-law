@@ -30,6 +30,8 @@ use App\Http\Controllers\Admin\AttorneyController;
 use App\Http\Controllers\Admin\CapabilityController;
 use App\Http\Controllers\Admin\BlogController as AdminBlogController;
 use App\Http\Controllers\Admin\FooterSettingController;
+use App\Http\Controllers\StaticPageController;
+use App\Http\Controllers\Admin\StaticPageController as AdminStaticPageController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
@@ -46,6 +48,7 @@ Route::get('/blog/{blog:slug}', [BlogController::class, 'show'])->name('blog.sho
 Route::get('/insights', [InsightsController::class, 'index']);
 Route::get('/detail', [DetailController::class, 'index']);
 Route::get('/contact-us', [ContactController::class, 'index']);
+Route::get('/pages/{page:slug}', [StaticPageController::class, 'show'])->name('static-pages.show');
 Route::redirect('/attorney-detail', '/attorneys');
 Route::get('/capabilities', [CapabilitiesController::class, 'index']);
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -62,6 +65,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::put('/contact-settings', [ContactSettingController::class, 'update'])->name('contact-settings.update');
         Route::get('/footer-settings', [FooterSettingController::class, 'edit'])->name('footer-settings.edit');
         Route::put('/footer-settings', [FooterSettingController::class, 'update'])->name('footer-settings.update');
+        Route::get('/static-pages/create', [AdminStaticPageController::class, 'create'])->name('static-pages.create');
+        Route::post('/static-pages', [AdminStaticPageController::class, 'store'])->name('static-pages.store');
+        Route::get('/static-pages/{page}/edit', [AdminStaticPageController::class, 'edit'])->name('static-pages.edit');
+        Route::put('/static-pages/{page}', [AdminStaticPageController::class, 'update'])->name('static-pages.update');
         Route::get('/attorneys/create', [AttorneyController::class, 'create'])->name('attorneys.create');
         Route::get('/attorney-page', [AttorneyController::class, 'details'])->name('attorneys.details');
         Route::post('/attorneys', [AttorneyController::class, 'store'])->name('attorneys.store');
