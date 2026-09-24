@@ -1,4 +1,11 @@
 <?php
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
-class Capability extends Model { protected $fillable=['title','slug','description','page_title','page_description','image','hero_image','experience','representative_matters','overview_heading','overview_image_left','overview_image_right','overview_paragraph_one','overview_paragraph_two']; public function attorneys(){return $this->belongsToMany(Attorney::class);} public function blogPosts(){return $this->belongsToMany(BlogPost::class);} }
+class Capability extends Model {
+    protected $fillable = ['title','slug','description','page_title','page_description','image','hero_image','experience','representative_matters','overview_heading','overview_image_left','overview_image_right','overview_paragraph_one','overview_paragraph_two'];
+
+    public function getRouteKeyName() { return 'slug'; }
+
+    public function attorneys() { return $this->belongsToMany(Attorney::class); }
+    public function blogPosts() { return $this->belongsToMany(BlogPost::class); }
+}
