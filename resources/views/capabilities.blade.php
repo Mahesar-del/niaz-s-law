@@ -148,7 +148,7 @@
             text-decoration: none;
             color: inherit;
             height: auto;
-            min-height: 430px;
+            min-height: 360px;
         }
         .capability-card h3 {
             font-family: 'Libre Baskerville', serif;
@@ -156,8 +156,7 @@
             font-weight: 700;
             line-height: 26px;
             color: #000000;
-            margin-bottom: var(--space-16);
-            min-height: 84px;
+            margin-bottom: 12px;
         }
         .capability-img {
             width: 100%;
@@ -184,7 +183,7 @@
         .capability-link {
             position: absolute;
             right: 15px;
-            bottom: 60px;
+            bottom: 40px;
             width: 46.67px;
             height: 46.67px;
             flex-shrink: 0;
@@ -349,7 +348,7 @@
             }
             .capability-card h3 {
                 min-height: 0;
-                margin-bottom: 16px;
+                margin-bottom: 8px;
                 word-wrap: break-word;
             }
             br.desktop-br {
@@ -371,10 +370,11 @@
         /* extraneous block removed */
     </style>
 </head>
-<body class="antialiased" style="background-color: #ffffff;">
+<body class="antialiased" style="background-color: #ffffff; display: flex; flex-direction: column; min-height: 100vh;">
 
     @include('components.header')
 
+    <main style="flex-grow: 1; display: flex; flex-direction: column;">
     <section class="capabilities-hero">
         <div class="container capabilities-hero-content">
             <div>
@@ -417,6 +417,7 @@
             @endforeach
         </div>
     </section>
+    </main>
 
     @include('components.footer')
 </body>
