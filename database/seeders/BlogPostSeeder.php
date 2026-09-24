@@ -18,6 +18,10 @@ class BlogPostSeeder extends Seeder
             ['slug' => 'infrastructure-construction-advising-businesses-project-development'],
             [
                 'title' => 'Infrastructure & Construction: Advising Businesses on Project Development, Contract Strategy, and Execution Risk Management',
+                'content_type' => 'blog',
+                'status' => 'published',
+                'show_on_home' => true,
+                'feature_on_home' => true,
                 'category' => 'Infrastructure & Construction',
                 'featured_image' => 'infrastructure_construction_blog.jpg',
                 'excerpt' => 'Advising businesses on infrastructure and construction matters involving project development, contract strategy, operational coordination, execution risk management, and stakeholder alignment across complex commercial environments.',
