@@ -32,6 +32,7 @@
         .contact-card h3 { margin: 0 0 13px; font-size: 19px; line-height: 1.2; white-space: nowrap; }
         .contact-card p { margin: 0; font-size: 17px; line-height: 1.4; overflow-wrap: anywhere; }
         .contact-card--office p { width: 100%; font-size: 15px; line-height: 1.35; text-align: left; white-space: normal; overflow-wrap: normal; }
+        .contact-card--naperville p { font-size: 14px; }
         @media (max-width: 1320px) { .contact-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); justify-content: stretch; gap: 16px; } .contact-card { width: 100%; } }
         @media (max-width: 950px) { .contact-hero__content { grid-template-columns: 1fr; gap: 24px; } .contact-hero-divider { display: none; } .contact-layout { grid-template-columns: 1fr; gap: 55px; } .contact-map { display: none; } }
         @media (max-width: 600px) { .contact-hero { min-height: 490px; padding: 145px 0 30px; } .contact-hero h1 { font-size: 42px; } .contact-hero p { font-size: 16px; } .contact-main { padding: 25px 0 68px; } .contact-main h2 { margin-bottom: 28px; } .contact-form-grid { grid-template-columns: 1fr; gap: 20px; } .contact-field--full { grid-column: auto; } .contact-submit { width: 100%; min-width: 0; } .contact-cards { grid-template-columns: 1fr; justify-content: stretch; gap: 24px; margin-top: 52px; } .contact-card { width: 100%; height: auto; min-height: 190px; padding: 25px 18px 20px; } .contact-card svg { margin-bottom: 13px; } .contact-card h3 { margin-bottom: 8px; font-size: 20px; } .contact-card p { font-size: 15px; } .contact-card--office p { text-align: center; } }
@@ -59,7 +60,7 @@
                                 <div class="contact-field"><label for="email">Email *</label><input id="email" type="email" placeholder="Email" required></div>
                                 <div class="contact-field"><label for="phone">Phone Number *</label><input id="phone" type="tel" placeholder="Number" inputmode="numeric" pattern="[0-9]{7,15}" minlength="7" maxlength="15" data-phone-input required></div>
                                 <div class="contact-field"><label for="company">Company / Organization</label><input id="company" type="text" placeholder="Name"></div>
-                                <div class="contact-field"><label for="practice">How Can We Help ? *</label><select id="practice" required><option value="">Select Practice Area</option><option>Commercial Transactions</option><option>Procurement &amp; Contracting</option><option>Infrastructure &amp; Projects</option><option>Operational Risk</option></select></div>
+                                <div class="contact-field"><label for="practice">How Can We Help ? *</label><select id="practice" required><option value="">Select Practice Area</option>@forelse($capabilities as $capability)<option value="{{ $capability->title }}">{{ $capability->title }}</option>@empty<option>Commercial Transactions</option><option>Procurement &amp; Contracting</option><option>Infrastructure &amp; Projects</option><option>Operational Risk</option>@endforelse</select></div>
                                 <div class="contact-field contact-field--full"><label for="message">Message *</label><textarea id="message" placeholder="Tell us briefly how we can help" required></textarea></div>
                             </div>
                             <button class="contact-submit" type="submit">Submit Inquiry</button>
@@ -71,7 +72,13 @@
                     <article class="contact-card"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="4"/><path d="m3 8 9 6 9-6"/></svg><h3>Email</h3><p>{{ $contactSettings->email ?? 'info@niazlawpc.com' }}</p></article>
                     <article class="contact-card"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><h3>Phone</h3><p>{{ $contactSettings->phone ?? '(630) 201-5927' }}</p></article>
                     <article class="contact-card contact-card--office"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><h3>Franklin Park Office:</h3><p>{!! nl2br(e($contactSettings->franklin_address ?? "9933 Franklin Ave.\nFranklin Park, IL 60131")) !!}</p></article>
-                    <article class="contact-card contact-card--office"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><h3>Naperville / Lisle Office:</h3><p>{!! nl2br(e($contactSettings->naperville_address ?? "3333 Warrenville Road, Suite 200\nLisle, IL 60532")) !!}</p></article>
+                    @php
+                        $napervilleAddress = $contactSettings->naperville_address ?? "3333 Warrenville Road, Suite 200\nLisle, IL 60532, USA";
+                        if (!str_contains(strtolower($napervilleAddress), 'usa')) {
+                            $napervilleAddress .= ', USA';
+                        }
+                    @endphp
+                    <article class="contact-card contact-card--office contact-card--naperville"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><h3>Naperville / Lisle Office:</h3><p>{{ $napervilleAddress }}</p></article>
                 </section>
             </div>
         </section>
