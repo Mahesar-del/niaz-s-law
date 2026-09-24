@@ -25,7 +25,7 @@
     --space-24: 24px;
     --space-32: 32px;
     --space-48: 48px;
-    --space-64: 64px;
+    --space-64: 33px;
     --space-100: 100px;
 
     --container-max: 1440px;
@@ -784,7 +784,7 @@ ul {
 
 /* Learn About Our Firm */
 .about-section {
-    padding: 80px 0;
+    padding: 25px 0;
 }
 
 .about-container {
@@ -1322,17 +1322,21 @@ textarea {
     background-color: #000000;
     color: #ffffff;
     padding: var(--space-32) 0 var(--space-24) 0;
+    padding-top: 15px;
 }
 
 
 .footer-logo {
     text-align: center;
-    margin-bottom: var(--space-32);
+    /* margin-bottom: var(--space-32); */
+    margin-bottom: 10px;
 }
 
 .footer-logo img {
-    width: 140px;
-    height: 70px;
+    width: 154px;
+    height: 77px;
+    width: 154px;
+    height: 77px;
     object-fit: contain;
 }
 
@@ -1341,28 +1345,28 @@ textarea {
     border-top: 1px solid rgba(255, 255, 255, 0.4);
     width: 753px;
     max-width: 100%;
-    margin: 0 auto var(--space-48) auto;
+    margin: 0 auto 32px auto;
 }
 
 .site-footer hr.footer-divider:last-of-type {
     border-top: 1px solid rgba(255, 255, 255, 0.4);
     width: 100%;
-    margin: var(--space-32) 0 var(--space-24) 0;
+    margin: 20px 0 16px 0;
 }
 
 .footer-grid {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr 1fr 1.5fr;
-    gap: var(--space-32);
+    gap: 16px;
 }
 
 .footer-col h4 {
     font-family: 'Libre Baskerville', serif;
-    font-weight: 500;
+    font-weight: 800;
     font-size: 20px;
     line-height: 100%;
     letter-spacing: 0;
-    margin-bottom: 9px;
+    margin-bottom: 20px;
     color: #ffffff;
 }
 
@@ -1373,7 +1377,7 @@ textarea {
     line-height: 24px;
     letter-spacing: 0;
     color: #ffffff;
-    margin-bottom: var(--space-24);
+    margin-bottom: 16px;
 }
 
 .footer-socials {
@@ -1407,7 +1411,7 @@ textarea {
 }
 
 .footer-links li {
-    margin-bottom: var(--space-16);
+    margin-bottom: 12px;
 }
 
 .footer-links a {
@@ -1435,7 +1439,7 @@ textarea {
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    margin-bottom: var(--space-16);
+    margin-bottom: 12px;
     color: #ffffff;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
@@ -1584,7 +1588,7 @@ textarea {
 }
 
 .filters-section {
-    padding: var(--space-48) 0 var(--space-32) 0;
+    padding: var(--space-24) 0 var(--space-32) 0;
 }
 
 .filters-row {
@@ -1655,14 +1659,14 @@ textarea {
 }
 
 .lawyers-section {
-    padding-bottom: var(--space-64);
+    padding-bottom: var(--space-16);
 }
 
 .lawyers-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-32);
-    margin-bottom: var(--space-48);
+    margin-bottom: 0;
 }
 
 .lawyer-card {
@@ -1751,7 +1755,7 @@ textarea {
 
     .footer-grid {
         grid-template-columns: 1fr;
-        text-align: center;
+        /* text-align: center; */
     }
 
     .footer-socials {
@@ -2038,7 +2042,7 @@ textarea {
     /* Footer Mobile */
     .footer-grid {
         grid-template-columns: 1fr;
-        gap: var(--space-32);
+        gap: 12px;
     }
 
     .footer-logo img {
@@ -2053,6 +2057,7 @@ textarea {
     .footer-socials {
         justify-content: center;
         margin-top: var(--space-24);
+        margin-bottom: 20px;
     }
 
     .footer-col:nth-child(2) .footer-links,
@@ -2065,7 +2070,7 @@ textarea {
     .footer-col:nth-child(3),
     .footer-col:nth-child(4) {
         border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-        padding-bottom: var(--space-16);
+        padding-bottom: 16px;
         margin-bottom: var(--space-8);
     }
 
@@ -2076,6 +2081,8 @@ textarea {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        cursor: pointer;
+        cursor: pointer;
     }
 
     .footer-col:nth-child(2) h4::after,
@@ -2086,6 +2093,19 @@ textarea {
         font-size: 24px;
         font-weight: 300;
         color: #ffffff;
+    }
+
+    .footer-col:nth-child(2).active .footer-links,
+    .footer-col:nth-child(3).active .footer-links,
+    .footer-col:nth-child(4).active .footer-links {
+        display: block !important;
+        margin-top: 12px;
+    }
+
+    .footer-col:nth-child(2).active h4::after,
+    .footer-col:nth-child(3).active h4::after,
+    .footer-col:nth-child(4).active h4::after {
+        content: '−' !important;
     }
 
     .footer-col.contact-info {
@@ -2700,10 +2720,13 @@ textarea {
 
 .ct-insight-card img {
     width: 45%;
-    aspect-ratio: 262.5 / 342;
+    flex-shrink: 0;
+    aspect-ratio: 4 / 3;
     object-fit: cover;
-    object-position: left;
+    object-position: center;
     display: block;
+    align-self: stretch;
+    border-radius: 0;
 }
 
 .ct-insight-content {
@@ -2711,7 +2734,8 @@ textarea {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 55%;
+    flex: 1;
+    min-width: 0;
 }
 
 .ct-insight-content h3 {
@@ -2719,7 +2743,7 @@ textarea {
     font-weight: 600;
     margin-bottom: 15px;
     font-family: 'Libre Baskerville', serif;
-    line-height: 1;
+    line-height: 1.3;
     border-bottom: 1px solid #ccc;
     padding-bottom: 15px;
     color: #3A3A38;

@@ -5,6 +5,66 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Niaz Law P.C.</title>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <style>
+            /* Insights Section Animations */
+            .insights-section .section-title {
+                opacity: 0;
+                transform: translateX(-40px);
+                transition: opacity 0.7s ease, transform 0.7s ease;
+            }
+            .insights-section .section-title.anim-in {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            .insight-card {
+                opacity: 0;
+                transform: translateY(40px);
+                transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+                overflow: hidden;
+            }
+            .insight-card.anim-in {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            /* Ken-burns zoom on background */
+            .insight-card::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: inherit;
+                background-size: cover;
+                background-position: center;
+                transition: transform 6s ease;
+                transform: scale(1);
+                z-index: 0;
+            }
+            .insight-card:hover::before {
+                transform: scale(1.07);
+            }
+            /* Slide-up text on hover */
+            .insight-card .insight-content {
+                transition: transform 0.4s ease;
+                transform: translateY(8px);
+                position: relative;
+                z-index: 1;
+            }
+            .insight-card:hover .insight-content {
+                transform: translateY(0);
+            }
+            /* Underline accent on hover */
+            .insight-card .insight-content h3::after {
+                content: '';
+                display: block;
+                width: 0;
+                height: 2px;
+                background: #fff;
+                margin-top: 8px;
+                transition: width 0.4s ease;
+            }
+            .insight-card:hover .insight-content h3::after {
+                width: 48px;
+            }
+        </style>
     </head>
     <body class="antialiased">
         @include('components.header')
@@ -39,7 +99,7 @@
 
         <section class="section insights-section">
             <div class="container">
-                <h2 class="section-title">Latest Insights From Niaz Law</h2>
+                <h2 class="section-title insights-title">Latest Insights From Niaz Law</h2>
                 <div class="insights-grid">
                     @forelse($homeInsights as $insight)
                     <a class="insight-card" href="{{ route('blog.show', $insight) }}" style="background-image: url('{{ $insight->home_image_url ?: $insight->featured_image_url ?: asset('images/insight-june.png') }}');" aria-label="Read {{ $insight->title }}">
@@ -78,18 +138,17 @@
                 <div class="services-img-col">
                     <img src="{{ asset('images/professsional-services.jpg') }}" alt="Gavel">
                     <h2 class="services-heading">Professional Services<br>Prepared To Be Your<br>Lawyer Firm</h2>
-                    <a href="#" class="all-practice-areas desktop-only" style="color: #fff; text-decoration: none;">All Practice Areas ↗</a>
+                    <a href="{{ route('capabilities') }}" class="all-practice-areas desktop-only" style="color: #fff; text-decoration: none;">All Practice Areas ↗</a>
                 </div>
                 <div class="services-list-col">
                     <div class="services-links">
-                        <a href="/commercial-transactions" class="service-link" style="color:#fff; text-decoration:none;">Commercial Transactions <img src="{{ asset('images/errow-side.svg') }}" alt="Arrow Right" style="width: 27px; height: auto;"></a>
-                        <a href="#" class="service-link" style="color:#fff; text-decoration:none;">Procurement & Contracting <img src="{{ asset('images/errow-side.svg') }}" alt="Arrow Right" style="width: 27px; height: auto;"></a>
-                        <a href="#" class="service-link" style="color:#fff; text-decoration:none;">Infrastructure & Projects <img src="{{ asset('images/errow-side.svg') }}" alt="Arrow Right" style="width: 27px; height: auto;"></a>
-                        <a href="#" class="service-link" style="color:#fff; text-decoration:none;">Operational Risk <img src="{{ asset('images/errow-side.svg') }}" alt="Arrow Right" style="width: 27px; height: auto;"></a>
+                        @foreach($homeCapabilities as $cap)
+                        <a href="{{ $cap->slug ? route('capabilities.show', $cap->slug) : route('capabilities') }}" class="service-link" style="color:#fff; text-decoration:none;">{{ $cap->title }} <img src="{{ asset('images/errow-side.svg') }}" alt="Arrow Right" style="width: 27px; height: auto;"></a>
+                        @endforeach
                     </div>
                 </div>
                 <div class="mobile-only" style="text-align: center; width: 100%;">
-                    <a href="#" class="all-practice-areas" style="color: #fff; text-decoration: none; margin: 0 auto;">All Practice Areas ↗</a>
+                    <a href="{{ route('capabilities') }}" class="all-practice-areas" style="color: #fff; text-decoration: none; margin: 0 auto;">All Practice Areas ↗</a>
                 </div>
             </div>
         </section>
@@ -220,6 +279,28 @@
                 };
                 indicators.forEach((indicator, index) => indicator.addEventListener('click', () => show(index)));
                 setInterval(() => show(activeIndex + 1), 6500);
+            })();
+
+            // Insights Section Scroll Animation
+            (() => {
+                const title = document.querySelector('.insights-title');
+                const cards = document.querySelectorAll('.insights-grid .insight-card');
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('anim-in');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15 });
+
+                if (title) observer.observe(title);
+
+                cards.forEach((card, i) => {
+                    card.style.transitionDelay = (i * 0.12) + 's';
+                    observer.observe(card);
+                });
             })();
         </script>
     </body>
