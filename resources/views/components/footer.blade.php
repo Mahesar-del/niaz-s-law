@@ -68,3 +68,19 @@
         </div>
     </div>
 </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const footerCols = document.querySelectorAll('.site-footer .footer-col');
+    footerCols.forEach(function(col) {
+        const h4 = col.querySelector('h4');
+        if (h4 && col.querySelector('.footer-links')) {
+            h4.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    col.classList.toggle('active');
+                }
+            });
+        }
+    });
+});
+</script>
