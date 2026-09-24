@@ -34,14 +34,14 @@ class BlogContentSeeder extends Seeder
                 'Commercial Operations & Strategic Sourcing' => 'commercial-big.jpg',
                 'Infrastructure & Construction Projects' => 'project-imge.png',
                 'Aviation, Logistics & Transportation' => 'commercial-small.jpg',
-                'Real Estate Transactions' => 'commercial-imge.png',
+                'Real Estate & Property Transactions' => 'commercial-imge.png',
             ],
         ];
         $homeImages = [
             'Commercial Operations & Strategic Sourcing' => 'uploads/comerical.png',
             'Infrastructure & Construction Projects' => 'uploads/infrastructure.png',
             'Aviation, Logistics & Transportation' => 'uploads/aviation.png',
-            'Real Estate Transactions' => 'uploads/real-estate.png',
+            'Real Estate & Property Transactions' => 'uploads/real-estate.png',
         ];
 
         foreach ($types as $typeIndex => $type) {
@@ -58,8 +58,8 @@ class BlogContentSeeder extends Seeder
                     'category' => $topic,
                     'published_at' => now()->toDateString(),
                     'status' => 'published',
-                    'featured_image' => 'images/' . $images[$type][$topic],
-                    'home_image' => $type === 'insight' ? $homeImages[$topic] : null,
+                    'featured_image' => 'images/' . ($images[$type][$topic] ?? 'commercial-big.jpg'),
+                    'home_image' => $type === 'insight' ? ($homeImages[$topic] ?? null) : null,
                     'show_on_home' => $type === 'insight' || ($type === 'blog' && $topicIndex === 0),
                     'content' => $this->content($topic, $typeLabels[$type]),
                     'meta_title' => $title,

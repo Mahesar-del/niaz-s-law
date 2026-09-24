@@ -42,6 +42,10 @@ class BlogPost extends Model
             return asset($path);
         }
 
+        if (is_file(public_path($path))) {
+            return asset($path);
+        }
+
         return asset('storage/'.$path);
     }
 
