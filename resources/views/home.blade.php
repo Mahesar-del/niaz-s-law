@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <meta charset="utf- protests">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Niaz Law P.C.</title>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -41,26 +41,34 @@
             <div class="container">
                 <h2 class="section-title">Latest Insights From Niaz Law</h2>
                 <div class="insights-grid">
-                    <div class="insight-card" style="background-image: url('{{ asset('images/insight-june.png') }}');">
+                    @forelse($homeInsights as $insight)
+                    <a class="insight-card" href="{{ route('blog.show', $insight) }}" style="background-image: linear-gradient(0deg, rgba(0,0,0,.78), rgba(0,0,0,.08)), url('{{ $insight->featured_image_url ?: asset('images/insight-june.png') }}');" aria-label="Read {{ $insight->title }}">
                         <div class="insight-content">
                             <h3>{{ $insight->title }}</h3>
                         </div>
-                    </div>
-                    <div class="insight-card" style="background-image: url('{{ asset('images/inside-court.jpg') }}');">
+                    </a>
+                    @empty
+                    <a class="insight-card" href="{{ url('/blog') }}" style="background-image: url('{{ asset('images/insight-june.png') }}');">
+                        <div class="insight-content">
+                            <h3>Niaz's Insights &ndash; June 2026</h3>
+                        </div>
+                    </a>
+                    <a class="insight-card" href="{{ url('/blog') }}" style="background-image: url('{{ asset('images/inside-court.jpg') }}');">
                         <div class="insight-content">
                             <h3>Inside the Courts &ndash; Niaz's Securities<br>Litigation Update</h3>
                         </div>
-                    </div>
-                    <div class="insight-card" style="background-image: url('{{ asset('images/niaz-podcast.jpg') }}');">
+                    </a>
+                    <a class="insight-card" href="{{ url('/blog') }}" style="background-image: url('{{ asset('images/niaz-podcast.jpg') }}');">
                         <div class="insight-content">
                             <h3>Niaz's Podcasts</h3>
                         </div>
-                    </div>
-                    <div class="insight-card" style="background-image: url('{{ asset('images/informed-board.jpg') }}');">
+                    </a>
+                    <a class="insight-card" href="{{ url('/blog') }}" style="background-image: url('{{ asset('images/informed-board.jpg') }}');">
                         <div class="insight-content">
                             <h3>The Informed Board &ndash; September 2026</h3>
                         </div>
-                    </div>
+                    </a>
+                    @endforelse
                 </div>
             </div>
         </section>
