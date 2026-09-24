@@ -1,9 +1,6 @@
 <style>
     .ct-hero {
         position: relative;
-        width: 100%;
-        max-width: 1440px;
-        margin: 0 auto;
         height: 600px;
         display: flex;
         align-items: center;
@@ -73,7 +70,7 @@
     }
 </style>
 
-<div class="ct-hero" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ $bgImage }}') center/cover;">
+<div class="ct-hero" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ $bgImage }}') center / 100% 100% no-repeat #000;">
     <div class="ct-hero-container">
         <div class="ct-hero-grid">
             <h1 class="ct-hero-title-left">{{ $titleLeft }}</h1>
