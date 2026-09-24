@@ -31,6 +31,7 @@ use App\Http\Controllers\Admin\CapabilityController;
 use App\Http\Controllers\Admin\BlogController as AdminBlogController;
 use App\Http\Controllers\Admin\FooterSettingController;
 use App\Http\Controllers\StaticPageController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Admin\StaticPageController as AdminStaticPageController;
 
 Route::get('/', [HomeController::class, 'index']);
@@ -48,9 +49,9 @@ Route::get('/blog/{blog:slug}', [BlogController::class, 'show'])->name('blog.sho
 Route::get('/insights', [InsightsController::class, 'index']);
 Route::get('/detail', [DetailController::class, 'index']);
 Route::get('/contact-us', [ContactController::class, 'index']);
+Route::get('/search', [SearchController::class, 'index'])->name('search');
 Route::get('/pages/{page:slug}', [StaticPageController::class, 'show'])->name('static-pages.show');
 Route::redirect('/attorney-detail', '/attorneys');
-Route::get('/capabilities', [CapabilitiesController::class, 'index']);
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [AdminAuthController::class, 'showLogin'])->name('login');
     Route::post('/login', [AdminAuthController::class, 'login'])->name('login.attempt');
