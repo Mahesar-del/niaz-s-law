@@ -1309,17 +1309,19 @@ textarea {
     background-color: #000000;
     color: #ffffff;
     padding: var(--space-32) 0 var(--space-24) 0;
+    padding-top: 15px;
 }
 
 
 .footer-logo {
     text-align: center;
-    margin-bottom: var(--space-32);
+    /* margin-bottom: var(--space-32); */
+    margin-bottom: 10px;
 }
 
 .footer-logo img {
-    width: 140px;
-    height: 70px;
+    width: 154px;
+    height: 77px;
     object-fit: contain;
 }
 
@@ -1345,7 +1347,7 @@ textarea {
 
 .footer-col h4 {
     font-family: 'Libre Baskerville', serif;
-    font-weight: 500;
+    font-weight: 800;
     font-size: 20px;
     line-height: 100%;
     letter-spacing: 0;
@@ -1738,7 +1740,7 @@ textarea {
 
     .footer-grid {
         grid-template-columns: 1fr;
-        text-align: center;
+        /* text-align: center; */
     }
 
     .footer-socials {
@@ -2063,6 +2065,7 @@ textarea {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        cursor: pointer;
     }
 
     .footer-col:nth-child(2) h4::after,
@@ -2073,6 +2076,19 @@ textarea {
         font-size: 24px;
         font-weight: 300;
         color: #ffffff;
+    }
+
+    .footer-col:nth-child(2).active .footer-links,
+    .footer-col:nth-child(3).active .footer-links,
+    .footer-col:nth-child(4).active .footer-links {
+        display: block !important;
+        margin-top: 12px;
+    }
+
+    .footer-col:nth-child(2).active h4::after,
+    .footer-col:nth-child(3).active h4::after,
+    .footer-col:nth-child(4).active h4::after {
+        content: '−' !important;
     }
 
     .footer-col.contact-info {
