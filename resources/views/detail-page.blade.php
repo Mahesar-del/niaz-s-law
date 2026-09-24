@@ -8,25 +8,76 @@
     <style>
         .detail-page { background: #fff; }
         .detail-page .navbar { background: #000; }
-        .detail-hero { height: 520px; padding-top: 88px; background: url('{{ asset('images/home-hero.png') }}') center top / cover; }
-        .detail-title-card { max-width: 875px; margin: -130px 0 0; padding: 53px 58px; background: #faf7f1; box-shadow: 0 2px 6px rgba(0,0,0,.16); position: relative; z-index: 2; }
-        .detail-title-card h1 { max-width: 720px; margin: 0 0 26px; font-size: clamp(31px, 3.25vw, 49px); line-height: 1.2; }
-        .detail-meta { display: flex; flex-wrap: wrap; gap: 13px; margin: 0; font-size: 14px; font-weight: 600; }
-        .detail-meta span + span::before { content: '•'; margin-right: 13px; }
-        .detail-article { max-width: 1100px; margin: 38px auto 0; padding: 0 26px; }
-        .detail-article p { margin: 0 0 8px; color: #222; font-size: 15px; line-height: 1.6; text-align: justify; }
-        .detail-article h2 { margin: 13px 0 8px; font-family: var(--font-body); font-size: 19px; line-height: 1.3; }
-        .detail-related { margin: 84px 0 68px; }
-        .detail-related > h2 { margin: 0 0 28px; font-size: clamp(30px, 2.7vw, 43px); }
-        .detail-related__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 72px; }
-        .detail-related-card { display: grid; grid-template-columns: 42% 1fr; gap: 26px; }
-        .detail-related-card img { width: 100%; height: 250px; object-fit: cover; }
-        .detail-related-card h3 { margin: 13px 0; padding-bottom: 13px; border-bottom: 1px solid #8e8e8e; font-size: clamp(19px, 1.65vw, 26px); line-height: 1.18; }
-        .detail-related-card p { margin: 0 0 16px; font-size: 13px; line-height: 1.55; }
+        .detail-hero {
+            height: 520px;
+            background: url('{{ asset('images/home-hero.png') }}') center top / cover;
+            position: relative;
+        }
+        .detail-title-card {
+            width: 884px;
+            max-width: 100%;
+            height: 264px;
+            margin: -130px 0 0 0;
+            padding: 48px 56px 40px;
+            background: #FAF7F1;
+            box-shadow: 0 4px 15px rgba(0,0,0,.05);
+            position: relative;
+            z-index: 2;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .detail-title-card h1 {
+            max-width: 780px;
+            margin: 0 0 24px;
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: clamp(28px, 2.7vw, 38px);
+            font-weight: 700;
+            line-height: 1.25;
+            color: #000000;
+        }
+        .detail-meta {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: #444444;
+        }
+        .detail-meta .bullet {
+            color: #000;
+            font-size: 14px;
+        }
+        .detail-article {
+            max-width: 1100px;
+            margin: 48px auto 0;
+            padding: 0 16px;
+        }
+        .detail-article p { margin: 0 0 16px; color: #222; font-size: 16px; line-height: 1.7; text-align: justify; }
+        .detail-article h2 { margin: 24px 0 12px; font-family: var(--font-heading); font-size: 24px; line-height: 1.3; }
+        .detail-related { margin: 60px 0 85px; padding: 0; }
+        .detail-related h2 { margin: 0 0 28px; font-size: clamp(28px, 2.7vw, 34px); font-family: 'Libre Baskerville', Georgia, serif; }
+        .detail-related__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 55px; }
+        .detail-related-card { display: grid; grid-template-columns: 42% 1fr; gap: 22px; }
+        .detail-related-card img { width: 100%; height: 205px; object-fit: cover; }
+        .detail-related-card h3 { margin: 0 0 12px; padding-bottom: 12px; border-bottom: 1px solid #999; font-size: 22px; line-height: 1.15; font-family: 'Libre Baskerville', Georgia, serif; }
+        .detail-related-card p { margin: 0 0 16px; font-size: 13px; line-height: 1.5; }
         .detail-button { display: inline-flex; min-width: 150px; min-height: 41px; align-items: center; justify-content: center; padding: 10px 22px; background: #000; color: #fff; font-size: 13px; font-weight: 600; }
         .detail-button:hover { background: #333; }
-        @media (max-width: 800px) { .detail-hero { height: 420px; } .detail-title-card { margin: -95px 0 0; padding: 36px 30px; } .detail-article { margin-top: 34px; padding: 0 25px; } .detail-related { margin-top: 58px; } .detail-related__grid { gap: 45px; } .detail-related-card { grid-template-columns: 1fr; gap: 0; } .detail-related-card img { height: 280px; } }
-        @media (max-width: 560px) { .detail-hero { height: 350px; background-position: center top; } .detail-title-card { margin: -65px 0 0; padding: 27px 22px; } .detail-title-card h1 { font-size: 29px; } .detail-meta { font-size: 12px; gap: 8px; } .detail-meta span + span::before { margin-right: 8px; } .detail-article { padding: 0 20px; } .detail-article p { text-align: left; font-size: 14px; } .detail-related__grid { grid-template-columns: 1fr; } }
+        @media (max-width: 800px) {
+            .detail-hero { height: 420px; }
+            .detail-title-card { width: 100%; margin-top: -90px; padding: 32px 24px; }
+            .detail-article { margin-top: 34px; padding: 0 16px; }
+            .detail-related { margin-top: 48px; }
+            .detail-related__grid { grid-template-columns: 1fr; gap: 35px; }
+            .detail-related-card { grid-template-columns: 1fr; gap: 16px; }
+            .detail-related-card:nth-child(n+2) { display: none !important; }
+            .detail-related-card img { height: 240px; }
+        }
     </style>
 </head>
 <body class="detail-page">
@@ -36,7 +87,14 @@
         <div class="container">
             <header class="detail-title-card">
                 <h1>What Businesses Should Consider Before Signing a Commercial Contract</h1>
-                <p class="detail-meta"><span>Nov 21, 2026</span><span>James Smith</span><span>4 min read</span></p>
+                <p class="detail-meta">
+                    <span class="bullet">•</span>
+                    <span>Nov 21, 2026</span>
+                    <span class="bullet">•</span>
+                    <span>James Smith</span>
+                    <span class="bullet">•</span>
+                    <span>4 min read</span>
+                </p>
             </header>
         </div>
         <article class="detail-article">
