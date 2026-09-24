@@ -62,7 +62,7 @@ class HomePageSettingController extends Controller
 
             if ($request->hasFile("slides.$position.image")) {
                 $image = $request->file("slides.$position.image");
-                $fileName = 'hero-' . Str::uuid() . '.' . $image->getClientOriginalExtension();
+                $fileName = 'hero-slide-' . $position . '.' . strtolower($image->getClientOriginalExtension());
                 $image->move(public_path('images'), $fileName);
                 $slide->image = $fileName;
             }

@@ -87,7 +87,15 @@ class BlogController extends Controller
             unset($data[$field]);
 
             if ($request->hasFile($field)) {
-                $data[$field] = $request->file($field)->store('uploads/blog', 'public');
+                $image = $request->file($field);
+                $directory = public_path('uploads/blog');
+                if (! is_dir($directory)) {
+                    mkdir($directory, 0755, true);
+                }
+                $base = Str::slug($data['slug'] ?: $data['title']);
+                $filename = $base . '-' . $field . '.' . strtolower($image->getClientOriginalExtension());
+                $image->move($directory, $filename);
+                $data[$field] = 'uploads/blog/' . $filename;
             }
         }
 

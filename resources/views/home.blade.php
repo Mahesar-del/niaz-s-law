@@ -92,7 +92,7 @@
                 <div class="hero-slide {{ $index === 0 ? 'active' : '' }}" style="--hero-image: url('{{ asset('images/' . $slide->image) }}');">
                     <div class="container hero-container">
                         <div class="hero-content">
-                            <h1>{!! nl2br(e($slide->heading)) !!}</h1>
+                            <h1>{!! nl2br(e(strip_tags($slide->heading))) !!}</h1>
                             <a href="{{ $slide->button_link }}" class="btn btn-secondary">{{ $slide->button_text }} <span class="arrow-icon"><img src="{{ asset('images/arrow.svg') }}" alt="" style="width: 32px; height: 32px; vertical-align: middle;"></span></a>
                         </div>
                     </div>

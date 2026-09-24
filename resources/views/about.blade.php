@@ -776,10 +776,10 @@
                 <a href="{{ route('capabilities.show', ['capability' => $capability->slug ?: $capability->id]) }}" class="about-cap-card">
                     <div>
                         <h3>{{ $capability->title }}</h3>
-                        <img src="{{ $capability->image ? asset(strpos($capability->image,'/') !== false ? $capability->image : 'images/'.$capability->image) : asset('images/commercial-imge.png') }}" alt="{{ $capability->title }}">
+                        <img class="about-cap-img" src="{{ $capability->image ? asset(strpos($capability->image,'/') !== false ? $capability->image : 'images/'.$capability->image) : asset('images/commercial-imge.png') }}" alt="{{ $capability->title }}">
                     </div>
                     <div class="about-cap-bottom">
-                        <p>{{ $capability->description }}</p>
+                        <p class="about-cap-desc">{{ $capability->description }}</p>
                         <div class="about-cap-arrow">↗</div>
                     </div>
                 </a>
