@@ -25,7 +25,7 @@
     }
     .ct-hero-title-left,
     .ct-hero-title-right {
-        font-size: 64px;
+        font-size: clamp(24px, 3vw, 42px);
         margin: 0;
         font-family: var(--font-heading);
         font-weight: 700;

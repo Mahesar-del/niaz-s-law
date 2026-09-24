@@ -52,9 +52,8 @@
 
         /* Search Section */
         .search-section {
-            display: flex;
-            justify-content: center;
-            margin-top: -20px;
+            width: 100%;
+            margin-top: -50px;
             position: relative;
             z-index: 5;
         }
@@ -70,6 +69,7 @@
             align-items: center;
             justify-content: center;
             padding: 0 40px;
+            margin: 0 auto;
         }
         .search-box {
             display: flex;
@@ -147,8 +147,9 @@
             transition: transform 0.3s, box-shadow 0.3s;
             text-decoration: none;
             color: inherit;
-            height: auto;
+            height: 100%;
             min-height: 360px;
+            box-sizing: border-box;
         }
         .capability-card h3 {
             font-family: 'Libre Baskerville', serif;
@@ -157,6 +158,7 @@
             line-height: 26px;
             color: #000000;
             margin-bottom: 12px;
+            min-height: 52px;
         }
         .capability-img {
             width: 100%;
@@ -178,7 +180,7 @@
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            max-height: 72px;
+            height: 72px;
         }
         .capability-link {
             position: absolute;
@@ -374,7 +376,7 @@
 
     @include('components.header')
 
-    <main style="flex-grow: 1; display: flex; flex-direction: column;">
+    <main style="flex-grow: 1; width: 100%;">
     <section class="capabilities-hero">
         <div class="container capabilities-hero-content">
             <div>
