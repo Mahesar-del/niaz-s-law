@@ -166,12 +166,9 @@
                             <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </div>
                         <div class="dropdown-menu">
-                            <div class="dropdown-item">Commercial Transactions</div>
-                            <div class="dropdown-item">Infrastructure & Projects</div>
-                            <div class="dropdown-item">Procurement & Contracting</div>
-                            <div class="dropdown-item">Aviation</div>
-                            <div class="dropdown-item">Commercial Risk</div>
-                            <div class="dropdown-item">International Business</div>
+                            @foreach($practiceFilters as $practiceFilter)
+                                <div class="dropdown-item">{{ $practiceFilter }}</div>
+                            @endforeach
                         </div>
                     </div>
                     
@@ -181,11 +178,9 @@
                             <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </div>
                         <div class="dropdown-menu">
-                            <div class="dropdown-item">Aviation</div>
-                            <div class="dropdown-item">Energy & Infrastructure</div>
-                            <div class="dropdown-item">Technology</div>
-                            <div class="dropdown-item">Healthcare & Life Sciences</div>
-                            <div class="dropdown-item">Real Estate & Construction</div>
+                            @foreach($industryFilters as $industryFilter)
+                                <div class="dropdown-item">{{ $industryFilter }}</div>
+                            @endforeach
                         </div>
                     </div>
 
