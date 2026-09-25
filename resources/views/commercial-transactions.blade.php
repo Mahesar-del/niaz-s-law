@@ -4,7 +4,7 @@
     <link rel="icon" type="image/png" href="{{ asset('images/favicon-icon.png') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Commercial Transactions - Niaz Law P.C. | Business Law Illinois</title>
+    <title>Commercial Transactions - Niaz Law P.C. | Business Law Illinois</title><link rel="canonical" href="{{ url()->current() }}">
     <meta name="description" content="Niaz Law P.C. provides expert commercial transaction legal services in Illinois. Our attorneys assist with business contracts, mergers, acquisitions, and complex commercial agreements.">
     <meta name="keywords" content="commercial transactions, business contracts Illinois, mergers acquisitions attorney, commercial law Illinois, business agreements, Niaz Law commercial, contract law attorney">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">

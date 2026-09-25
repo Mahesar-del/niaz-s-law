@@ -5,7 +5,7 @@
         <link rel="icon" type="image/png" href="{{ asset('images/favicon-icon.png') }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?php $seo = \App\Models\SeoSetting::forPage('home'); ?>
-        <title>{{ $seo->meta_title ?: 'Niaz Law P.C. | Expert Legal Counsel in Illinois' }}</title>
+        <title>{{ $seo->meta_title ?: 'Niaz Law P.C. | Expert Legal Counsel in Illinois' }}</title><link rel="canonical" href="{{ url()->current() }}">
         <meta name="description" content="{{ $seo->meta_description ?: 'Niaz Law P.C. provides expert legal counsel and dedicated representation for business and personal legal matters in Illinois.' }}">
         <meta name="keywords" content="{{ $seo->meta_keywords ?: 'law firm Illinois, legal counsel, attorney Illinois, business law, Niaz Law' }}">
         <meta name="robots" content="{{ $seo->meta_robots ?: 'index, follow' }}">

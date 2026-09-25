@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>{{ $blog->meta_title ?: $blog->title . ' | Niaz Law P.C.' }}</title>
+    <title>{{ $blog->meta_title ?: $blog->title . ' | Niaz Law P.C.' }}</title><link rel="canonical" href="{{ url()->current() }}">
     <meta name="description" content="{{ $blog->meta_description ?: Str::limit(html_entity_decode(strip_tags($blog->content)), 160) }}">
     <meta name="keywords" content="{{ $blog->meta_keywords ?: ($blog->category ? $blog->category.', ' : '') . 'legal insights, Niaz Law, Illinois law firm' }}">
     <meta name="robots" content="{{ $blog->robots ?? 'index, follow' }}">
