@@ -198,14 +198,18 @@
                             <label for="robots-{{ $pageKey }}">
                                 {{ $pageInfo['label'] }} Robots Tag
                             </label>
-                            <input type="text"
+                            <select
                                 id="robots-{{ $pageKey }}"
                                 name="seo[{{ $pageKey }}][meta_robots]"
-                                value="{{ old('seo.'.$pageKey.'.meta_robots', $seo->meta_robots ?? '') }}"
-                                placeholder="index, follow"
-                                maxlength="100">
+                                >
+                                @php($robots = old('seo.'.$pageKey.'.meta_robots', $seo->meta_robots ?? 'index, follow'))
+                                <option value="index, follow" {{ $robots === 'index, follow' ? 'selected' : '' }}>index, follow</option>
+                                <option value="index, nofollow" {{ $robots === 'index, nofollow' ? 'selected' : '' }}>index, nofollow</option>
+                                <option value="noindex, follow" {{ $robots === 'noindex, follow' ? 'selected' : '' }}>noindex, follow</option>
+                                <option value="noindex, nofollow" {{ $robots === 'noindex, nofollow' ? 'selected' : '' }}>noindex, nofollow</option>
+                            </select>
                             <div class="char-hint">
-                                Optional: e.g. "index, follow" or "noindex, nofollow". Defaults to index, follow.
+                                Choose how search engines should index this page.
                             </div>
                         </div>
 

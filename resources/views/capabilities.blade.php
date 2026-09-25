@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $seo = \App\Models\SeoSetting::forPage('capabilities'); ?>
-    <title>{{ $seo->meta_title ?: 'Legal Capabilities - Niaz Law P.C.' }}</title>
+    <title>{{ $seo->meta_title ?: 'Legal Capabilities - Niaz Law P.C.' }}</title><link rel="canonical" href="{{ url()->current() }}">
     <meta name="description" content="{{ $seo->meta_description ?: 'Explore the legal capabilities of Niaz Law P.C., covering commercial transactions and business law.' }}">
     <meta name="keywords" content="{{ $seo->meta_keywords ?: 'legal capabilities, law firm services Illinois, commercial transactions, Niaz Law' }}">
         <meta name="robots" content="{{ $seo->meta_robots ?: 'index, follow' }}">
