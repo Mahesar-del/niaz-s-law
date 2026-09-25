@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head>
-    <link rel="icon" type="image/png" href="{{ asset('images/favicon-icon.png') }}"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{ $page->meta_title ?: ($page->title . ' | Niaz Law P.C.') }}</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon-icon.png') }}"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{ $page->meta_title ?: ($page->title . ' | Niaz Law P.C.') }}</title><link rel="canonical" href="{{ url()->current() }}">
     <meta name="description" content="{{ $page->meta_description ?: ('Read our ' . $page->title . '.') }}">
     <meta name="keywords" content="{{ $page->meta_keywords ?: '' }}">
     <meta name="robots" content="{{ $page->robots ?: 'index, follow' }}"><link rel="stylesheet" href="{{ asset('css/app.css') }}"><style>

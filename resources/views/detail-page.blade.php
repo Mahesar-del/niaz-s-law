@@ -4,7 +4,7 @@
     <link rel="icon" type="image/png" href="{{ asset('images/favicon-icon.png') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $capability->meta_title ?: (${capability}->page_title ?: ${capability}->title . ' | Niaz Law P.C.') }}</title>
+    <title>{{ $capability->meta_title ?: (${capability}->page_title ?: ${capability}->title . ' | Niaz Law P.C.') }}</title><link rel="canonical" href="{{ url()->current() }}">
     <meta name="description" content="{{ $capability->meta_description ?: (${capability}->page_description ?: 'Explore our expertise in ' . ${capability}->title . '.') }}">
     <meta name="keywords" content="{{ $capability->meta_keywords ?: '' }}">
     <meta name="robots" content="{{ $capability->robots ?: 'index, follow' }}">page_description ?? $capability->description), 160) : 'Expert legal insights and resources from Niaz Law P.C., a leading Illinois law firm.' }}">

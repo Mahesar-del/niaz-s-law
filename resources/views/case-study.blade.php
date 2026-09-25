@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php $seo = \App\Models\SeoSetting::forPage('case-study'); ?>
-    <title>{{ $seo->meta_title ?: 'Case Studies - Niaz Law P.C.' }}</title>
+    <title>{{ $seo->meta_title ?: 'Case Studies - Niaz Law P.C.' }}</title><link rel="canonical" href="{{ url()->current() }}">
     <meta name="description" content="{{ $seo->meta_description ?: 'Explore real-world case studies from Niaz Law P.C. showcasing our legal expertise.' }}">
     <meta name="keywords" content="{{ $seo->meta_keywords ?: 'legal case studies, law firm success stories, Illinois legal cases, Niaz Law cases' }}">
         <meta name="robots" content="{{ $seo->meta_robots ?: 'index, follow' }}">

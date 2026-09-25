@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <link rel="icon" type="image/png" href="{{ asset('images/favicon-icon.png') }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?php $seo = \App\Models\SeoSetting::forPage('home'); ?>
-        <title>{{ $seo->meta_title ?: 'Niaz Law P.C. | Expert Legal Counsel in Illinois' }}</title>
+        <title>{{ $seo->meta_title ?: 'Niaz Law P.C. | Expert Legal Counsel in Illinois' }}</title><link rel="canonical" href="{{ url()->current() }}">
         <meta name="description" content="{{ $seo->meta_description ?: 'Niaz Law P.C. provides expert legal counsel and dedicated representation for business and personal legal matters in Illinois.' }}">
         <meta name="keywords" content="{{ $seo->meta_keywords ?: 'law firm Illinois, legal counsel, attorney Illinois, business law, Niaz Law' }}">
         <meta name="robots" content="{{ $seo->meta_robots ?: 'index, follow' }}">
@@ -132,7 +132,7 @@
         @endphp
         <section class="hero hero-slider" data-hero-slider>
             @foreach($slides as $index => $slide)
-                <div class="hero-slide {{ $index === 0 ? 'active' : '' }}" style="--hero-image: url('{{ asset('images/' . $slide->image) }}'); --hero-mobile-image: url('{{ asset('images/' . ($slide->mobile_image ?? $slide->image)) }}');">
+                <div class="hero-slide {{ $index === 0 ? 'active' : '' }}" style="--hero-image: url('{{ asset('images/' . $slide->image) }}'); --hero-mobile-image: url('{{ asset('images/' . (!empty($slide->mobile_image) ? $slide->mobile_image : $slide->image)) }}'); --hero-mobile-pos: {{ !empty($slide->mobile_image) ? 'center center' : '66% 10%' }};">
                     <div class="container hero-container">
                         <div class="hero-content">
                             <h1>{!! nl2br(e($slide->heading)) !!}</h1>
@@ -303,18 +303,19 @@
                 <iframe class="home-map" title="Niaz Law Franklin Park office location" src="https://www.google.com/maps?q=9933+Franklin+Ave,+Franklin+Park,+IL+60131&amp;z=17&amp;output=embed" loading="lazy"></iframe>
                 <div class="contact-form-card">
                     <h2>Have Questions?<br>Get in Touch!</h2>
-                    <form>
+                    <form id="home-contact-form" action="{{ route('contact.quick') }}" method="POST">
+                        @csrf
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Name">
+                            <input type="text" name="name" class="form-control" placeholder="Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email">
+                            <input type="email" name="email" class="form-control" placeholder="Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Subject">
+                            <input type="text" name="subject" class="form-control" placeholder="Subject">
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" placeholder="Message"></textarea>
+                            <textarea name="message" class="form-control" placeholder="Message" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Send Message</button>
                     </form>
@@ -338,8 +339,53 @@
                 indicators.forEach((indicator, index) => indicator.addEventListener('click', () => show(index)));
                 setInterval(() => show(activeIndex + 1), 6500);
             })();
+            
+            // Home Contact Form AJAX Submission
+            const homeContactForm = document.getElementById('home-contact-form');
+            if(homeContactForm) {
+                homeContactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const form = this;
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    const originalBtnText = submitBtn.innerText;
+                    submitBtn.innerText = 'Sending...';
+                    submitBtn.disabled = true;
 
+                    const formData = new FormData(form);
 
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(async response => {
+                        const data = await response.json().catch(() => null);
+                        if (!response.ok) {
+                            const errorMsg = data && data.message ? data.message : 'Something went wrong. Please check your inputs or try again later.';
+                            throw new Error(errorMsg);
+                        }
+                        return data;
+                    })
+                    .then(data => {
+                        form.innerHTML = `
+                            <div style="background-color: #d4edda; color: #155724; padding: 20px; border-radius: 8px; border: 1px solid #c3e6cb; text-align: center;">
+                                <h3 style="margin-top:0; font-size: 20px;">Thank You!</h3>
+                                <p style="margin-bottom:0; font-size: 15px;">${data && data.message ? data.message : 'Your inquiry has been sent successfully.'}</p>
+                            </div>
+                        `;
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        submitBtn.innerText = originalBtnText;
+                        submitBtn.disabled = false;
+                        alert(error.message);
+                    });
+                });
+            }
         </script>
     </body>
 </html>

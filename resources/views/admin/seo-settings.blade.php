@@ -36,8 +36,8 @@
         /* Fields */
         .seo-field{margin-bottom:24px}
         .seo-field label{display:block;font:700 15px "Arial", sans-serif;color:#003366;margin-bottom:10px}
-        .seo-field input,.seo-field textarea{width:100%;padding:14px 16px;border:1px solid #dcdcdc;border-radius:6px;font:15px Arial;color:#171717;background:#fff;transition:border-color .2s}
-        .seo-field input:focus,.seo-field textarea:focus{outline:none;border-color:#003366;box-shadow: 0 0 0 2px rgba(0,51,102,0.1)}
+        .seo-field input,.seo-field textarea,.seo-field select{width:100%;padding:14px 16px;border:1px solid #dcdcdc;border-radius:6px;font:15px Arial;color:#171717;background:#fff;transition:border-color .2s}
+        .seo-field input:focus,.seo-field textarea:focus,.seo-field select:focus{outline:none;border-color:#003366;box-shadow: 0 0 0 2px rgba(0,51,102,0.1)}
         .seo-field textarea{min-height:120px;resize:vertical}
         .char-hint{margin-top:8px;font:13px Arial;color:#888}
         .char-hint.bad{color:#c62828}
@@ -198,14 +198,18 @@
                             <label for="robots-{{ $pageKey }}">
                                 {{ $pageInfo['label'] }} Robots Tag
                             </label>
-                            <input type="text"
+                            <select
                                 id="robots-{{ $pageKey }}"
                                 name="seo[{{ $pageKey }}][meta_robots]"
-                                value="{{ old('seo.'.$pageKey.'.meta_robots', $seo->meta_robots ?? '') }}"
-                                placeholder="index, follow"
-                                maxlength="100">
+                                >
+                                @php($robots = old('seo.'.$pageKey.'.meta_robots', $seo->meta_robots ?? 'index, follow'))
+                                <option value="index, follow" {{ $robots === 'index, follow' ? 'selected' : '' }}>index, follow</option>
+                                <option value="index, nofollow" {{ $robots === 'index, nofollow' ? 'selected' : '' }}>index, nofollow</option>
+                                <option value="noindex, follow" {{ $robots === 'noindex, follow' ? 'selected' : '' }}>noindex, follow</option>
+                                <option value="noindex, nofollow" {{ $robots === 'noindex, nofollow' ? 'selected' : '' }}>noindex, nofollow</option>
+                            </select>
                             <div class="char-hint">
-                                Optional: e.g. "index, follow" or "noindex, nofollow". Defaults to index, follow.
+                                Choose how search engines should index this page.
                             </div>
                         </div>
 

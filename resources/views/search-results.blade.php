@@ -1,7 +1,7 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en"><head>
     <link rel="icon" type="image/png" href="{{ asset('images/favicon-icon.png') }}"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>{{ $query ? 'Search: '.e($query).' - ' : '' }}Niaz Law P.C.</title>
+    <title>{{ $query ? 'Search: '.e($query).' - ' : '' }}Niaz Law P.C.</title><link rel="canonical" href="{{ url()->current() }}">
     <meta name="description" content="{{ $query ? 'Search results for &quot;'.e($query).'&quot; on Niaz Law P.C. Find attorneys, legal capabilities, and articles.' : 'Search Niaz Law P.C. for attorneys, legal services, and articles.' }}">
     <meta name="keywords" content="{{ $query ? e($query).', ' : '' }}Niaz Law search, law firm Illinois, legal search">
     <meta name="robots" content="noindex, follow">

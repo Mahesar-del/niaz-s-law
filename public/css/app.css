@@ -166,11 +166,12 @@ ul {
     z-index: 9999;
     color: #fff;
     transform: translateY(0);
-    transition: transform 0.3s ease, background-color 0.3s ease, padding 0.3s ease;
+    transition: transform 0.3s ease, background 0.3s ease, padding 0.3s ease;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.65) 60%, rgba(0, 0, 0, 0) 100%);
 }
 
 .navbar.scrolled {
-    background-color: #000000;
+    background: #000000;
     padding: var(--space-16) 0;
     border-bottom: 1px solid #333;
 }
@@ -505,7 +506,7 @@ ul {
     inset: 0;
     opacity: 0;
     transition: opacity .7s ease;
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.16) 45%, rgba(102, 102, 102, 0) 100%), var(--hero-image, url('/images/home-hero.png')) center/cover;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0) 70%), var(--hero-image, url('/images/home-hero.png')) center/cover;
 }
 
 .hero-slide.active {
@@ -588,15 +589,19 @@ ul {
 
 @media (max-width: 768px) {
     .hero {
-        padding: 120px var(--space-16) 0;
+        padding: 120px 0 0;
         height: 80vh;
-        min-height: 450px;
+        min-height: 500px;
         max-height: 600px;
     }
 
     .hero-slide {
-        /* background-image: var(--hero-mobile-image) !important; */
-        background-position: 66% 10% !important;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%), var(--hero-mobile-image) var(--hero-mobile-pos, center center) / cover !important;
+    }
+
+    .hero-slide:nth-child(2),
+    .hero-slide:nth-child(3) {
+        --hero-mobile-pos: center center !important;
     }
 
     .hero h1 {
@@ -605,24 +610,26 @@ ul {
         font-size: 28px;
         line-height: 38px;
         letter-spacing: 0.01em;
-        text-align: center;
+        text-align: left;
+        max-width: 320px;
+        margin-bottom: 24px;
     }
 
     .hero-content {
         margin-top: 0;
         margin-left: 0;
-        text-align: center;
+        text-align: left;
         width: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
     }
 
     .hero-indicators {
         left: 50%;
         right: auto;
         transform: translateX(-50%);
-        bottom: 20px;
+        bottom: 35px;
         padding: 0 16px;
         justify-content: center;
         width: 100%;
@@ -634,8 +641,10 @@ ul {
     }
 
     .hero .btn {
-        width: 85%;
-        max-width: 320px;
+        width: 175px !important;
+        height: 48px !important;
+        align-self: flex-start;
+        font-size: 15px;
     }
 }
 
@@ -1515,7 +1524,7 @@ textarea {
 
 .contact-info li a:hover {
     color: #af8943;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .contact-info li svg {
