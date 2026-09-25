@@ -329,8 +329,8 @@
             position: absolute;
             right: 15px;
             bottom: 39px;
-            width: 46.67px;
-            height: 46.67px;
+            width: 40.67px;
+            height: 40.67px;
             flex-shrink: 0;
             border-radius: 50%;
             border: 1.5px solid #000000;
@@ -340,6 +340,9 @@
             color: #000;
             text-decoration: none;
             transition: all 0.3s;
+            font-weight:bold;
+            font-size:20px;
+
         }
 
         .about-cap-arrow:hover {
@@ -486,7 +489,7 @@
                 padding: 40px 0;
             }
             .about-capabilities-heading {
-                font-size: 26px;
+                font-size: 25px;
                 padding: 0 10px;
             }
             .about-capabilities-grid {
@@ -734,7 +737,7 @@
     <section class="about-section">
         <div class="container about-container">
             <div class="about-left-col">
-                <h2 class="section-title about-section-title">Learn About Our Firm</h2>
+                <h2 class="section-title about-section-title">What Defines<br class="desktop-only"> <span class="our-firm-text">Our Practice</span></h2>
                 <div class="about-features">
                     <div class="feature">
                         <div class="feature-icon">
