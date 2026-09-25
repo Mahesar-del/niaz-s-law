@@ -74,22 +74,24 @@
             font: 700 25px / 1.1 Georgia, serif;
         }
         .attorney-profile__meta p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             margin: 0 0 12px;
             color: #fff;
             font-size: 14px;
             line-height: 1.15;
             overflow-wrap: anywhere;
         }
-        .attorney-profile__meta p::before {
-            display: inline-block;
-            width: 20px;
-            margin-right: 8px;
+        .attorney-profile__meta p svg {
+            flex-shrink: 0;
             color: #fff;
-            text-align: center;
         }
-        .attorney-profile__meta .email::before { content: '✉'; }
-        .attorney-profile__meta .phone::before { content: '⌕'; transform: rotate(-35deg); }
-        .attorney-profile__meta .location::before { content: '●'; font-size: 11px; }
+        .attorney-meta-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
         .attorney-overview {
             min-height: 201px;
             box-sizing: border-box;
@@ -211,14 +213,17 @@
             .attorney-title .attorney-title-line, .attorney-title .share-icon { display: none; }
             .attorney-profile { position: relative; top: auto; left: auto; margin: 20px 0 -100px; gap: 24px; flex-direction: column-reverse; align-items: center; }
             .attorney-profile img { width: 240px; height: 200px; }
-            .attorney-profile__meta { padding-top: 0; min-width: 0; color: #fff; text-align: center; width: 100%; }
-            .attorney-profile__meta h3 { color: #fff; font-size: 19px; line-height: 21px; margin-bottom: 8px; font-weight:500; }
-            .attorney-profile__meta p { color: #fff; font-size: 14px; line-height: 22px; margin-bottom: 8px; }
-            .attorney-profile__meta p::before { color: #fff; }
-            .attorney-profile__meta .phone, .attorney-profile__meta .location { display: inline-block; margin: 0 8px; }
-            .attorney-overview { min-height: auto; padding: 62px 24px 32px; text-align: justify; }
-            .attorney-overview__inner { padding-left: 0; }
-            .attorney-content { padding: 27px 24px 0px; text-align: justify;}
+            .attorney-profile__meta { padding-top: 0; min-width: 0; color: #fff; text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center; }
+            .attorney-profile__meta h3 { color: #fff; font-size: 19px; line-height: 21px; margin-bottom: 10px; font-weight:500; font-family: Georgia, serif; text-align: center; }
+            .attorney-profile__meta p { color: #fff; font-size: 14px; line-height: 20px; margin-bottom: 0; justify-content: center; }
+            .attorney-profile__meta .email { display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 8px; }
+            .attorney-meta-row { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 12px; flex-wrap: nowrap; width: 100%; max-width: 100%; box-sizing: border-box; }
+            .attorney-profile__meta .phone, .attorney-profile__meta .location { display: inline-flex; align-items: center; justify-content: center; gap: 4px; margin: 0; white-space: nowrap; font-size: clamp(11px, 3.1vw, 13.5px); }
+            .attorney-profile__meta .phone svg, .attorney-profile__meta .location svg { width: 14px; height: 14px; flex-shrink: 0; }
+            .attorney-overview { min-height: auto; padding: 62px 0 32px; }
+            .attorney-overview .container { padding: 0 16px; }
+            .attorney-overview__inner { padding-left: 0; text-align: justify; }
+            .attorney-content { padding-top: 27px; padding-bottom: 0px; text-align: justify;}
             .attorney-credentials > h2 { display: block; }
             .attorney-credentials > h2::after { display: block; width: 65px; margin-top: 12px; margin-left: 0; }
             .attorney-columns { grid-template-columns: 1fr; gap: 36px; }
@@ -253,9 +258,26 @@
                 <img src="{{ asset('images/' . ($attorney->photo ?: 'lawyer_profile.jpg')) }}" alt="{{ $attorney->name }}">
                 <div class="attorney-profile__meta">
                     <h3>{{ $attorney->title }}</h3>
-                    @if($attorney->email)<p class="email">{{ $attorney->email }}</p>@endif
-                    @if($attorney->phone)<p class="phone">{{ $attorney->phone }}</p>@endif
-                    @if($attorney->location)<p class="location">{{ $attorney->location }}</p>@endif
+                    @if($attorney->email)
+                        <p class="email">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            <span>{{ $attorney->email }}</span>
+                        </p>
+                    @endif
+                    <div class="attorney-meta-row">
+                        @if($attorney->phone)
+                            <p class="phone">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                <span>{{ $attorney->phone }}</span>
+                            </p>
+                        @endif
+                        @if($attorney->location)
+                            <p class="location">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                <span>{{ $attorney->location }}</span>
+                            </p>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>

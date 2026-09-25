@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -79,6 +79,19 @@
                 background: #fff;
                 margin-top: 12px;
             }
+                     /* Keep the important subject of the hero image visible on phones. */
+            @media (max-width: 768px) {
+                .hero-slide {
+                    background-position: 72% center;
+                    background-size: cover;
+                }
+                .hero-container {
+                    padding: 0 16px;
+                }
+                .hero-content {
+                    max-width: 92%;
+                }
+            }
 
             /* Mobile View Adjustment: Remove hover slide-up effect, reduce left padding, keep only heading */
             @media (max-width: 768px) {
@@ -119,7 +132,7 @@
         @endphp
         <section class="hero hero-slider" data-hero-slider>
             @foreach($slides as $index => $slide)
-                <div class="hero-slide {{ $index === 0 ? 'active' : '' }}" style="--hero-image: url('{{ asset('images/' . $slide->image) }}'); --hero-mobile-image: url('{{ asset('images/' . (!empty($slide->mobile_image) ? $slide->mobile_image : $slide->image)) }}');">
+                <div class="hero-slide {{ $index === 0 ? 'active' : '' }}" style="--hero-image: url('{{ asset('images/' . $slide->image) }}'); --hero-mobile-image: url('{{ asset('images/' . (!empty($slide->mobile_image) ? $slide->mobile_image : $slide->image)) }}'); --hero-mobile-pos: {{ !empty($slide->mobile_image) ? 'center center' : '66% 10%' }};">
                     <div class="container hero-container">
                         <div class="hero-content">
                             <h1>{!! nl2br(e($slide->heading)) !!}</h1>
