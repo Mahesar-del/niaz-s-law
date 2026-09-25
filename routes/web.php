@@ -51,6 +51,7 @@ Route::get('/insights', [InsightsController::class, 'index']);
 Route::get('/detail', [DetailController::class, 'index']);
 Route::get('/contact-us', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact-us', [ContactController::class, 'submit'])->name('contact.submit');
+Route::post('/quick-contact', [ContactController::class, 'quickSubmit'])->name('contact.quick');
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 Route::get('/pages/{page:slug}', [StaticPageController::class, 'show'])->name('static-pages.show');
 Route::redirect('/attorney-detail', '/attorneys');

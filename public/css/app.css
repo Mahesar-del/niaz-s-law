@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
     --primary: #000000;
@@ -595,8 +595,7 @@ ul {
     }
 
     .hero-slide {
-        /* background-image: var(--hero-mobile-image) !important; */
-        background-position: 66% 10% !important;
+        background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%), var(--hero-mobile-image) center/cover !important;
     }
 
     .hero h1 {
