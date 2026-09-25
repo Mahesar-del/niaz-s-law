@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon-icon.png') }}">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Attorneys - Niaz Law P.C.</title>
+        <?php $seo = \App\Models\SeoSetting::forPage('attorneys'); ?>
+        <title>{{ $seo->meta_title ?: 'Our Attorneys - Niaz Law P.C.' }}</title>
+        <meta name="description" content="{{ $seo->meta_description ?: 'Meet the experienced attorneys at Niaz Law P.C.' }}">
+        <meta name="keywords" content="{{ $seo->meta_keywords ?: 'attorneys Illinois, lawyers Illinois, legal team, Niaz Law attorneys' }}">
+        <meta name="robots" content="{{ $seo->meta_robots ?: 'index, follow' }}">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
     <body class="antialiased" style="display: flex; flex-direction: column; min-height: 100vh;">

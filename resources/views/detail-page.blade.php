@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon-icon.png') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What Businesses Should Consider Before Signing a Commercial Contract - Niaz Law P.C.</title>
+    <title>{{ $capability->meta_title ?: (${capability}->page_title ?: ${capability}->title . ' | Niaz Law P.C.') }}</title>
+    <meta name="description" content="{{ $capability->meta_description ?: (${capability}->page_description ?: 'Explore our expertise in ' . ${capability}->title . '.') }}">
+    <meta name="keywords" content="{{ $capability->meta_keywords ?: '' }}">
+    <meta name="robots" content="{{ $capability->robots ?: 'index, follow' }}">page_description ?? $capability->description), 160) : 'Expert legal insights and resources from Niaz Law P.C., a leading Illinois law firm.' }}">
+    <meta name="keywords" content="{{ isset($capability) ? ($capability->title.', legal services Illinois, '.Str::slug($capability->title, ' ').', Niaz Law') : 'legal resources, law firm Illinois, Niaz Law P.C.' }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
         .detail-page { background: #fff; }

@@ -19,6 +19,29 @@
 <div class="edit-field"><label>Title</label><select name="title" required>@foreach(['Partner','Senior of Counsel','Senior Counsel','Counsel','Associate Attorney'] as $v)<option value="{{ $v }}" @if(old('title', $attorney->title) === $v) selected @endif>{{ $v }}</option>@endforeach</select></div>
 <div class="edit-field"><label>Email</label><input type="email" name="email" value="{{ old('email',$attorney->email) }}" required></div><div class="edit-field"><label>Phone</label><input name="phone" value="{{ old('phone',$attorney->phone) }}" required></div>
 <div class="edit-field full"><label>Overview</label><textarea name="overview">{{ old('overview',$attorney->overview) }}</textarea></div><div class="edit-field full"><label>Experience</label><textarea name="experience">{{ old('experience',$attorney->experience) }}</textarea></div><div class="edit-field full"><label>Experience Points <small>(one point per line)</small></label><textarea name="experience_points">{{ old('experience_points',$attorney->experience_points) }}</textarea></div><div class="edit-field"><label>Education <small>(one item per line)</small></label><textarea name="education">{{ old('education',$attorney->education) }}</textarea></div><div class="edit-field"><label>Admissions <small>(one item per line)</small></label><textarea name="admissions">{{ old('admissions',$attorney->admissions) }}</textarea></div>
-</div><button class="edit-save" type="submit">Update attorney</button></form><script>
+</div><div class="edit-field full">
+    <h2>SEO & Search Visibility</h2>
+</div>
+<div class="edit-field">
+    <label>Meta Title</label>
+    <input name="meta_title" value="{{ old('meta_title', $ITEM->meta_title ?? '') }}">
+</div>
+<div class="edit-field">
+    <label>Robots</label>
+    <select name="robots">
+        <option {{ old('robots', $ITEM->robots ?? '') === 'index, follow' ? 'selected' : '' }}>index, follow</option>
+        <option {{ old('robots', $ITEM->robots ?? '') === 'noindex, nofollow' ? 'selected' : '' }}>noindex, nofollow</option>
+        <option {{ old('robots', $ITEM->robots ?? '') === 'index, nofollow' ? 'selected' : '' }}>index, nofollow</option>
+    </select>
+</div>
+<div class="edit-field full">
+    <label>Meta Description</label>
+    <textarea name="meta_description">{{ old('meta_description', $ITEM->meta_description ?? '') }}</textarea>
+</div>
+<div class="edit-field full">
+    <label>Meta Keywords / Tags</label>
+    <input name="meta_keywords" value="{{ old('meta_keywords', $ITEM->meta_keywords ?? '') }}">
+</div>
+<button class="edit-save" type="submit">Update attorney</button></form><script>
 document.querySelectorAll('[data-custom-input]').forEach(function(input){var type=input.dataset.customInput,list=document.querySelector('[data-custom-checks="'+type+'"]');function add(){var value=input.value.trim();if(!value)return;var exists=[...list.querySelectorAll('input')].some(function(item){return item.value.toLowerCase()===value.toLowerCase()});if(!exists){var label=document.createElement('label');label.innerHTML='<input type="checkbox" name="'+type+'[]" value="">'+value;label.querySelector('input').value=value;label.querySelector('input').checked=true;list.appendChild(label)}input.value=''}input.addEventListener('change',add);input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();add()}});input.form.addEventListener('submit',add)});
 </script></div></main><script>document.addEventListener("click",function(e){if(!e.target.matches("[data-custom-add]"))return;var input=document.querySelector("[data-custom-input=\""+e.target.dataset.customAdd+"\"]");if(input){input.dispatchEvent(new Event("change",{bubbles:true}));}});</script></body></html>
