@@ -839,7 +839,7 @@ ul {
 .about-features {
     display: flex;
     flex-direction: column;
-    gap: 52px;
+    gap: 30px;
 }
 
 .feature {
@@ -1842,6 +1842,7 @@ textarea {
 
     .insight-card {
         height: 300px;
+        padding: 20px 16px;
     }
 
     /* Global Styles */
