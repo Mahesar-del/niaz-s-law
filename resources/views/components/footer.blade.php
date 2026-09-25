@@ -94,13 +94,13 @@
                     </li>
                     <li>
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                        @php($addr1 = $footerContact ? ($footerContact->franklin_address ?? "9933 Franklin Ave.\nFranklin Park, IL 60131") : "9933 Franklin Ave.\nFranklin Park, IL 60131")
-                        <a href="https://maps.google.com/?q={{ urlencode($addr1) }}" target="_blank" rel="noopener">{!! nl2br(e($addr1)) !!}</a>
+                        @php($addr1 = $footerContact ? ($footerContact->franklin_address ?? "9933 Franklin Ave. Franklin Park, IL 60131") : "9933 Franklin Ave. Franklin Park, IL 60131")
+                        <a href="https://maps.google.com/?q={{ urlencode($addr1) }}" target="_blank" rel="noopener">{{ str_replace(["\r\n", "\r", "\n"], ' ', $addr1) }}</a>
                     </li>
                     <li>
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                        @php($addr2 = $footerContact ? ($footerContact->naperville_address ?? "3333 Warrenville Road, Suite 200\nLisle, IL 60532, USA") : "3333 Warrenville Road, Suite 200\nLisle, IL 60532, USA")
-                        <a href="https://maps.google.com/?q={{ urlencode($addr2) }}" target="_blank" rel="noopener">{!! nl2br(e($addr2)) !!}</a>
+                        @php($addr2 = $footerContact ? ($footerContact->naperville_address ?? "3333 Warrenville Road, Suite 200 Lisle, IL 60532, USA") : "3333 Warrenville Road, Suite 200 Lisle, IL 60532, USA")
+                        <a href="https://maps.google.com/?q={{ urlencode($addr2) }}" target="_blank" rel="noopener">{{ str_replace(["\r\n", "\r", "\n"], ' ', $addr2) }}</a>
                     </li>
                 </ul>
             </div>
