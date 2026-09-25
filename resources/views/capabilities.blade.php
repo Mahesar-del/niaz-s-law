@@ -133,7 +133,7 @@
         .capabilities-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            column-gap: 32px;
+            column-gap: 16px;
             row-gap: 16px;
         }
 
@@ -349,7 +349,7 @@
             .capability-card {
                 height: auto;
                 min-height: auto;
-                padding-bottom: 24px;
+                padding: 0 0 24px 0;
                 box-sizing: border-box;
                 width: 100%;
             }
