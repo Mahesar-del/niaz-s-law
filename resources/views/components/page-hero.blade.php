@@ -6,7 +6,15 @@
         align-items: center;
         color: #fff;
         padding-top: 80px;
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ $bgImage }}') center / cover no-repeat #000;
     }
+    @if(!empty($mobileBgImage))
+    @media (max-width: 768px) {
+        .ct-hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ $mobileBgImage }}') center / cover no-repeat #000 !important;
+        }
+    }
+    @endif
     .ct-hero-container {
         width: 100%;
         max-width: var(--container-max);
@@ -70,7 +78,7 @@
     }
 </style>
 
-<div class="ct-hero" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ $bgImage }}') center / 100% 100% no-repeat #000;">
+<div class="ct-hero">
     <div class="ct-hero-container">
         <div class="ct-hero-grid">
             <h1 class="ct-hero-title-left">{{ $titleLeft }}</h1>
