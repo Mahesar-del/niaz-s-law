@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
     --primary: #000000;
@@ -167,7 +167,7 @@ ul {
     color: #fff;
     transform: translateY(0);
     transition: transform 0.3s ease, background 0.3s ease, padding 0.3s ease;
-    background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 75%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 75%, rgba(0, 0, 0, 0) 100%);
 }
 
 .navbar.scrolled {
@@ -589,14 +589,14 @@ ul {
 
 @media (max-width: 768px) {
     .hero {
-        padding: 120px var(--space-16) 0;
+        padding: 120px 0 0;
         height: 80vh;
         min-height: 500px;
         max-height: 600px;
     }
 
     .hero-slide {
-        background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%), var(--hero-mobile-image) var(--hero-mobile-pos, center center) / cover !important;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%), var(--hero-mobile-image) var(--hero-mobile-pos, center center) / cover !important;
     }
 
     .hero-slide:nth-child(2),
@@ -610,18 +610,19 @@ ul {
         font-size: 28px;
         line-height: 38px;
         letter-spacing: 0.01em;
-        text-align: center;
-        margin-bottom: 40px;
+        text-align: left;
+        max-width: 320px;
+        margin-bottom: 24px;
     }
 
     .hero-content {
         margin-top: 0;
         margin-left: 0;
-        text-align: center;
+        text-align: left;
         width: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
     }
 
     .hero-indicators {
@@ -640,9 +641,10 @@ ul {
     }
 
     .hero .btn {
-        width: 85%;
-        max-width: 320px;
-        margin-top: 10px;
+        width: 175px !important;
+        height: 48px !important;
+        align-self: flex-start;
+        font-size: 15px;
     }
 }
 
