@@ -36,8 +36,8 @@
         /* Fields */
         .seo-field{margin-bottom:24px}
         .seo-field label{display:block;font:700 15px "Arial", sans-serif;color:#003366;margin-bottom:10px}
-        .seo-field input,.seo-field textarea{width:100%;padding:14px 16px;border:1px solid #dcdcdc;border-radius:6px;font:15px Arial;color:#171717;background:#fff;transition:border-color .2s}
-        .seo-field input:focus,.seo-field textarea:focus{outline:none;border-color:#003366;box-shadow: 0 0 0 2px rgba(0,51,102,0.1)}
+        .seo-field input,.seo-field textarea,.seo-field select{width:100%;padding:14px 16px;border:1px solid #dcdcdc;border-radius:6px;font:15px Arial;color:#171717;background:#fff;transition:border-color .2s}
+        .seo-field input:focus,.seo-field textarea:focus,.seo-field select:focus{outline:none;border-color:#003366;box-shadow: 0 0 0 2px rgba(0,51,102,0.1)}
         .seo-field textarea{min-height:120px;resize:vertical}
         .char-hint{margin-top:8px;font:13px Arial;color:#888}
         .char-hint.bad{color:#c62828}

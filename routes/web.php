@@ -59,7 +59,20 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/login', [AdminAuthController::class, 'login'])->name('login.attempt');
 
     Route::middleware('admin')->group(function () {
-        Route::get('/', function () { return view('admin.dashboard'); })->name('dashboard');
+        Route::get('/', function () {
+            $published = fn ($type) => \App\Models\BlogPost::where('content_type', $type)
+                ->where('status', 'published')
+                ->where(function ($query) {
+                    $query->whereNull('published_at')->orWhereDate('published_at', '<=', now());
+                })->count();
+
+            return view('admin.dashboard', [
+                'attorneyCount' => \App\Models\Attorney::count(),
+                'caseStudyCount' => $published('case_study'),
+                'blogCount' => $published('blog'),
+                'insightCount' => $published('insight'),
+            ]);
+        })->name('dashboard');
         Route::get('/home-page-settings', [HomePageSettingController::class, 'edit'])->name('home-settings.edit');
         Route::put('/home-page-settings', [HomePageSettingController::class, 'update'])->name('home-settings.update');
         Route::post('/home-page-settings/hero-slides', [HomePageSettingController::class, 'createSlide'])->name('home-settings.slides.create');
