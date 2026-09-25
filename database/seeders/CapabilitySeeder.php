@@ -34,7 +34,7 @@ class CapabilitySeeder extends Seeder
             [ 
                 'title' => 'Infrastructure & Construction Projects',
                 'description' => "Advising businesses on infrastructure and construction matters involving project development, contract strategy, operational coordination, execution risk management, and stakeholder alignment across complex commercial environments.",
-                'image' => 'images/cap_infrastructure.jpg', 
+                'image' => 'images/cap_infrastructure_new.jpg', 
                 'hero' => 'images/about-hero-bg.jpg',
                 'img1' => 'images/inside-court.jpg',
                 'img2' => 'images/order.jpg',
@@ -44,7 +44,7 @@ class CapabilitySeeder extends Seeder
             [ 
                 'title' => 'Aviation, Logistics & Transportation',
                 'description' => "Experience advising within international aviation operational environments involving commercial agreements, regulatory considerations, vendor management, and operational coordination.",
-                'image' => 'images/cap_commercial.jpg', 
+                'image' => 'images/cap_aviation_new.jpg',  
                 'hero' => 'images/commercial-transection-hero.png',
                 'img1' => 'images/lawywer-helps.jpg',
                 'img2' => 'images/have-question.jpg',
@@ -54,7 +54,7 @@ class CapabilitySeeder extends Seeder
             [ 
                 'title' => 'Real Estate & Property Transactions',
                 'description' => "Providing counsel on residential and commercial real estate matters, including acquisitions, dispositions, leasing, development transactions, contract structuring, and transactional risk management.",
-                'image' => 'images/cap_infrastructure.jpg', 
+                'image' => 'images/cap_real_estate_new.jpg', 
                 'hero' => 'images/attorney-hero.jpg',
                 'img1' => 'images/domestic-violance.jpg',
                 'img2' => 'images/lawywer-helps.jpg',

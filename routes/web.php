@@ -33,6 +33,7 @@ use App\Http\Controllers\Admin\FooterSettingController;
 use App\Http\Controllers\StaticPageController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Admin\StaticPageController as AdminStaticPageController;
+use App\Http\Controllers\Admin\SeoSettingController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
@@ -66,6 +67,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::put('/contact-settings', [ContactSettingController::class, 'update'])->name('contact-settings.update');
         Route::get('/footer-settings', [FooterSettingController::class, 'edit'])->name('footer-settings.edit');
         Route::put('/footer-settings', [FooterSettingController::class, 'update'])->name('footer-settings.update');
+        Route::get('/seo-settings', [SeoSettingController::class, 'edit'])->name('seo-settings.edit');
+        Route::put('/seo-settings', [SeoSettingController::class, 'update'])->name('seo-settings.update');
         Route::get('/static-pages/create', [AdminStaticPageController::class, 'create'])->name('static-pages.create');
         Route::post('/static-pages', [AdminStaticPageController::class, 'store'])->name('static-pages.store');
         Route::get('/static-pages/{page}/edit', [AdminStaticPageController::class, 'edit'])->name('static-pages.edit');
