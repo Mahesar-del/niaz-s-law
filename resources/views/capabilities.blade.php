@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon-icon.png') }}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Capabilities - Niaz Law P.C.</title>
+    <?php $seo = \App\Models\SeoSetting::forPage('capabilities'); ?>
+    <title>{{ $seo->meta_title ?: 'Legal Capabilities - Niaz Law P.C.' }}</title>
+    <meta name="description" content="{{ $seo->meta_description ?: 'Explore the legal capabilities of Niaz Law P.C., covering commercial transactions and business law.' }}">
+    <meta name="keywords" content="{{ $seo->meta_keywords ?: 'legal capabilities, law firm services Illinois, commercial transactions, Niaz Law' }}">
+        <meta name="robots" content="{{ $seo->meta_robots ?: 'index, follow' }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
         /* Capabilities Hero */
@@ -133,7 +138,7 @@
         .capabilities-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            column-gap: 32px;
+            column-gap: 16px;
             row-gap: 16px;
         }
 
@@ -349,7 +354,7 @@
             .capability-card {
                 height: auto;
                 min-height: auto;
-                padding-bottom: 24px;
+                padding: 0 0 24px 0;
                 box-sizing: border-box;
                 width: 100%;
             }

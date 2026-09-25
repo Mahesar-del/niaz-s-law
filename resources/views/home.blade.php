@@ -2,8 +2,13 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
+        <link rel="icon" type="image/png" href="{{ asset('images/favicon-icon.png') }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Niaz Law P.C.</title>
+        <?php $seo = \App\Models\SeoSetting::forPage('home'); ?>
+        <title>{{ $seo->meta_title ?: 'Niaz Law P.C. | Expert Legal Counsel in Illinois' }}</title>
+        <meta name="description" content="{{ $seo->meta_description ?: 'Niaz Law P.C. provides expert legal counsel and dedicated representation for business and personal legal matters in Illinois.' }}">
+        <meta name="keywords" content="{{ $seo->meta_keywords ?: 'law firm Illinois, legal counsel, attorney Illinois, business law, Niaz Law' }}">
+        <meta name="robots" content="{{ $seo->meta_robots ?: 'index, follow' }}">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <style>
             /* Insights Section Styles */
@@ -75,17 +80,28 @@
                 margin-top: 12px;
             }
 
-            /* Keep the important subject of the hero image visible on phones. */
+            /* Mobile View Adjustment: Remove hover slide-up effect, reduce left padding, keep only heading */
             @media (max-width: 768px) {
-                .hero-slide {
-                    background-position: 72% center;
-                    background-size: cover;
+                .insight-card {
+                    padding: 20px 16px !important;
                 }
-                .hero-container {
-                    padding: 0 16px;
+                .insight-card .insight-content {
+                    margin: 0 !important;
+                    padding: 0 !important;
                 }
-                .hero-content {
-                    max-width: 92%;
+                .insight-card:hover::before {
+                    transform: scale(1) !important;
+                }
+                .insight-card:hover::after {
+                    background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.10) 100%) !important;
+                }
+                .insight-card .insight-content,
+                .insight-card:hover .insight-content {
+                    transform: none !important;
+                }
+                .insight-card .insight-desc,
+                .insight-card:hover .insight-desc {
+                    display: none !important;
                 }
             }
         </style>
@@ -106,8 +122,8 @@
                 <div class="hero-slide {{ $index === 0 ? 'active' : '' }}" style="--hero-image: url('{{ asset('images/' . $slide->image) }}');">
                     <div class="container hero-container">
                         <div class="hero-content">
-                            <h1>{!! nl2br(e(strip_tags($slide->heading))) !!}</h1>
-                            <a href="{{ $slide->button_link }}" class="btn btn-secondary">{{ $slide->button_text }} <span class="arrow-icon"><img src="{{ asset('images/arrow.svg') }}" alt="" style="width: 32px; height: 32px; vertical-align: middle;"></span></a>
+                            <h1>{!! nl2br(e($slide->heading)) !!}</h1>
+                            <a href="{{ $slide->button_link }}" class="btn btn-secondary">{{ $slide->button_text }} <span class="arrow-icon"><img src="{{ asset('images/arrow.svg') }}" alt="" class="hero-btn-arrow"></span></a>
                         </div>
                     </div>
                 </div>
@@ -129,7 +145,7 @@
                     <a class="insight-card" href="{{ route('blog.show', $insight) }}" style="background-image: url('{{ $insight->home_image_url ?: $insight->featured_image_url ?: asset('images/insight-june.png') }}');" aria-label="Read {{ $insight->title }}">
                         <div class="insight-content">
                             <h3>{{ $insight->title }}</h3>
-                            <p class="insight-desc">{{ Str::limit(strip_tags($insight->content), 200) }}</p>
+                            <p class="insight-desc">{{ Str::limit(html_entity_decode(strip_tags($insight->content)), 200) }}</p>
                         </div>
                     </a>
                     @empty
@@ -250,7 +266,7 @@
             <div class="container">
                 <div class="news-header">
                     <h2>The Latest News And Blog From Niaz Law</h2>
-                    <a href="{{ url('/blog') }}" class="read-recent">Read Recent Posts <span class="arrow-icon"><img src="{{ asset('images/arrow.svg') }}" alt="Arrow" style="width: 32px; height: 32px; vertical-align: middle;"></span></a>
+                    <a href="{{ url('/blog') }}" class="read-recent">Read Recent Posts <span class="arrow-icon"><img src="{{ asset('images/arrow.svg') }}" alt="Arrow" class="hero-btn-arrow"></span></a>
                 </div>
                 <div class="news-grid">
                     @forelse($homePosts as $post)
@@ -258,7 +274,7 @@
                         <img src="{{ $post->featured_image_url }}" alt="{{ $post->title }}">
                         <div class="news-content">
                             <h3>{{ $post->title }}</h3>
-                            <p>{{ Str::limit(strip_tags($post->content), 130) }}</p>
+                            <p>{{ Str::limit(html_entity_decode(strip_tags($post->content)), 130) }}</p>
                             <a href="{{ route('blog.show',$post) }}" class="btn-black">Read now</a>
                         </div>
                     </div>

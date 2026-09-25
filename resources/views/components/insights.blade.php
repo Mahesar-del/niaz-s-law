@@ -1,4 +1,4 @@
-<!-- Insights And News -->
+﻿<!-- Insights And News -->
 <h2 class="ct-section-title" style="text-align: left; margin-bottom: 20px;">Insights And News</h2>
 <div class="ct-insights">
     @if(isset($capabilityPosts))
@@ -7,7 +7,7 @@
             @if($post->featured_image_url)<img src="{{ $post->featured_image_url }}" alt="{{ $post->title }}">@endif
             <div class="ct-insight-content">
                 <h3>{{ $post->title }}</h3>
-                <p>{{ Str::limit(strip_tags($post->content), 160) }}</p>
+                <p>{{ Str::limit(html_entity_decode(strip_tags($post->content)), 160) }}</p>
                 <a href="{{ route('blog.show',$post) }}" class="ct-btn-black">Read now</a>
             </div>
         </div>

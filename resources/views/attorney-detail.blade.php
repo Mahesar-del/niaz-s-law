@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon-icon.png') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $attorney->name }} - Niaz Law P.C.</title>
+    <title>{{ $attorney->meta_title ?: ($attorney->name . ' - Attorney | Niaz Law P.C.') }}</title>
+    <meta name="description" content="{{ $attorney->meta_description ?: ('Learn about ' . $attorney->name . ', ' . ($attorney->title ?? 'Attorney') . ' at Niaz Law P.C.') }}">
+    <meta name="keywords" content="{{ $attorney->meta_keywords ?: ($attorney->name . ', attorney Illinois, lawyer Illinois, Niaz Law attorney, ' . ($attorney->title ?? 'legal counsel') . ', Illinois law firm') }}">
+    <meta name="robots" content="{{ $attorney->robots ?: 'index, follow' }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
         /* Attorney detail page: matches the supplied Figma/PDF composition. */
@@ -154,7 +158,7 @@
             margin: 0;
             font: 700 25px / 1.15 Georgia, serif;
         }
-        .attorney-insights { margin-top: 6px; margin-bottom: 0; }
+        .attorney-insights { margin-top: 36px; margin-bottom: 40px; }
         .attorney-insights > h2 { margin-bottom: 27px; }
         .attorney-insights__grid {
             display: grid;
@@ -307,7 +311,7 @@
                     @forelse($attorneyPosts as $post)
                     <article class="attorney-insight-card">
                         @if($post->featured_image_url)<img src="{{ $post->featured_image_url }}" alt="{{ $post->title }}">@endif
-                        <div><h3>{{ $post->title }}</h3><p>{{ Str::limit(strip_tags($post->content), 160) }}</p><a href="{{ route('blog.show',$post) }}">Read now</a></div>
+                        <div><h3>{{ $post->title }}</h3><p>{{ Str::limit(html_entity_decode(strip_tags($post->content)), 160) }}</p><a href="{{ route('blog.show',$post) }}">Read now</a></div>
                     </article>
                     @empty
                     <p>No insights have been added for this attorney yet.</p>

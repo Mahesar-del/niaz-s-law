@@ -37,6 +37,10 @@ class AttorneyController extends Controller
             'title' => ['required', 'string', 'max:120'],
             'capabilities' => ['nullable', 'array'],
             'capabilities.*' => ['integer', 'exists:capabilities,id'],
+            'meta_title' => ['nullable', 'string', 'max:255'],
+            'meta_description' => ['nullable', 'string'],
+            'meta_keywords' => ['nullable', 'string'],
+            'robots' => ['nullable', 'string', 'max:100'],
         ]);
 
         if (!empty($data['practice_custom'])) $data['practice'][] = $data['practice_custom'];
@@ -91,6 +95,10 @@ class AttorneyController extends Controller
             'experience_points' => ['nullable', 'string', 'max:2000'],
             'education' => ['nullable', 'string', 'max:2000'],
             'admissions' => ['nullable', 'string', 'max:2000'],
+            'meta_title' => ['nullable', 'string', 'max:255'],
+            'meta_description' => ['nullable', 'string'],
+            'meta_keywords' => ['nullable', 'string'],
+            'robots' => ['nullable', 'string', 'max:100'],
         ]);
 
         if (!empty($data['practice_custom'])) $data['practice'][] = $data['practice_custom'];
