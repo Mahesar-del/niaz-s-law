@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -79,6 +79,31 @@
                 background: #fff;
                 margin-top: 12px;
             }
+
+            /* Mobile View Adjustment: Remove hover slide-up effect, reduce left padding, keep only heading */
+            @media (max-width: 768px) {
+                .insight-card {
+                    padding: 20px 16px !important;
+                }
+                .insight-card .insight-content {
+                    margin: 0 !important;
+                    padding: 0 !important;
+                }
+                .insight-card:hover::before {
+                    transform: scale(1) !important;
+                }
+                .insight-card:hover::after {
+                    background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.10) 100%) !important;
+                }
+                .insight-card .insight-content,
+                .insight-card:hover .insight-content {
+                    transform: none !important;
+                }
+                .insight-card .insight-desc,
+                .insight-card:hover .insight-desc {
+                    display: none !important;
+                }
+            }
         </style>
     </head>
     <body class="antialiased">
@@ -94,7 +119,7 @@
         @endphp
         <section class="hero hero-slider" data-hero-slider>
             @foreach($slides as $index => $slide)
-                <div class="hero-slide {{ $index === 0 ? 'active' : '' }}" style="--hero-image: url('{{ asset('images/' . $slide->image) }}');">
+                <div class="hero-slide {{ $index === 0 ? 'active' : '' }}" style="--hero-image: url('{{ asset('images/' . $slide->image) }}'); --hero-mobile-image: url('{{ asset('images/' . ($slide->mobile_image ?? $slide->image)) }}');">
                     <div class="container hero-container">
                         <div class="hero-content">
                             <h1>{!! nl2br(e($slide->heading)) !!}</h1>

@@ -1,6 +1,7 @@
 @php($footerContact = \App\Models\ContactSetting::first())
 @php($footerSettings = \App\Models\FooterSetting::first())
-@php($footerCapabilities = \App\Models\Capability::whereIn('id', $footerSettings?->capability_ids ?? [])->get())
+@php($capabilityIds = $footerSettings ? $footerSettings->capability_ids ?? [] : [])
+@php($footerCapabilities = \App\Models\Capability::whereIn('id', $capabilityIds)->get())
 @php($footerStaticPages = \App\Models\StaticPage::where('status', 'published')->orderBy('title')->get())
 <footer class="site-footer">
     <div class="container">
@@ -12,10 +13,10 @@
             <!-- About Us -->
             <div class="footer-col">
                 <h4>About Us</h4>
-                <p>{{ $footerSettings?->about_text ?? 'Expert legal counsel and dedicated representation for your business and personal legal matters.' }}</p>
+                <p>{{ $footerSettings ? ($footerSettings->about_text ?? 'Expert legal counsel and dedicated representation for your business and personal legal matters.') : 'Expert legal counsel and dedicated representation for your business and personal legal matters.' }}</p>
                 <div class="footer-socials">
-                    @if($footerSettings?->facebook_url)
-                    <a href="{{ $footerSettings?->facebook_url }}" target="_blank" rel="noopener">
+                    @if($footerSettings && $footerSettings->facebook_url)
+                    <a href="{{ $footerSettings->facebook_url }}" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12c0-5.523-4.477-10-10-10z"/></svg>
                     </a>
                     @else
@@ -24,8 +25,8 @@
                     </a>
                     @endif
 
-                    @if($footerSettings?->linkedin_url)
-                    <a href="{{ $footerSettings?->linkedin_url }}" target="_blank" rel="noopener">
+                    @if($footerSettings && $footerSettings->linkedin_url)
+                    <a href="{{ $footerSettings->linkedin_url }}" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-1.47 0-2.12.8-2.49 1.37v-1.17h-2.76v8.36h2.76v-4.64c0-1.24.23-2.44 1.77-2.44 1.52 0 1.54 1.41 1.54 2.52v4.56h2.44M7.83 18.5v-8.36H5.06v8.36h2.77M6.45 6.09c-.9 0-1.62.72-1.62 1.62s.72 1.63 1.62 1.63 1.62-.73 1.62-1.63-.72-1.62-1.62-1.62z"/></svg>
                     </a>
                     @else
@@ -34,8 +35,8 @@
                     </a>
                     @endif
 
-                    @if($footerSettings?->twitter_url)
-                    <a href="{{ $footerSettings?->twitter_url }}" target="_blank" rel="noopener">
+                    @if($footerSettings && $footerSettings->twitter_url)
+                    <a href="{{ $footerSettings->twitter_url }}" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg>
                     </a>
                     @else
@@ -44,8 +45,8 @@
                     </a>
                     @endif
 
-                    @if($footerSettings?->instagram_url)
-                    <a href="{{ $footerSettings?->instagram_url }}" target="_blank" rel="noopener">
+                    @if($footerSettings && $footerSettings->instagram_url)
+                    <a href="{{ $footerSettings->instagram_url }}" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M12 0C8.74 0 8.33.01 7.05.07c-1.27.06-2.14.26-2.9.56a5.88 5.88 0 0 0-2.12 1.38 5.88 5.88 0 0 0-1.38 2.12c-.3.76-.5 1.63-.56 2.9C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.14.56 2.9a5.88 5.88 0 0 0 1.38 2.12 5.88 5.88 0 0 0 2.12 1.38c.76.3 1.63.5 2.9.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.14-.26 2.9-.56a5.88 5.88 0 0 0 2.12-1.38 5.88 5.88 0 0 0 1.38-2.12c.3-.76.5-1.63.56-2.9.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.14-.56-2.9a5.88 5.88 0 0 0-1.38-2.12 5.88 5.88 0 0 0-2.12-1.38c-.76-.3-1.63-.5-2.9-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 1 0 12.32 6.16 6.16 0 0 1 0-12.32zm6.4 2.88a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg>
                     </a>
                     @else
@@ -83,26 +84,30 @@
                 <ul>
                     <li>
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                        <a href="mailto:{{ $footerContact?->email ?? 'info@niazlawpc.com' }}">{{ $footerContact?->email ?? 'info@niazlawpc.com' }}</a>
+                        @php($email = $footerContact ? ($footerContact->email ?? 'info@niazlawpc.com') : 'info@niazlawpc.com')
+                        <a href="mailto:{{ $email }}">{{ $email }}</a>
                     </li>
                     <li>
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                        <a href="tel:{{ preg_replace('/[^0-9+]/', '', $footerContact?->phone ?? '6302015927') }}">{{ $footerContact?->phone ?? '(630) 201-5927' }}</a>
+                        @php($phone = $footerContact ? ($footerContact->phone ?? '(630) 201-5927') : '(630) 201-5927')
+                        <a href="tel:{{ preg_replace('/[^0-9+]/', '', $phone) }}">{{ $phone }}</a>
                     </li>
                     <li>
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                        <a href="https://maps.google.com/?q={{ urlencode($footerContact?->franklin_address ?? '9933 Franklin Ave. Franklin Park, IL 60131') }}" target="_blank" rel="noopener">{!! nl2br(e($footerContact?->franklin_address ?? "9933 Franklin Ave.\nFranklin Park, IL 60131")) !!}</a>
+                        @php($addr1 = $footerContact ? ($footerContact->franklin_address ?? "9933 Franklin Ave.\nFranklin Park, IL 60131") : "9933 Franklin Ave.\nFranklin Park, IL 60131")
+                        <a href="https://maps.google.com/?q={{ urlencode($addr1) }}" target="_blank" rel="noopener">{!! nl2br(e($addr1)) !!}</a>
                     </li>
                     <li>
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                        <a href="https://maps.google.com/?q={{ urlencode($footerContact?->naperville_address ?? '3333 Warrenville Road, Suite 200 Lisle, IL 60532, USA') }}" target="_blank" rel="noopener">{!! nl2br(e($footerContact?->naperville_address ?? "3333 Warrenville Road, Suite 200\nLisle, IL 60532, USA")) !!}</a>
+                        @php($addr2 = $footerContact ? ($footerContact->naperville_address ?? "3333 Warrenville Road, Suite 200\nLisle, IL 60532, USA") : "3333 Warrenville Road, Suite 200\nLisle, IL 60532, USA")
+                        <a href="https://maps.google.com/?q={{ urlencode($addr2) }}" target="_blank" rel="noopener">{!! nl2br(e($addr2)) !!}</a>
                     </li>
                 </ul>
             </div>
         </div>
         <hr class="footer-divider">
         <div class="footer-bottom">
-            <p>{{ $footerSettings?->copyright_text ?? 'Copyright © 2026 Niaz Law P.C. - All Rights Reserved.' }}</p>
+            <p>{{ $footerSettings ? ($footerSettings->copyright_text ?? 'Copyright © 2026 Niaz Law P.C. - All Rights Reserved.') : 'Copyright © 2026 Niaz Law P.C. - All Rights Reserved.' }}</p>
         </div>
     </div>
 </footer>
