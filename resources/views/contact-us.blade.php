@@ -33,9 +33,9 @@
         .contact-map { height: 100%; overflow: hidden; border-radius: 9px; background: #e7e5df; }
         .contact-map iframe { width: 100%; height: 100%; border: 0; display: block; filter: saturate(.72) contrast(.94); }
         .contact-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: 76px; align-items: stretch; }
-        .contact-card { height: 211px; padding: 30px 20px 22px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; background: #faf7f1; border: 1px solid #e1ded8; border-radius: 8px; box-shadow: 0 6px 0 #000; }
+        .contact-card { min-height: 211px; height: auto; padding: 30px 20px 22px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; background: #faf7f1; border: 1px solid #e1ded8; border-radius: 8px; box-shadow: 0 6px 0 #000; box-sizing: border-box; }
         .contact-card svg { width: 34px; height: 34px; margin-bottom: 20px; stroke: #000; stroke-width: 2.25; fill: none; }
-        .contact-card h3 { margin: 0 0 13px; font-size: 19px; line-height: 1.2; white-space: nowrap; }
+        .contact-card h3 { margin: 0 0 13px; font-size: 19px; line-height: 1.2; white-space: normal; word-break: break-word; }
         .contact-card p { margin: 0; font-size: 17px; line-height: 1.4; overflow-wrap: anywhere; }
         .contact-card--office p { width: 100%; font-size: 15px; line-height: 1.35; text-align: left; white-space: normal; overflow-wrap: normal; }
         .contact-card--naperville p { font-size: 14px; }
@@ -59,15 +59,30 @@
                 <div class="contact-layout">
                     <div class="contact-form-panel">
                         <h2>Get In Touch</h2>
-                        <form action="#" method="post" id="contact-form">
+                        @if(session('success'))
+                            <div style="background-color: #d4edda; color: #155724; padding: 15px; margin-bottom: 20px; border-radius: 4px; border: 1px solid #c3e6cb;">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        @if($errors->any())
+                            <div style="background-color: #f8d7da; color: #721c24; padding: 15px; margin-bottom: 20px; border-radius: 4px; border: 1px solid #f5c6cb;">
+                                <ul style="margin: 0; padding-left: 20px;">
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form action="{{ route('contact.submit') }}" method="post" id="contact-form">
+                            @csrf
                             <div class="contact-form-grid">
-                                <div class="contact-field"><label for="first-name">First Name *</label><input id="first-name" type="text" placeholder="Name" pattern="[A-Za-z][A-Za-z\s'-]*" minlength="2" maxlength="50" data-name-input required></div>
-                                <div class="contact-field"><label for="last-name">Last Name *</label><input id="last-name" type="text" placeholder="Name" pattern="[A-Za-z][A-Za-z\s'-]*" minlength="2" maxlength="50" data-name-input required></div>
-                                <div class="contact-field"><label for="email">Email *</label><input id="email" type="email" placeholder="Email" required></div>
-                                <div class="contact-field"><label for="phone">Phone Number *</label><input id="phone" type="tel" placeholder="Number" inputmode="numeric" pattern="[0-9]{7,15}" minlength="7" maxlength="15" data-phone-input required></div>
-                                <div class="contact-field"><label for="company">Company / Organization</label><input id="company" type="text" placeholder="Name"></div>
-                                <div class="contact-field"><label for="practice">How Can We Help ? *</label><select id="practice" required><option value="">Select Practice Area</option>@forelse($capabilities as $capability)<option value="{{ $capability->title }}">{{ $capability->title }}</option>@empty<option>Commercial Transactions</option><option>Procurement &amp; Contracting</option><option>Infrastructure &amp; Projects</option><option>Operational Risk</option>@endforelse</select></div>
-                                <div class="contact-field contact-field--full"><label for="message">Message *</label><textarea id="message" placeholder="Tell us briefly how we can help" required></textarea></div>
+                                <div class="contact-field"><label for="first-name">First Name *</label><input id="first-name" name="first_name" type="text" placeholder="Name" pattern="[A-Za-z][A-Za-z\s'-]*" minlength="2" maxlength="50" data-name-input required value="{{ old('first_name') }}"></div>
+                                <div class="contact-field"><label for="last-name">Last Name *</label><input id="last-name" name="last_name" type="text" placeholder="Name" pattern="[A-Za-z][A-Za-z\s'-]*" minlength="2" maxlength="50" data-name-input required value="{{ old('last_name') }}"></div>
+                                <div class="contact-field"><label for="email">Email *</label><input id="email" name="email" type="email" placeholder="Email" required value="{{ old('email') }}"></div>
+                                <div class="contact-field"><label for="phone">Phone Number *</label><input id="phone" name="phone" type="tel" placeholder="Number" inputmode="numeric" pattern="[0-9]{7,15}" minlength="7" maxlength="15" data-phone-input required value="{{ old('phone') }}"></div>
+                                <div class="contact-field"><label for="company">Company / Organization</label><input id="company" name="company" type="text" placeholder="Name" value="{{ old('company') }}"></div>
+                                <div class="contact-field"><label for="practice">How Can We Help ? *</label><select id="practice" name="practice" required><option value="">Select Practice Area</option>@forelse($capabilities as $capability)<option value="{{ $capability->title }}" {{ old('practice') == $capability->title ? 'selected' : '' }}>{{ $capability->title }}</option>@empty<option>Commercial Transactions</option><option>Procurement &amp; Contracting</option><option>Infrastructure &amp; Projects</option><option>Operational Risk</option>@endforelse</select></div>
+                                <div class="contact-field contact-field--full"><label for="message">Message *</label><textarea id="message" name="message" placeholder="Tell us briefly how we can help" required>{{ old('message') }}</textarea></div>
                             </div>
                             <button class="contact-submit" type="submit">Submit Inquiry</button>
                         </form>

@@ -353,6 +353,7 @@ ul {
 
 @media (max-width: 768px) {
     .navbar {
+        margin-top: 13px;
         height: 80px;
         padding: 0 var(--space-16);
     }
@@ -467,14 +468,14 @@ ul {
 
     .mobile-menu__socials a {
         display: inline-flex;
-        width: 19px;
-        height: 19px;
+        width: 32px;
+        height: 32px;
         align-items: center;
         justify-content: center;
         border-radius: 50%;
         background: #111;
         color: #f8f5ef;
-        font: 700 10px/1 Arial, sans-serif;
+        font: 700 16px/1 Arial, sans-serif;
     }
 
     .mobile-menu-open {
@@ -594,6 +595,7 @@ ul {
     }
 
     .hero-slide {
+        /* background-image: var(--hero-mobile-image) !important; */
         background-position: 66% 10% !important;
     }
 
@@ -1870,6 +1872,10 @@ textarea {
 
     .about-left-col {
         margin-top: 0;
+    }
+
+    .about-features {
+        gap: 12px;
     }
 
     .feature h4 {
