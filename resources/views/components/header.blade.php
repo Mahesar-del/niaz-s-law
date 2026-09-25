@@ -46,7 +46,16 @@
         </div>
         <nav class="mobile-menu__links" aria-label="Mobile navigation">
             <a href="/attorneys">Attorneys</a>
-            <a href="/capabilities">Capabilities</a>
+            @php($headerCapabilities = \App\Models\Capability::orderBy('title')->get())
+            <button type="button" class="mobile-menu__dropdown-toggle" aria-expanded="false">
+                Capabilities
+                <svg class="mobile-menu__chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="mobile-menu__sub-links" aria-hidden="true">
+                @foreach($headerCapabilities as $cap)
+                    <a href="{{ route('capabilities.show', ['capability' => $cap->slug ?: $cap->id]) }}">{{ $cap->title }}</a>
+                @endforeach
+            </div>
             <button type="button" class="mobile-menu__dropdown-toggle" aria-expanded="false">
                 Insights &amp; Resources
                 <svg class="mobile-menu__chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
@@ -97,7 +106,7 @@
     background: rgba(0,0,0,0.03);
 }
 .mobile-menu__sub-links[aria-hidden="false"] {
-    max-height: 200px;
+    max-height: 1000px;
 }
 .mobile-menu__sub-links a {
     display: block !important;
@@ -130,17 +139,31 @@
             menuToggle.setAttribute('aria-expanded', String(isOpen));
         });
         menuClose.addEventListener('click', closeMenu);
-        // Dropdown toggle for Insights & Resources
-        const dropdownToggle = document.querySelector('.mobile-menu__dropdown-toggle');
-        const subLinks = document.querySelector('.mobile-menu__sub-links');
-        if (dropdownToggle && subLinks) {
-            dropdownToggle.addEventListener('click', (e) => {
+        // Dropdown toggles for Capabilities & Insights & Resources
+        const dropdownToggles = document.querySelectorAll('.mobile-menu__dropdown-toggle');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const isExpanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
-                dropdownToggle.setAttribute('aria-expanded', String(!isExpanded));
-                subLinks.setAttribute('aria-hidden', String(isExpanded));
+                const subLinks = toggle.nextElementSibling;
+                if (subLinks && subLinks.classList.contains('mobile-menu__sub-links')) {
+                    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                    
+                    // Close all other dropdowns
+                    dropdownToggles.forEach(otherToggle => {
+                        if (otherToggle !== toggle) {
+                            otherToggle.setAttribute('aria-expanded', 'false');
+                            const otherSub = otherToggle.nextElementSibling;
+                            if (otherSub && otherSub.classList.contains('mobile-menu__sub-links')) {
+                                otherSub.setAttribute('aria-hidden', 'true');
+                            }
+                        }
+                    });
+
+                    toggle.setAttribute('aria-expanded', String(!isExpanded));
+                    subLinks.setAttribute('aria-hidden', String(isExpanded));
+                }
             });
-        }
+        });
 
         // Close menu when clicking nav links or sub-links
         menu.addEventListener('click', (event) => {
