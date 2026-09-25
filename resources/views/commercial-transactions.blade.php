@@ -503,6 +503,7 @@
 
     @include('components.page-hero', [
         'bgImage' => asset(isset($capability) && $capability->hero_image ? $capability->hero_image : 'images/commercial-transection-hero.png'),
+        'mobileBgImage' => asset(isset($capability) && $capability->hero_image_mobile ? $capability->hero_image_mobile : (isset($capability) && $capability->hero_image ? $capability->hero_image : 'images/commercial-transection-hero.png')),
         'titleLeft' => isset($capability) ? \Illuminate\Support\Str::before($capability->page_title ?: $capability->title, ' ') : 'Commercial',
         'titleRight' => isset($capability) ? \Illuminate\Support\Str::after($capability->page_title ?: $capability->title, ' ') : 'Transactions',
         'text' => isset($capability) ? ($capability->page_description ?: $capability->description) : 'We advise businesses on complex commercial, infrastructure, and operational matters with practical legal guidance aligned to their strategic objectives.'
