@@ -637,7 +637,7 @@
                 <p class="ct-subtitle">Discuss Your Case with Confidence</p>
                 <p>Whether you are negotiating a key agreement, structuring a new commercial arrangement, or addressing contractual risk, we provide practical legal guidance aligned with your business objectives.</p>
                 <p class="ct-contact-cta">Contact Us for a Consultation</p>
-                <a href="#" class="ct-btn-black">Talk to Our Team</a>
+                <a href="{{ url('/contact-us') }}" class="ct-btn-black">Talk to Our Team</a>
             </div>
         </div>
 

@@ -47,6 +47,7 @@ class HomePageSettingController extends Controller
             'slides.*.button_text' => ['required', 'string', 'max:60'],
             'slides.*.button_link' => ['required', 'string', 'max:255'],
             'slides.*.image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+            'slides.*.mobile_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
         ]);
 
         foreach ($data['slides'] as $position => $slideData) {
@@ -65,6 +66,13 @@ class HomePageSettingController extends Controller
                 $fileName = 'hero-slide-' . $position . '.' . strtolower($image->getClientOriginalExtension());
                 $image->move(public_path('images'), $fileName);
                 $slide->image = $fileName;
+            }
+
+            if ($request->hasFile("slides.$position.mobile_image")) {
+                $mobileImage = $request->file("slides.$position.mobile_image");
+                $mobileFileName = 'hero-slide-mobile-' . $position . '-' . time() . '.' . strtolower($mobileImage->getClientOriginalExtension());
+                $mobileImage->move(public_path('images'), $mobileFileName);
+                $slide->mobile_image = $mobileFileName;
             }
 
             $slide->fill([
