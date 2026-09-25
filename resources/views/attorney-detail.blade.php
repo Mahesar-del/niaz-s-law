@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="icon" type="image/png" href="{{ asset('images/favicon-icon.png') }}">
@@ -312,7 +312,7 @@
                     @forelse($attorneyPosts as $post)
                     <article class="attorney-insight-card">
                         @if($post->featured_image_url)<img src="{{ $post->featured_image_url }}" alt="{{ $post->title }}">@endif
-                        <div><h3>{{ $post->title }}</h3><p>{{ Str::limit(strip_tags($post->content), 160) }}</p><a href="{{ route('blog.show',$post) }}">Read now</a></div>
+                        <div><h3>{{ $post->title }}</h3><p>{{ Str::limit(html_entity_decode(strip_tags($post->content)), 160) }}</p><a href="{{ route('blog.show',$post) }}">Read now</a></div>
                     </article>
                     @empty
                     <p>No insights have been added for this attorney yet.</p>

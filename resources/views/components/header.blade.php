@@ -45,11 +45,70 @@
             <button class="mobile-menu__close" type="button" aria-label="Close menu">×</button>
         </div>
         <nav class="mobile-menu__links" aria-label="Mobile navigation">
-            <a href="/attorneys">Attorneys</a><a href="/capabilities">Capabilities</a><a href="#">Insights &amp; Resources <svg class="mobile-menu__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a><a href="/about">About</a><a href="/contact-us">Contact</a>
+            <a href="/attorneys">Attorneys</a>
+            <a href="/capabilities">Capabilities</a>
+            <button type="button" class="mobile-menu__dropdown-toggle" aria-expanded="false">
+                Insights &amp; Resources
+                <svg class="mobile-menu__chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="mobile-menu__sub-links" aria-hidden="true">
+                <a href="/insights">Insights</a>
+                <a href="/case-study">Case Studies</a>
+                <a href="/blog">Blogs</a>
+            </div>
+            <a href="/about">About</a>
+            <a href="/contact-us">Contact</a>
         </nav>
         <div class="mobile-menu__socials"><a href="#">f</a><a href="#">in</a><a href="#">♥</a><a href="#">◎</a></div>
     </div>
 </div>
+<style>
+.mobile-menu__dropdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: none;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.10);
+    padding: 18px 0;
+    font-family: var(--font-heading, 'Libre Baskerville', serif);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    cursor: pointer;
+    text-align: left;
+}
+.mobile-menu__chevron {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+.mobile-menu__dropdown-toggle[aria-expanded="true"] .mobile-menu__chevron {
+    transform: rotate(180deg);
+}
+.mobile-menu__sub-links {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    background: rgba(0,0,0,0.03);
+}
+.mobile-menu__sub-links[aria-hidden="false"] {
+    max-height: 200px;
+}
+.mobile-menu__sub-links a {
+    display: block !important;
+    padding: 12px 22px !important;
+    font-size: 13px !important;
+    letter-spacing: 0.1em !important;
+    border-bottom: 1px solid rgba(0,0,0,0.06) !important;
+    color: #555 !important;
+}
+.mobile-menu__sub-links a:hover { color: #000 !important; background: rgba(0,0,0,0.04); }
+</style>
 
 <script>
     (() => {
@@ -71,8 +130,22 @@
             menuToggle.setAttribute('aria-expanded', String(isOpen));
         });
         menuClose.addEventListener('click', closeMenu);
+        // Dropdown toggle for Insights & Resources
+        const dropdownToggle = document.querySelector('.mobile-menu__dropdown-toggle');
+        const subLinks = document.querySelector('.mobile-menu__sub-links');
+        if (dropdownToggle && subLinks) {
+            dropdownToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isExpanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
+                dropdownToggle.setAttribute('aria-expanded', String(!isExpanded));
+                subLinks.setAttribute('aria-hidden', String(isExpanded));
+            });
+        }
+
+        // Close menu when clicking nav links or sub-links
         menu.addEventListener('click', (event) => {
-            if (event.target === menu || event.target.closest('.mobile-menu__links a')) closeMenu();
+            const clickedNavLink = event.target.closest('.mobile-menu__links > a, .mobile-menu__sub-links a');
+            if (event.target === menu || clickedNavLink) closeMenu();
         });
 
         const searchTrigger = document.getElementById('search-trigger');

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="icon" type="image/png" href="{{ asset('images/favicon-icon.png') }}">
@@ -16,7 +16,7 @@
         .case-studies-hero__content { display: grid; grid-template-columns: auto 1fr; gap: 78px; align-items: center; width: 100%; }
         .case-studies-hero h1 { margin: 0; color: #fff; font-size: clamp(40px, 4.6vw, 68px); }
         .case-studies-hero p { max-width: 510px; margin: 0; padding-left: 40px; border-left: 1px solid rgba(255,255,255,.9); color: #f7f7f7; font-size: 17px; line-height: 1.7; }
-        .case-studies-list { padding: 56px 0 56px; }
+        .case-studies-list { padding: 20px 0 56px; }
         .case-studies-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 60px; row-gap: 72px; width: 100%; }
         .case-study-card { color: #080808; }
         .case-study-card:nth-child(even) { transform: translateY(100px); }
@@ -46,7 +46,7 @@
                         <article class="case-study-card">
                             @if($caseStudy->featured_image_url)<img class="case-study-card__image" src="{{ $caseStudy->featured_image_url }}" alt="{{ $caseStudy->title }}">@endif
                             <h2>{{ $caseStudy->title }}</h2>
-                            <p>{{ Str::limit(strip_tags($caseStudy->content), 180) }}</p>
+                            <p>{{ Str::limit(html_entity_decode(strip_tags($caseStudy->content)), 180) }}</p>
                             <a class="case-study-card__button" href="{{ route('blog.show',$caseStudy) }}">View Matter</a>
                         </article>
                     @empty

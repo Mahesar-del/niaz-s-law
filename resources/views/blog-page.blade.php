@@ -55,7 +55,7 @@
                     <div class="blog-feature__content">
                         <h2>{{ $featured->title }}</h2>
                         <p class="blog-category">{{ $featured->category }}</p>
-                        <p>{{ Str::limit(strip_tags($featured->content), 250) }}</p>
+                        <p>{{ Str::limit(html_entity_decode(strip_tags()), 250) }}</p>
                         <a class="article-button" href="{{ route('blog.show',$featured) }}">Read Blog</a>
                     </div>
                 </article>
@@ -65,7 +65,7 @@
                             @if($post->featured_image_url)<img class="article-card__image" src="{{ $post->featured_image_url }}" alt="{{ $post->title }}">@endif
                             <div class="article-card__content">
                                 <h3>{{ $post->title }}</h3>
-                                <p>{{ Str::limit(strip_tags($post->content), 150) }}</p>
+                                <p>{{ Str::limit(html_entity_decode(strip_tags()), 150) }}</p>
                                 <a class="article-button" href="{{ route('blog.show',$post) }}">Read now</a>
                             </div>
                         </article>
@@ -80,3 +80,4 @@
     @include('components.footer')
 </body>
 </html>
+

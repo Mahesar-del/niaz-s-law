@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -120,7 +120,7 @@
                     <a class="insight-card" href="{{ route('blog.show', $insight) }}" style="background-image: url('{{ $insight->home_image_url ?: $insight->featured_image_url ?: asset('images/insight-june.png') }}');" aria-label="Read {{ $insight->title }}">
                         <div class="insight-content">
                             <h3>{{ $insight->title }}</h3>
-                            <p class="insight-desc">{{ Str::limit(strip_tags($insight->content), 200) }}</p>
+                            <p class="insight-desc">{{ Str::limit(html_entity_decode(strip_tags($insight->content)), 200) }}</p>
                         </div>
                     </a>
                     @empty
@@ -249,7 +249,7 @@
                         <img src="{{ $post->featured_image_url }}" alt="{{ $post->title }}">
                         <div class="news-content">
                             <h3>{{ $post->title }}</h3>
-                            <p>{{ Str::limit(strip_tags($post->content), 130) }}</p>
+                            <p>{{ Str::limit(html_entity_decode(strip_tags($post->content)), 130) }}</p>
                             <a href="{{ route('blog.show',$post) }}" class="btn-black">Read now</a>
                         </div>
                     </div>
