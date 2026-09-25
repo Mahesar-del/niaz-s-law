@@ -546,8 +546,13 @@ ul {
 .hero-indicators {
     position: absolute;
     bottom: var(--space-24);
-    right: var(--space-100);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: var(--container-max);
+    padding: 0 var(--space-100);
     display: flex;
+    justify-content: flex-end;
     gap: var(--space-8);
     z-index: 2;
 }
@@ -582,8 +587,10 @@ ul {
         height: 80vh;
         min-height: 450px;
         max-height: 600px;
-        background-position: 65% center;
-        /* Shift focus slightly if needed */
+    }
+
+    .hero-slide {
+        background-position: 66% 10% !important;
     }
 
     .hero h1 {
@@ -592,7 +599,26 @@ ul {
         font-size: 28px;
         line-height: 38px;
         letter-spacing: 0.01em;
+        text-align: center;
     }
+    
+    .hero-content {
+        margin-top: 10vh;
+        margin-left: 0;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .hero-indicators { right: 50%; transform: translateX(50%); bottom: 40px; }
+    .hero .btn { width: 85%; max-width: 320px; }
+}
+
+.hero-btn-arrow {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
 }
 
 /* Sections General */
@@ -1172,7 +1198,11 @@ ul {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('../images/have-question.jpg') center/cover;
+    background-image: url('../images/have-question.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     z-index: 1;
 }
 
@@ -1180,7 +1210,7 @@ ul {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(20, 30, 40, 0.85);
+    background: transparent; /* Overlay removed */
 }
 
 .contact-container {
@@ -1445,6 +1475,20 @@ textarea {
     white-space: nowrap;
 }
 
+.contact-info li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    transition: color 0.2s ease;
+}
+
+.contact-info li a:hover {
+    color: #af8943;
+    text-decoration: underline;
+}
+
 .contact-info li svg {
     flex-shrink: 0;
     margin-top: 2px;
@@ -1600,7 +1644,7 @@ textarea {
     width: 100%;
     background: #fff;
     border: 1px solid #000000;
-    border-radius: 4px;
+
     padding: 16px 20px;
     font-family: var(--font-body);
     font-size: 15px;

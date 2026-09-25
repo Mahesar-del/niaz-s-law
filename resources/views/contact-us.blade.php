@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon-icon.png') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Niaz Law P.C.</title>
+    <?php $seo = \App\Models\SeoSetting::forPage('contact'); ?>
+    <title>{{ $seo->meta_title ?: 'Contact Us - Niaz Law P.C.' }}</title>
+    <meta name="description" content="{{ $seo->meta_description ?: 'Contact Niaz Law P.C. to schedule a legal consultation in Illinois.' }}">
+    <meta name="keywords" content="{{ $seo->meta_keywords ?: 'contact law firm, legal consultation Illinois, Niaz Law contact' }}">
+        <meta name="robots" content="{{ $seo->meta_robots ?: 'index, follow' }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
         .contact-page { background: #fff; }

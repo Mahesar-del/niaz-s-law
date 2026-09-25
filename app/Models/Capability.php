@@ -2,7 +2,7 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 class Capability extends Model {
-    protected $fillable = ['title','slug','description','page_title','page_description','image','hero_image','experience','representative_matters','overview_heading','overview_image_left','overview_image_right','overview_paragraph_one','overview_paragraph_two'];
+    protected $fillable = ['title','slug','description','page_title','page_description','image','hero_image','experience','representative_matters','overview_heading','overview_image_left','overview_image_right','overview_paragraph_one','overview_paragraph_two', 'meta_title', 'meta_description', 'meta_keywords', 'robots'];
 
     public function getRouteKeyName() { return 'slug'; }
 
