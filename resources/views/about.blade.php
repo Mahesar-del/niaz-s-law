@@ -293,9 +293,9 @@
 
         .about-cap-card h3 {
             font-family: 'Libre Baskerville', serif;
-            font-size: 20px;
+            font-size: 17px;
             font-weight: 700;
-            line-height: 26px;
+            line-height: 23px;
             color: #000000;
             margin-bottom: var(--space-16);
             min-height: 55px;
@@ -578,6 +578,7 @@
             width: 100%;
             height: 175px;
             object-fit: cover;
+            object-position: top center;
             display: block;
         }
 

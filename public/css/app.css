@@ -1185,6 +1185,11 @@ ul {
     text-align: left;
     color: #0E0E0E;
     margin-bottom: 1px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .btn-black {
