@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
     --primary: #000000;
@@ -605,7 +605,7 @@ ul {
         letter-spacing: 0.01em;
         text-align: center;
     }
-    
+
     .hero-content {
         margin-top: 0;
         margin-left: 0;
@@ -615,6 +615,7 @@ ul {
         flex-direction: column;
         align-items: center;
     }
+
     .hero-indicators {
         left: 50%;
         right: auto;
@@ -625,10 +626,15 @@ ul {
         width: 100%;
         box-sizing: border-box;
     }
+
     .hero-indicators .indicator {
         width: 40px;
     }
-    .hero .btn { width: 85%; max-width: 320px; }
+
+    .hero .btn {
+        width: 85%;
+        max-width: 320px;
+    }
 }
 
 .hero-btn-arrow {
@@ -1106,24 +1112,23 @@ ul {
 
 .news-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-32);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-48) var(--space-32);
 }
 
 .news-card {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: var(--space-24);
     background: #fff;
-    align-items: stretch;
+    align-items: center;
 }
 
 .news-card img {
-    height: 220px;
+    height: 320px;
     width: 100%;
     object-fit: cover;
     display: block;
-    flex-shrink: 0;
 }
 
 .news-card:nth-child(1) img {
@@ -1145,8 +1150,8 @@ ul {
 .news-content {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    padding: var(--space-24) 0 0 0;
+    justify-content: center;
+    padding: 0;
 }
 
 .news-content h3 {
@@ -1168,8 +1173,7 @@ ul {
     line-height: 22px;
     text-align: left;
     color: #0E0E0E;
-    margin-bottom: 0;
-    flex: 1;
+    margin-bottom: 1px;
 }
 
 .btn-black {
@@ -1188,12 +1192,12 @@ ul {
     border: none;
     cursor: pointer;
     padding: 0;
-    margin-top: var(--space-24);
+    margin-top: 4px;
 }
 
 @media (max-width: 1024px) {
     .news-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
     }
 }
 
@@ -1201,6 +1205,7 @@ ul {
     .news-grid {
         grid-template-columns: 1fr;
     }
+
     .news-card {
         /* already flex column */
     }
@@ -1231,7 +1236,8 @@ ul {
     content: '';
     position: absolute;
     inset: 0;
-    background: transparent; /* Overlay removed */
+    background: transparent;
+    /* Overlay removed */
 }
 
 .contact-container {
@@ -2013,6 +2019,7 @@ textarea {
         width: 100%;
         box-sizing: border-box;
     }
+
     .hero-indicators .indicator {
         width: 40px;
     }
@@ -2226,7 +2233,11 @@ textarea {
 
     .lawyer-img {
         width: 100%;
-        height: 220px;
+        height: 360px;
+    }
+
+    .lawyer-img img {
+        object-position: top center;
     }
 
     /* Search Highlights */

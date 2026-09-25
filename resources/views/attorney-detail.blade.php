@@ -158,7 +158,7 @@
             margin: 0;
             font: 700 25px / 1.15 Georgia, serif;
         }
-        .attorney-insights { margin-top: 6px; margin-bottom: 0; }
+        .attorney-insights { margin-top: 36px; margin-bottom: 40px; }
         .attorney-insights > h2 { margin-bottom: 27px; }
         .attorney-insights__grid {
             display: grid;
