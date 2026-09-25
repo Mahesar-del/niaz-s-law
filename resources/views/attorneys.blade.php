@@ -18,7 +18,10 @@
         <main style="flex-grow: 1; width: 100%;">
         <section class="attorney-hero">
             <div class="attorney-hero-bg">
-                <img src="{{ asset('images/Attorney-Page-new.webp') }}" alt="Attorneys">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="{{ asset('images/Attorney-Mobile.png') }}">
+                    <img src="{{ asset('images/Attorney-Page-new.webp') }}" alt="Attorneys">
+                </picture>
                 <div class="hero-overlay"></div>
             </div>
             <div class="container attorney-hero-content">
@@ -112,6 +115,9 @@
             @media (max-width: 768px) {
                 .container.search-section {
                     padding: 0 16px;
+                }
+                .attorney-hero-bg img {
+                    transform: none !important;
                 }
             }
 

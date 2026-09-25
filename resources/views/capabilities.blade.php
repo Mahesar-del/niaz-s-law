@@ -263,7 +263,7 @@
                 height: 500px;
                 align-items: flex-end;
                 padding-bottom: 60px;
-                background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ asset("images/capability-mobile-view.png") }}') center/cover;
+                background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ asset("images/Capabilities-mobile.png") }}') center/cover;
             }
             .capabilities-hero-content {
                 display: flex;

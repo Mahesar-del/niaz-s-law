@@ -207,7 +207,7 @@
             .attorney-profile { left: 25px; }
         }
         @media (max-width: 650px) {
-            .attorney-hero { height: 500px; padding: 169px 24px 0; display: flex; flex-direction: column; align-items: center; }
+            .attorney-hero { height: 500px; padding: 169px 24px 0; display: flex; flex-direction: column; align-items: center; background: linear-gradient(rgba(23, 29, 32, .52), rgba(23, 29, 32, .52)), url('{{ asset('images/Attorney-Mobile.png') }}') center / cover; }
             .attorney-title { width: 100%; justify-content: center; }
             .attorney-title h1 { font-size: 28px; line-height: 33px; text-align: center; }
             .attorney-title .attorney-title-line, .attorney-title .share-icon { display: none; }

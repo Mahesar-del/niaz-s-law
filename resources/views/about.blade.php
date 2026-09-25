@@ -471,7 +471,7 @@
                 align-items: flex-end;
             }
             .about-hero-bg {
-                background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('{{ asset("images/About-Us-new.webp") }}');
+                background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('{{ asset("images/About Us_Mobile.png") }}');
                 background-position: center, 63% center;
                 background-size: auto, cover;
                 background-repeat: no-repeat, no-repeat;

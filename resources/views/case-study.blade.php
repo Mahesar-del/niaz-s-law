@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="icon" type="image/png" href="{{ asset('images/favicon-icon.png') }}">
@@ -27,7 +27,7 @@
         .case-study-card__button:hover, .case-studies-load-more:hover { background: #333; }
         .case-studies-load-wrap { text-align: center; margin-top: 78px; }
         .case-studies-load-more { min-width: 136px; }
-        @media (max-width: 768px) { .case-studies-hero { min-height: 500px; padding: 145px 0 54px; align-items: flex-end; } .case-studies-hero__content { grid-template-columns: 1fr; gap: 24px; } .case-studies-hero h1 { font-size: 39px; } .case-studies-hero p { padding-left: 0; border-left: 0; font-size: 16px; } .case-studies-list { padding: 56px 0 64px; } .case-studies-grid { grid-template-columns: 1fr; gap: 48px; } .case-study-card:nth-child(even) { transform: none; } .case-study-card__image { aspect-ratio: 1.12 / 1; } .case-study-card h2 { font-size: 21px; } .case-study-card p { text-align: justify; } .case-studies-load-wrap { margin-top: 55px; } }
+        @media (max-width: 768px) { .case-studies-hero { min-height: 500px; padding: 145px 0 54px; align-items: flex-end; background: linear-gradient(90deg, rgba(0, 0, 0, .62), rgba(0, 0, 0, .38)), url('{{ asset('images/Case-mobile.png') }}') center / cover; } .case-studies-hero__content { grid-template-columns: 1fr; gap: 24px; } .case-studies-hero h1 { font-size: 39px; } .case-studies-hero p { padding-left: 0; border-left: 0; font-size: 16px; } .case-studies-list { padding: 56px 0 64px; } .case-studies-grid { grid-template-columns: 1fr; gap: 48px; } .case-study-card:nth-child(even) { transform: none; } .case-study-card__image { aspect-ratio: 1.12 / 1; } .case-study-card h2 { font-size: 21px; } .case-study-card p { text-align: justify; } .case-studies-load-wrap { margin-top: 55px; } }
     </style>
 </head>
 <body class="case-studies-page">
