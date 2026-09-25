@@ -79,6 +79,19 @@
                 background: #fff;
                 margin-top: 12px;
             }
+                     /* Keep the important subject of the hero image visible on phones. */
+            @media (max-width: 768px) {
+                .hero-slide {
+                    background-position: 72% center;
+                    background-size: cover;
+                }
+                .hero-container {
+                    padding: 0 16px;
+                }
+                .hero-content {
+                    max-width: 92%;
+                }
+            }
 
             /* Mobile View Adjustment: Remove hover slide-up effect, reduce left padding, keep only heading */
             @media (max-width: 768px) {
