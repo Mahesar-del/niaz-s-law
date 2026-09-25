@@ -1,14 +1,13 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="icon" type="image/png" href="{{ asset('images/favicon-icon.png') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $attorney->meta_title ?: (${attorney}->name . ' - Attorney | Niaz Law P.C.') }}</title>
-    <meta name="description" content="{{ $attorney->meta_description ?: ('Learn about ' . ${attorney}->name . ', ' . (${attorney}->title ?? 'Attorney') . ' at Niaz Law P.C.') }}">
-    <meta name="keywords" content="{{ $attorney->meta_keywords ?: '' }}">
-    <meta name="robots" content="{{ $attorney->robots ?: 'index, follow' }}">name }}, {{ $attorney->title ?? 'Attorney' }} at Niaz Law P.C. Providing expert legal representation in Illinois.">
-    <meta name="keywords" content="{{ $attorney->name }}, attorney Illinois, lawyer Illinois, Niaz Law attorney, {{ $attorney->title ?? 'legal counsel' }}, Illinois law firm">
+    <title>{{ $attorney->meta_title ?: ($attorney->name . ' - Attorney | Niaz Law P.C.') }}</title>
+    <meta name="description" content="{{ $attorney->meta_description ?: ('Learn about ' . $attorney->name . ', ' . ($attorney->title ?? 'Attorney') . ' at Niaz Law P.C.') }}">
+    <meta name="keywords" content="{{ $attorney->meta_keywords ?: ($attorney->name . ', attorney Illinois, lawyer Illinois, Niaz Law attorney, ' . ($attorney->title ?? 'legal counsel') . ', Illinois law firm') }}">
+    <meta name="robots" content="{{ $attorney->robots ?: 'index, follow' }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
         /* Attorney detail page: matches the supplied Figma/PDF composition. */
