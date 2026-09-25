@@ -29,12 +29,48 @@ class ContactController extends Controller
 
         $contactEmail = ContactSetting::first()->email ?? 'info@niazlawpc.com';
 
-        \Illuminate\Support\Facades\Mail::to($contactEmail)->send(new \App\Mail\ContactInquiry($data));
+        try {
+            \Illuminate\Support\Facades\Mail::to($contactEmail)->send(new \App\Mail\ContactInquiry($data));
+        } catch (\Exception $e) {
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json(['message' => 'Error sending email. Please check your SMTP settings in .env file.'], 500);
+            }
+            return redirect()->back()->withErrors(['email' => 'Error sending email. Please check your SMTP settings.']);
+        }
 
         if ($request->ajax() || $request->wantsJson()) {
             return response()->json(['message' => 'Your inquiry has been sent successfully. We will get back to you soon.']);
         }
 
         return redirect()->back()->with('success', 'Your inquiry has been sent successfully. We will get back to you soon.');
+    }
+
+    public function quickSubmit(\Illuminate\Http\Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:100',
+            'email' => 'required|email',
+            'subject' => 'nullable|string|max:150',
+            'message' => 'required|string',
+        ]);
+
+        $contactEmail = ContactSetting::first()->email ?? 'info@niazlawpc.com';
+
+        try {
+            \Illuminate\Support\Facades\Mail::raw("Name: {$data['name']}\nEmail: {$data['email']}\nSubject: {$data['subject']}\n\nMessage:\n{$data['message']}", function ($message) use ($contactEmail, $data) {
+                $message->to($contactEmail)
+                        ->subject('Quick Inquiry: ' . ($data['subject'] ?? 'No Subject'));
+            });
+        } catch (\Exception $e) {
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json(['message' => 'Error sending email. Please check your SMTP settings in .env file.'], 500);
+            }
+            return redirect()->back()->withErrors(['email' => 'Error sending email. Please check your SMTP settings.']);
+        }
+
+        if ($request->ajax() || $request->wantsJson()) {
+            return response()->json(['message' => 'Thank you! Your message has been sent successfully.']);
+        }
+        return redirect()->back()->with('success', 'Thank you! Your message has been sent successfully.');
     }
 }

@@ -124,6 +124,53 @@
         phoneInput.addEventListener('invalid', () => {
             phoneInput.setCustomValidity('Please enter a valid phone number using 7 to 15 digits.');
         });
+
+        // AJAX Form Submission to prevent page reload
+        const contactForm = document.getElementById('contact-form');
+        if(contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const form = this;
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.innerText;
+                submitBtn.innerText = 'Sending...';
+                submitBtn.disabled = true;
+
+                const formData = new FormData(form);
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(async response => {
+                    const data = await response.json().catch(() => null);
+                    if (!response.ok) {
+                        const errorMsg = data && data.message ? data.message : 'Something went wrong. Please check your inputs or try again later.';
+                        throw new Error(errorMsg);
+                    }
+                    return data;
+                })
+                .then(data => {
+                    form.innerHTML = `
+                        <div style="background-color: #d4edda; color: #155724; padding: 30px; border-radius: 8px; border: 1px solid #c3e6cb; text-align: center; margin-top: 20px;">
+                            <h3 style="margin-top:0; font-size: 24px;">Thank You!</h3>
+                            <p style="margin-bottom:0; font-size: 16px;">${data && data.message ? data.message : 'Your inquiry has been sent successfully. We will get back to you soon.'}</p>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    submitBtn.innerText = originalBtnText;
+                    submitBtn.disabled = false;
+                    alert(error.message);
+                });
+            });
+        }
     </script>
 </body>
 </html>
