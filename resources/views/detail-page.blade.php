@@ -22,7 +22,7 @@
             width: 884px;
             max-width: 100%;
             height: 264px;
-            margin: -130px 0 0 0;
+            margin: -132px 0 0 0;
             padding: 48px 56px 40px;
             background: #FAF7F1;
             box-shadow: 0 4px 15px rgba(0,0,0,.05);
@@ -57,10 +57,13 @@
             color: #000;
             font-size: 14px;
         }
+        @media (min-width: 801px) {
+            .detail-container-left { margin: 0 !important; }
+        }
         .detail-article {
             max-width: 1100px;
-            margin: 48px auto 0;
-            padding: 0 16px;
+            margin: 48px 0 0 0;
+            padding: 0;
         }
         .detail-article p { margin: 0 0 16px; color: #222; font-size: 16px; line-height: 1.7; text-align: justify; }
         .detail-article h2 { margin: 24px 0 12px; font-family: var(--font-heading); font-size: 24px; line-height: 1.3; }
@@ -68,7 +71,7 @@
         .detail-related h2 { margin: 0 0 28px; font-size: clamp(28px, 2.7vw, 34px); font-family: 'Libre Baskerville', Georgia, serif; }
         .detail-related__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 55px; }
         .detail-related-card { display: grid; grid-template-columns: 42% 1fr; gap: 22px; }
-        .detail-related-card img { width: 100%; height: 205px; object-fit: cover; }
+        .detail-related-card img { width: 100%; height: 320px; object-fit: cover; }
         .detail-related-card h3 { margin: 0 0 12px; padding-bottom: 12px; border-bottom: 1px solid #999; font-size: 22px; line-height: 1.15; font-family: 'Libre Baskerville', Georgia, serif; }
         .detail-related-card p { margin: 0 0 16px; font-size: 13px; line-height: 1.5; }
         .detail-button { display: inline-flex; min-width: 150px; min-height: 41px; align-items: center; justify-content: center; padding: 10px 22px; background: #000; color: #fff; font-size: 13px; font-weight: 600; }
@@ -76,12 +79,13 @@
         @media (max-width: 800px) {
             .detail-hero { height: 420px; }
             .detail-title-card { width: 100%; margin-top: -90px; padding: 32px 24px; }
-            .detail-article { margin-top: 34px; padding: 0 16px; }
-            .detail-related { margin-top: 48px; }
+            .detail-article { margin-top: 34px; padding: 0 24px; }
+            .detail-related { margin: 48px 0 30px; }
             .detail-related__grid { grid-template-columns: 1fr; gap: 35px; }
             .detail-related-card { grid-template-columns: 1fr; gap: 16px; }
             .detail-related-card:nth-child(n+2) { display: none !important; }
             .detail-related-card img { height: 240px; }
+            .detail-related-card .detail-button { display: none !important; }
         }
     </style>
 </head>
@@ -89,7 +93,7 @@
     @include('components.header')
     <main>
         <section class="detail-hero" aria-label="Commercial contract"></section>
-        <div class="container">
+        <div class="container detail-container-left">
             <header class="detail-title-card">
                 <h1>What Businesses Should Consider Before Signing a Commercial Contract</h1>
                 <p class="detail-meta">
@@ -102,7 +106,8 @@
                 </p>
             </header>
         </div>
-        <article class="detail-article">
+        <div class="container detail-container-left">
+            <article class="detail-article">
             <p>Commercial contracts define the legal and business framework behind important relationships. Whether a business is entering into a supplier agreement, service contract, partnership arrangement, or other commercial transaction, the terms of the agreement can affect cost, performance, liability, operational flexibility, and long-term risk.</p>
             <p>Before signing, businesses should look beyond the basic commercial terms and understand how the agreement allocates responsibilities, addresses uncertainty, and protects each party if circumstances change.</p>
             <h2>Understand the Scope of the Agreement</h2>
@@ -125,18 +130,19 @@
             <p>Commercial contracts should provide clarity, manage risk, and support the underlying business relationship. Effective agreements balance legal protection with the commercial flexibility businesses need to operate and grow.</p>
             <h2>Need Guidance on a Commercial Agreement?</h2>
             <p>We advise businesses on commercial contracts, negotiations, strategic arrangements, procurement matters, and related transactional issues. Connect with our team to discuss your business and legal needs.</p>
-        </article>
+            </article>
+        </div>
         <section class="detail-related">
             <div class="container">
                 <h2>Related Insights And News</h2>
                 <div class="detail-related__grid">
                     <article class="detail-related-card">
                         <img src="{{ asset('images/domestic-violance.jpg') }}" alt="Lady Justice">
-                        <div><h3>Domestic Violence in California - How a Lawyer Can Help</h3><p>Understand how California domestic violence laws work, what protections may be available, and how an attorney can guide you through the legal process.</p><a href="/detail" class="detail-button">Read now</a></div>
+                        <div><h3>Domestic Violence in California - How a Lawyer Can Help</h3><p><a href="/detail" style="color: inherit; text-decoration: none;">Understand how California domestic violence laws work, what protections may be available, and how an attorney can guide you through the legal process.</a></p><a href="/detail" class="detail-button">Read now</a></div>
                     </article>
                     <article class="detail-related-card">
                         <img src="{{ asset('images/lawywer-helps.jpg') }}" alt="Judge's gavel">
-                        <div><h3>Domestic Violence in California - How a Lawyer Can Help</h3><p>Understand how California domestic violence laws work, what protections may be available, and how an attorney can guide you through the legal process.</p><a href="/detail" class="detail-button">Read now</a></div>
+                        <div><h3>Domestic Violence in California - How a Lawyer Can Help</h3><p><a href="/detail" style="color: inherit; text-decoration: none;">Understand how California domestic violence laws work, what protections may be available, and how an attorney can guide you through the legal process.</a></p><a href="/detail" class="detail-button">Read now</a></div>
                     </article>
                 </div>
             </div>

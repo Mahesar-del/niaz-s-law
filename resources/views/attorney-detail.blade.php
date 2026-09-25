@@ -172,7 +172,7 @@
         }
         .attorney-insight-card img {
             width: 100%;
-            height: 220px;
+            height: 320px;
             object-fit: cover;
         }
         .attorney-insight-card h3 {
@@ -225,6 +225,7 @@
             .attorney-columns > div + div { border: 0; padding: 0; }
             .attorney-insight-card { grid-template-columns: 1fr; gap: 0; }
             .attorney-insight-card:nth-child(n+2) { display: none; }
+            .attorney-insight-card img { height: 240px; }
         }
     </style>
 </head>
