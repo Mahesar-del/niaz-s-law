@@ -132,7 +132,7 @@
         @endphp
         <section class="hero hero-slider" data-hero-slider>
             @foreach($slides as $index => $slide)
-                <div class="hero-slide {{ $index === 0 ? 'active' : '' }}" style="--hero-image: url('{{ asset('images/' . $slide->image) }}'); --hero-mobile-image: url('{{ asset('images/' . ($slide->mobile_image ?? $slide->image)) }}');">
+                <div class="hero-slide {{ $index === 0 ? 'active' : '' }}" style="--hero-image: url('{{ asset('images/' . $slide->image) }}'); --hero-mobile-image: url('{{ asset('images/' . (!empty($slide->mobile_image) ? $slide->mobile_image : $slide->image)) }}'); --hero-mobile-pos: {{ !empty($slide->mobile_image) ? 'center center' : '66% 10%' }};">
                     <div class="container hero-container">
                         <div class="hero-content">
                             <h1>{!! nl2br(e($slide->heading)) !!}</h1>

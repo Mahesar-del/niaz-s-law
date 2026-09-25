@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
     --primary: #000000;
@@ -166,11 +166,12 @@ ul {
     z-index: 9999;
     color: #fff;
     transform: translateY(0);
-    transition: transform 0.3s ease, background-color 0.3s ease, padding 0.3s ease;
+    transition: transform 0.3s ease, background 0.3s ease, padding 0.3s ease;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
 }
 
 .navbar.scrolled {
-    background-color: #000000;
+    background: #000000;
     padding: var(--space-16) 0;
     border-bottom: 1px solid #333;
 }
@@ -590,13 +591,17 @@ ul {
     .hero {
         padding: 120px var(--space-16) 0;
         height: 80vh;
-        min-height: 450px;
+        min-height: 500px;
         max-height: 600px;
     }
 
     .hero-slide {
-        /* background-image: var(--hero-mobile-image) !important; */
-        background-position: 66% 10% !important;
+        background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%), var(--hero-mobile-image) var(--hero-mobile-pos, center center) / cover !important;
+    }
+
+    .hero-slide:nth-child(2),
+    .hero-slide:nth-child(3) {
+        --hero-mobile-pos: center center !important;
     }
 
     .hero h1 {
@@ -606,6 +611,7 @@ ul {
         line-height: 38px;
         letter-spacing: 0.01em;
         text-align: center;
+        margin-bottom: 40px;
     }
 
     .hero-content {
@@ -622,7 +628,7 @@ ul {
         left: 50%;
         right: auto;
         transform: translateX(-50%);
-        bottom: 20px;
+        bottom: 35px;
         padding: 0 16px;
         justify-content: center;
         width: 100%;
@@ -636,6 +642,7 @@ ul {
     .hero .btn {
         width: 85%;
         max-width: 320px;
+        margin-top: 10px;
     }
 }
 
