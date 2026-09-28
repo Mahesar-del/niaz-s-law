@@ -568,7 +568,7 @@
             color: inherit;
             width: 100%;
             max-width: 364px;
-            height: 343px;
+            height: 100%;
             overflow: hidden;
             margin: 0 auto;
             border-radius:5px;
@@ -576,9 +576,9 @@
 
         .about-people-card img {
             width: 100%;
-            height: 175px;
+            height: 250px;
             object-fit: cover;
-            object-position: top center;
+            object-position: center;
             display: block;
         }
 

@@ -357,6 +357,7 @@ ul {
         margin-top: 13px;
         height: 80px;
         padding: 0 var(--space-16);
+        background: transparent;
     }
 
     .nav-links {
