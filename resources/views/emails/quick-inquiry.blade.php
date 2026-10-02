@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>New Contact Inquiry</title>
+    <title>Quick Inquiry</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -107,28 +107,20 @@
                 <h1>Niaz Law P.C.</h1>
             </div>
             <div class="content">
-                <div class="greeting">New Contact Inquiry</div>
+                <div class="greeting">Quick Inquiry</div>
                 
                 <table class="details-table">
                     <tr>
                         <td class="label">Name</td>
-                        <td class="value"><strong>{{ $data['first_name'] }} {{ $data['last_name'] }}</strong></td>
+                        <td class="value"><strong>{{ $data['name'] }}</strong></td>
                     </tr>
                     <tr>
                         <td class="label">Email Address</td>
                         <td class="value"><a href="mailto:{{ $data['email'] }}">{{ $data['email'] }}</a></td>
                     </tr>
                     <tr>
-                        <td class="label">Phone Number</td>
-                        <td class="value"><a href="tel:{{ $data['phone'] }}">{{ $data['phone'] }}</a></td>
-                    </tr>
-                    <tr>
-                        <td class="label">Company</td>
-                        <td class="value">{{ $data['company'] ?? 'N/A' }}</td>
-                    </tr>
-                    <tr>
-                        <td class="label">Practice Area</td>
-                        <td class="value">{{ $data['practice'] }}</td>
+                        <td class="label">Subject</td>
+                        <td class="value">{{ $data['subject'] ?? 'No Subject' }}</td>
                     </tr>
                     <tr>
                         <td class="label" colspan="2" style="border-bottom: none; padding-bottom: 5px;">Message</td>
