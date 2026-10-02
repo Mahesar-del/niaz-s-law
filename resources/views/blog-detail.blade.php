@@ -38,11 +38,12 @@
         .related { box-sizing: border-box; width: 100%; max-width: 1220px; margin: 20px auto 0; padding: 0 25px 85px; }
         .related h2 { margin: 0 0 28px; font: 700 34px Georgia; }
         .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 55px; }
-        .related-card { display: grid; grid-template-columns: 42% 1fr; gap: 22px; }
-        .related-card img { width: 100%; height: 205px; object-fit: cover; }
+        .related-card { display: grid; grid-template-columns: 42% 1fr; gap: 22px; height: 100%; }
+        .related-card img { width: 100%; height: 100%; min-height: 205px; object-fit: cover; }
+        .related-card > div { display: flex; flex-direction: column; height: 100%; }
         .related-card h3 { margin: 0 0 12px; padding-bottom: 12px; border-bottom: 1px solid #999; font: 700 22px/1.15 Georgia; }
         .related-card p { margin: 0 0 16px; font-size: 13px; line-height: 1.5; }
-        .related-card a { display: inline-block; padding: 10px 22px; background: #111; color: #fff; text-decoration: none; font-size: 12px; }
+        .related-card a { display: inline-block; padding: 10px 22px; background: #111; color: #fff; text-decoration: none; font-size: 12px; margin-top: auto; align-self: flex-start; }
         .back { display: inline-block; margin-bottom: 28px; color: #886a38; text-decoration: none; font-weight: bold; }
         @media(max-width: 650px) {
             .post-hero { min-height: 360px; }

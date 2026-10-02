@@ -293,9 +293,9 @@
 
         .about-cap-card h3 {
             font-family: 'Libre Baskerville', serif;
-            font-size: 20px;
+            font-size: 17px;
             font-weight: 700;
-            line-height: 26px;
+            line-height: 23px;
             color: #000000;
             margin-bottom: var(--space-16);
             min-height: 55px;
@@ -568,7 +568,7 @@
             color: inherit;
             width: 100%;
             max-width: 364px;
-            height: 343px;
+            height: 100%;
             overflow: hidden;
             margin: 0 auto;
             border-radius:5px;
@@ -576,8 +576,9 @@
 
         .about-people-card img {
             width: 100%;
-            height: 175px;
+            height: 250px;
             object-fit: cover;
+            object-position: center;
             display: block;
         }
 
